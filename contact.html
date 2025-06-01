@@ -5,7 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Mann Scanning Centre</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />  <style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />  
+  <style>
+    /* Remove any unwanted outlines and focus indicators */
+    *, *:before, *:after {
+      outline: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Prevent accessibility tool highlights */
+    *:focus {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    
+    /* Remove browser default focus styles */
+    button:focus,
+    input:focus,
+    a:focus,
+    div:focus {
+      outline: none !important;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--accent-primary) !important;
+      color: var(--bg-primary) !important;
+      border-color: var(--accent-primary) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px var(--glow-color) !important;
+    }
+    
     .centre-logo:hover {
       transform: scale(1.1);
       box-shadow: 0 8px 30px var(--shadow-color), 0 0 20px var(--glow-color);
@@ -20,7 +49,7 @@
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()" style="position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 25px; padding: 12px 20px; cursor: pointer; transition: all 0.3s ease; color: var(--text-primary); font-size: 16px;">🌓 Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()" style="position: fixed; top: 120px; left: 20px; z-index: 1002; background: var(--bg-glass); backdrop-filter: blur(15px); border: 1px solid var(--border-color); border-radius: 25px; padding: 12px 20px; cursor: pointer; transition: all 0.3s ease; color: var(--text-primary); font-size: 16px; box-shadow: 0 4px 20px var(--shadow-color);">🌓 Theme</button>
   
   <header>
     <div class="logo-container">
