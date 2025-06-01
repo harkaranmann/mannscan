@@ -8,29 +8,29 @@
   <style>
     /* Theme Variables */
     :root {
-      --bg-primary: #121212;
-      --bg-secondary: #1a1a1a;
-      --bg-glass: rgba(255, 255, 255, 0.05);
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #151520;
+      --bg-glass: rgba(255, 255, 255, 0.08);
       --text-primary: #ffffff;
-      --text-secondary: #cccccc;
-      --accent-primary: #6366f1;
-      --accent-secondary: #8b5cf6;
-      --border-color: rgba(99, 102, 241, 0.2);
-      --shadow-color: rgba(0, 0, 0, 0.3);
-      --glow-color: rgba(99, 102, 241, 0.7);
+      --text-secondary: #b8b8c8;
+      --accent-primary: #00d4ff;
+      --accent-secondary: #ff6b6b;
+      --border-color: rgba(0, 212, 255, 0.2);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --glow-color: rgba(0, 212, 255, 0.6);
     }
 
     [data-theme="light"] {
       --bg-primary: #ffffff;
-      --bg-secondary: #f8f9fa;
+      --bg-secondary: #f8fafc;
       --bg-glass: rgba(0, 0, 0, 0.05);
-      --text-primary: #2c3e50;
-      --text-secondary: #6c757d;
-      --accent-primary: #6366f1;
-      --accent-secondary: #8b5cf6;
-      --border-color: rgba(99, 102, 241, 0.2);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --accent-primary: #0ea5e9;
+      --accent-secondary: #ef4444;
+      --border-color: rgba(14, 165, 233, 0.2);
       --shadow-color: rgba(0, 0, 0, 0.1);
-      --glow-color: rgba(99, 102, 241, 0.7);
+      --glow-color: rgba(14, 165, 233, 0.5);
     }
 
     /* Enhanced Styles */
@@ -47,14 +47,14 @@
       position: fixed;
       bottom: 0;
       right: 0;
-      width: 400px;
-      height: 400px;
-      background: url('images/mri2.jpg') no-repeat;
+      width: 500px;
+      height: 500px;
+      background: url('images/mri2 - nobg.png') no-repeat;
       background-size: contain;
       background-position: bottom right;
-      opacity: 0.1;
+      opacity: 0.15;
       z-index: -1;
-      filter: blur(1px);
+      filter: blur(0.5px);
     }
 
     .theme-toggle {
@@ -71,6 +71,42 @@
       transition: all 0.3s ease;
       color: var(--text-primary);
       font-size: 16px;
+    }
+
+    /* Adjust theme toggle for DICOM viewer tab overlap */
+    @media (max-width: 1200px) {
+      .theme-toggle {
+        top: 90px;
+        right: 15px;
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .theme-toggle {
+        top: 100px;
+        right: 10px;
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      nav a {
+        margin: 5px;
+        font-size: 14px;
+      }
     }
 
     .theme-toggle:hover {
@@ -189,22 +225,22 @@
       box-shadow: 0 0 15px var(--accent-primary);
     }
 
-    /* Hero Section with Orbital Display */
+    /* Hero Section with Floating Cards */
     .hero-section {
       position: relative;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       overflow: hidden;
-      padding-top: 80px;
+      padding: 80px 20px 40px;
     }
 
-    .orbital-container {
+    .floating-container {
       position: relative;
       width: 100%;
-      height: 85vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -214,14 +250,14 @@
       text-align: center;
       z-index: 10;
       background: var(--bg-glass);
-      backdrop-filter: blur(15px);
-      padding: 50px 40px;
+      backdrop-filter: blur(20px);
+      padding: 60px 40px;
       border-radius: 30px;
       border: 2px solid var(--border-color);
       margin: 40px auto;
       max-width: 900px;
       position: relative;
-      box-shadow: 0 20px 60px var(--shadow-color);
+      box-shadow: 0 25px 70px var(--shadow-color);
     }
 
     .hero-content h2 {
@@ -243,8 +279,8 @@
       line-height: 1.6;
     }
 
-    /* Orbital Canvas */
-    #diagnosticUniverse {
+    /* Floating Cards Canvas */
+    #medicalVisualization {
       position: absolute;
       top: 0;
       left: 0;
@@ -254,26 +290,54 @@
       z-index: 1;
     }
 
+    /* Center logo in animation */
+    .center-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      opacity: 0.7;
+      max-width: 150px;
+      max-height: 150px;
+      pointer-events: none;
+      filter: drop-shadow(0 0 20px var(--glow-color));
+      transition: opacity 0.3s ease;
+    }
+    
+    @media (max-width: 768px) {
+      .center-logo {
+        max-width: 100px;
+        max-height: 100px;
+        opacity: 0.6;
+      }
+    }
+    
+    [data-theme="light"] .center-logo {
+      opacity: 0.8;
+      filter: drop-shadow(0 0 15px var(--glow-color));
+    }
+
     /* Machine Info Panel */
     .machine-info {
       position: fixed;
       bottom: 30px;
-      left: 30px;
-      right: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100%);
+      width: 90%;
+      max-width: 800px;
       background: var(--bg-glass);
-      backdrop-filter: blur(15px);
+      backdrop-filter: blur(20px);
       border: 1px solid var(--border-color);
       border-radius: 20px;
       padding: 30px;
-      transform: translateY(100%);
       transition: transform 0.3s ease;
       z-index: 100;
-      max-width: 800px;
-      margin: 0 auto;
+      box-shadow: 0 15px 40px var(--shadow-color);
     }
 
     .machine-info.show {
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
 
     .machine-info h3 {
@@ -472,15 +536,13 @@
       .machine-info {
         left: 15px;
         right: 15px;
-        padding: 20px;
+        transform: translateY(100%);
+        width: auto;
+        max-width: none;
       }
 
-      .machine-info h3 {
-        font-size: 1.6rem;
-      }
-
-      .machine-info p {
-        font-size: 1rem;
+      .machine-info.show {
+        transform: translateY(0);
       }
     }
   </style>
@@ -516,21 +578,23 @@
     </nav>
   </header>
 
-  <!-- Hero Section with Orbital Display -->
+  <!-- Hero Section with Floating Cards -->
   <section class="hero-section">
-    <div class="orbital-container">
-      <canvas id="diagnosticUniverse"></canvas>
+    <div class="floating-container">
+      <canvas id="medicalVisualization"></canvas>
+      <!-- Center logo in animation -->
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" class="center-logo" />
     </div>
     
     <div class="hero-content">
-      <h2>Precision Imaging Universe</h2>
-      <p>Your trusted diagnostic partner in Jalandhar. Experience cutting-edge medical imaging technology with our comprehensive suite of advanced diagnostic services including MRI, CT, Ultrasound, and specialized screening procedures. NABH-accredited facility ensuring the highest standards of accuracy, patient comfort, and timely results for effective healthcare management.</p>
+      <h2>Advanced Medical Imaging</h2>
+      <p>Experience state-of-the-art diagnostic technology at Mann Scanning Centre. Our NABH-accredited facility in Jalandhar provides comprehensive imaging services including MRI, CT, Ultrasound, and specialized procedures with precision, comfort, and expert care for your health needs.</p>
     </div>
 
     <!-- Interactive Machine Info Panel -->
     <div class="machine-info" id="machineInfo">
-      <h3 id="machineName">Hover over any diagnostic machine</h3>
-      <p id="machineDescription">Discover detailed information about our advanced medical imaging equipment</p>
+      <h3 id="machineName">Hover over any medical equipment</h3>
+      <p id="machineDescription">Discover our advanced diagnostic technology</p>
       <p id="machineSpecs"></p>
       <p id="machineApplications"></p>
     </div>
@@ -630,117 +694,117 @@
   </div>
 
   <script>
-    // Comprehensive Medical Equipment Data with nobg images
+    // Enhanced Medical Equipment Data
     const medicalEquipment = [
       {
         name: 'MRI Scanner',
         image: 'images/mri - nobg.png',
-        radius: 280,
-        speed: 0.008,
-        angle: 0,
-        size: 130,
-        color: '#6366f1',
-        description: 'Magnetic Resonance Imaging - Advanced High-Field System',
-        specifications: 'High Resolution: <0.5mm | Scan Time: 15-45 min | Multiple Coils Available',
-        applications: 'Brain/Spine imaging, Joint evaluation, Whole-body screening, Functional MRI',
-        clinicalUse: 'Neurological disorders, Musculoskeletal injuries, Cancer staging, Vascular assessment'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 160,
+        color: '#00d4ff',
+        description: 'Magnetic Resonance Imaging - High-Field System',
+        specifications: 'High Resolution | No Radiation | Multiple Sequences Available',
+        applications: 'Brain/Spine imaging, Joint evaluation, Whole-body screening',
       },
       {
         name: 'CT Scanner',
         image: 'images/ct - nobg.png',
-        radius: 350,
-        speed: 0.012,
-        angle: Math.PI / 3,
-        size: 125,
-        color: '#8b5cf6',
-        description: 'Multi-Detector Computed Tomography - Advanced Imaging',
-        specifications: 'Fast Rotation: 0.35s | High Resolution: 0.33mm | Low Dose Technology',
-        applications: 'Emergency trauma, Chest/Abdomen CT, CT Angiography, Virtual colonoscopy',
-        clinicalUse: 'Acute stroke, Pulmonary embolism, Abdominal pain, Cancer detection'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 155,
+        color: '#ff6b6b',
+        description: 'Multi-Detector Computed Tomography',
+        specifications: 'Fast Imaging | High Resolution | Low Dose Technology',
+        applications: 'Emergency trauma, Chest/Abdomen CT, CT Angiography',
       },
       {
-        name: 'Voluson Ultrasound',
+        name: 'Ultrasound',
         image: 'images/voluson - nobg.png',
-        radius: 240,
-        speed: 0.015,
-        angle: Math.PI / 2,
-        size: 120,
-        color: '#ec4899',
-        description: 'GE Voluson E10 - Premium 4D Ultrasound System',
-        specifications: 'Frequency: 2-18 MHz | 4D Imaging | AI-Enhanced | Real-time processing',
-        applications: 'Obstetric 4D imaging, Gynecological studies, Fetal anomaly screening',
-        clinicalUse: 'Pregnancy monitoring, Fetal development, Genetic screening, High-risk pregnancy'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 150,
+        color: '#4ecdc4',
+        description: 'Premium 4D Ultrasound System',
+        specifications: '4D Imaging | AI-Enhanced | Real-time Processing',
+        applications: 'Obstetric imaging, Fetal screening, Organ assessment',
       },
       {
         name: 'DEXA Scanner',
         image: 'images/dexa - nobg.png',
-        radius: 300,
-        speed: 0.010,
-        angle: Math.PI,
-        size: 115,
-        color: '#f59e0b',
-        description: 'Dual-Energy X-ray Absorptiometry - Bone Densitometry',
-        specifications: 'Precision: ±0.5% | Scan Time: 5-30 min | Low Radiation | WHO Guidelines',
-        applications: 'Osteoporosis screening, Fracture risk assessment, Body composition analysis',
-        clinicalUse: 'Postmenopausal screening, Steroid therapy monitoring, Metabolic bone disease'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 145,
+        color: '#45b7d1',
+        description: 'Bone Density Measurement',
+        specifications: 'Precision Scanning | Low Radiation | WHO Guidelines',
+        applications: 'Osteoporosis screening, Fracture risk assessment',
       },
       {
-        name: 'Digital Mammography',
+        name: 'Mammography',
         image: 'images/mammography - nobg.png',
-        radius: 260,
-        speed: 0.013,
-        angle: Math.PI * 1.5,
-        size: 118,
-        color: '#06b6d4',
-        description: 'Full-Field Digital Mammography with Tomosynthesis',
-        specifications: 'Resolution: 70μm | Compression: Auto-optimized | DBT capable | Low dose',
-        applications: 'Breast cancer screening, Diagnostic mammography, Breast biopsy guidance',
-        clinicalUse: 'Annual screening, Breast lumps, Family history cases, BRCA positive patients'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 148,
+        color: '#f39c12',
+        description: 'Digital Mammography with Tomosynthesis',
+        specifications: 'High Resolution | Auto-optimized | Low Dose',
+        applications: 'Breast cancer screening, Diagnostic imaging',
       },
       {
-        name: 'Fibrotouch Scanner',
+        name: 'Fibrotouch',
         image: 'images/fibrotouch.jpg',
-        radius: 220,
-        speed: 0.014,
-        angle: Math.PI * 0.8,
-        size: 112,
-        color: '#ef4444',
-        description: 'Fibrotouch Liver Elastography - Non-invasive Liver Assessment',
-        specifications: 'Frequency: 5MHz | CAP Technology | Instant Results | Painless Procedure',
-        applications: 'Liver fibrosis assessment, Fatty liver evaluation, Hepatitis monitoring',
-        clinicalUse: 'Chronic liver disease, Diabetes screening, Alcohol-related liver damage'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 140,
+        color: '#e74c3c',
+        description: 'Liver Elastography - Non-invasive Assessment',
+        specifications: 'Instant Results | Painless | CAP Technology',
+        applications: 'Liver fibrosis, Fatty liver evaluation',
       },
       {
-        name: 'Foetal Echo System',
+        name: 'Fetal Echo',
         image: 'images/ultrasound and womb_nobg.png',
-        radius: 340,
-        speed: 0.011,
-        angle: Math.PI * 1.3,
-        size: 122,
-        color: '#10b981',
-        description: 'Specialized Fetal Echocardiography - Advanced Cardiac Assessment',
-        specifications: 'High-frequency probes | 4D heart imaging | Real-time analysis | Expert consultation',
-        applications: 'Fetal heart defect screening, Congenital heart disease, High-risk pregnancy monitoring',
-        clinicalUse: 'Genetic disorders, Family history of heart disease, Maternal diabetes'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 145,
+        color: '#9b59b6',
+        description: 'Specialized Fetal Echocardiography',
+        specifications: 'High-frequency probes | Expert evaluation',
+        applications: 'Congenital heart defects, Cardiac development',
       },
       {
         name: 'Digital X-Ray',
         image: 'images/ct - nobg.png',
-        radius: 380,
-        speed: 0.009,
-        angle: Math.PI * 1.7,
-        size: 108,
-        color: '#a855f7',
-        description: 'Digital Radiography System - Instant High-Quality Imaging',
-        specifications: 'Direct digital capture | Low radiation dose | Immediate results | PACS integration',
-        applications: 'Chest X-rays, Bone fractures, Joint assessment, Abdomen imaging',
-        clinicalUse: 'Respiratory conditions, Orthopedic injuries, Emergency diagnostics, Pre-operative screening'
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        size: 135,
+        color: '#2ecc71',
+        description: 'Digital X-Ray Imaging',
+        specifications: 'Instant results | Low radiation | PACS integration',
+        applications: 'Chest conditions, Bone fractures, Emergency diagnostics',
       }
     ];
 
-    class DiagnosticUniverse {
+    class MedicalVisualization {
       constructor() {
-        this.canvas = document.getElementById('diagnosticUniverse');
+        this.canvas = document.getElementById('medicalVisualization');
         this.ctx = this.canvas.getContext('2d');
         this.machineInfo = document.getElementById('machineInfo');
         
@@ -750,9 +814,7 @@
         this.hoveredMachine = null;
         this.mouseX = 0;
         this.mouseY = 0;
-        
-        this.logoImage = new Image();
-        this.logoImage.src = 'images/3d logo mann scan nobg .png';
+        this.particles = [];
         
         this.init();
       }
@@ -761,6 +823,8 @@
         this.setupCanvas();
         this.loadImages();
         this.setupEventListeners();
+        this.initializePositions();
+        this.createParticles();
         this.animate();
       }
       
@@ -783,28 +847,38 @@
         await Promise.all(promises);
       }
       
+      initializePositions() {
+        const radius = Math.min(this.canvas.width, this.canvas.height) * 0.3;
+        medicalEquipment.forEach((machine, index) => {
+          const angle = (index / medicalEquipment.length) * Math.PI * 2;
+          machine.x = this.centerX + Math.cos(angle) * radius;
+          machine.y = this.centerY + Math.sin(angle) * radius;
+          machine.vx = (Math.random() - 0.5) * 0.5;
+          machine.vy = (Math.random() - 0.5) * 0.5;
+          machine.targetX = machine.x;
+          machine.targetY = machine.y;
+        });
+      }
+      
+      createParticles() {
+        for (let i = 0; i < 50; i++) {
+          this.particles.push({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            size: Math.random() * 3 + 1,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.2
+          });
+        }
+      }
+      
       setupEventListeners() {
         window.addEventListener('resize', () => this.setupCanvas());
         this.canvas.addEventListener('mousemove', e => this.handleMouseMove(e));
         this.canvas.addEventListener('click', e => this.handleClick(e));
         
-        // Touch and swipe support for mobile
-        this.canvas.addEventListener('touchstart', e => this.handleTouchStart(e));
-        this.canvas.addEventListener('touchmove', e => this.handleTouchMove(e));
-        this.canvas.addEventListener('touchend', e => this.handleTouchEnd(e));
-        
-        // Keyboard controls for accessibility
-        window.addEventListener('keydown', e => this.handleKeyDown(e));
-        
-        // Add pointer events for better interaction
         this.canvas.style.pointerEvents = 'auto';
-        this.canvas.style.touchAction = 'manipulation';
-        
-        // Initialize touch variables
-        this.touchStartX = 0;
-        this.touchStartY = 0;
-        this.isSwipeMode = false;
-        this.swipeVelocity = 0;
       }
       
       handleMouseMove(e) {
@@ -814,11 +888,9 @@
         
         this.hoveredMachine = null;
         for (let machine of medicalEquipment) {
-          const x = this.centerX + Math.cos(machine.angle) * machine.radius;
-          const y = this.centerY + Math.sin(machine.angle) * machine.radius;
-          const distance = Math.sqrt((this.mouseX - x) ** 2 + (this.mouseY - y) ** 2);
+          const distance = Math.sqrt((this.mouseX - machine.x) ** 2 + (this.mouseY - machine.y) ** 2);
           
-          if (distance < machine.size / 2 + 15) {
+          if (distance < machine.size / 2 + 20) {
             this.hoveredMachine = machine;
             this.showMachineInfo(machine);
             break;
@@ -836,66 +908,11 @@
         }
       }
       
-      handleTouchStart(e) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const rect = this.canvas.getBoundingClientRect();
-        this.touchStartX = touch.clientX - rect.left;
-        this.touchStartY = touch.clientY - rect.top;
-        this.isSwipeMode = true;
-        this.swipeVelocity = 0;
-      }
-      
-      handleTouchMove(e) {
-        e.preventDefault();
-        if (!this.isSwipeMode) return;
-        
-        const touch = e.touches[0];
-        const rect = this.canvas.getBoundingClientRect();
-        const currentX = touch.clientX - rect.left;
-        const deltaX = currentX - this.touchStartX;
-        
-        // Apply swipe rotation to all machines
-        const swipeSpeed = deltaX * 0.001;
-        medicalEquipment.forEach(machine => {
-          machine.angle += swipeSpeed;
-        });
-        
-        this.touchStartX = currentX;
-      }
-      
-      handleTouchEnd(e) {
-        e.preventDefault();
-        this.isSwipeMode = false;
-        
-        // Add momentum effect
-        setTimeout(() => {
-          this.swipeVelocity *= 0.95;
-        }, 16);
-      }
-      
-      handleKeyDown(e) {
-        const rotationSpeed = 0.1;
-        switch(e.key) {
-          case 'ArrowLeft':
-            medicalEquipment.forEach(machine => machine.angle -= rotationSpeed);
-            break;
-          case 'ArrowRight':
-            medicalEquipment.forEach(machine => machine.angle += rotationSpeed);
-            break;
-          case ' ':
-            e.preventDefault();
-            // Pause/resume animation
-            this.isPaused = !this.isPaused;
-            break;
-        }
-      }
-      
       showMachineInfo(machine) {
         document.getElementById('machineName').textContent = machine.name;
         document.getElementById('machineDescription').textContent = machine.description;
         document.getElementById('machineSpecs').textContent = machine.specifications;
-        document.getElementById('machineApplications').textContent = `Clinical Applications: ${machine.applications}`;
+        document.getElementById('machineApplications').textContent = `Applications: ${machine.applications}`;
         this.machineInfo.classList.add('show');
       }
       
@@ -905,82 +922,108 @@
       
       animate() {
         this.time += 0.016;
-        if (!this.isPaused) {
-          this.update();
-        }
+        this.update();
         this.render();
         requestAnimationFrame(() => this.animate());
       }
       
       update() {
-        medicalEquipment.forEach(machine => {
-          machine.angle += machine.speed + (this.swipeVelocity || 0);
-          if (machine.angle > Math.PI * 2) machine.angle -= Math.PI * 2;
-          if (machine.angle < 0) machine.angle += Math.PI * 2;
+        // Update floating motion
+        medicalEquipment.forEach((machine, index) => {
+          // Gentle floating motion
+          machine.vx += (Math.random() - 0.5) * 0.01;
+          machine.vy += (Math.random() - 0.5) * 0.01;
+          
+          // Damping
+          machine.vx *= 0.98;
+          machine.vy *= 0.98;
+          
+          // Update position
+          machine.x += machine.vx;
+          machine.y += machine.vy;
+          
+          // Boundary constraints
+          const margin = machine.size;
+          if (machine.x < margin || machine.x > this.canvas.width - margin) machine.vx *= -1;
+          if (machine.y < margin || machine.y > this.canvas.height - margin) machine.vy *= -1;
+          
+          // Keep within bounds
+          machine.x = Math.max(margin, Math.min(this.canvas.width - margin, machine.x));
+          machine.y = Math.max(margin, Math.min(this.canvas.height - margin, machine.y));
         });
         
-        // Gradually reduce swipe velocity
-        if (this.swipeVelocity) {
-          this.swipeVelocity *= 0.98;
-          if (Math.abs(this.swipeVelocity) < 0.001) {
-            this.swipeVelocity = 0;
-          }
-        }
+        // Update particles
+        this.particles.forEach(particle => {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+          
+          if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+          if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+        });
       }
       
       render() {
+        // Clear canvas with transparent background for light mode compatibility
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        // Draw orbit trails with gradient effect
-        medicalEquipment.forEach(machine => {
-          this.ctx.beginPath();
+        // Optional subtle background effect that works in both themes
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
           const gradient = this.ctx.createRadialGradient(
             this.centerX, this.centerY, 0,
-            this.centerX, this.centerY, machine.radius
+            this.centerX, this.centerY, Math.max(this.canvas.width, this.canvas.height)
           );
-          gradient.addColorStop(0, `${machine.color}05`);
-          gradient.addColorStop(1, `${machine.color}20`);
-          this.ctx.strokeStyle = gradient;
-          this.ctx.lineWidth = 3;
-          this.ctx.arc(this.centerX, this.centerY, machine.radius, 0, Math.PI * 2);
-          this.ctx.stroke();
-        });
-        
-        // Draw center logo with enhanced glow
-        const logoSize = 200;
-        if (this.logoImage.complete) {
-          this.ctx.save();
-          this.ctx.shadowColor = '#6366f1';
-          this.ctx.shadowBlur = 50 + Math.sin(this.time * 2) * 10;
-          this.ctx.drawImage(
-            this.logoImage,
-            this.centerX - logoSize / 2,
-            this.centerY - logoSize / 2,
-            logoSize,
-            logoSize
-          );
-          this.ctx.restore();
+          gradient.addColorStop(0, 'rgba(0, 212, 255, 0.01)');
+          gradient.addColorStop(1, 'rgba(0, 0, 0, 0.05)');
+          this.ctx.fillStyle = gradient;
+          this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         }
         
-        // Draw machines with enhanced animations
+        // Draw connecting lines with theme-aware colors
+        const lineColor = currentTheme === 'dark' ? 'rgba(0, 212, 255, 0.1)' : 'rgba(14, 165, 233, 0.08)';
+        this.ctx.strokeStyle = lineColor;
+        this.ctx.lineWidth = 1;
+        for (let i = 0; i < medicalEquipment.length; i++) {
+          for (let j = i + 1; j < medicalEquipment.length; j++) {
+            const dist = Math.sqrt(
+              (medicalEquipment[i].x - medicalEquipment[j].x) ** 2 +
+              (medicalEquipment[i].y - medicalEquipment[j].y) ** 2
+            );
+            if (dist < 300) {
+              this.ctx.beginPath();
+              this.ctx.moveTo(medicalEquipment[i].x, medicalEquipment[i].y);
+              this.ctx.lineTo(medicalEquipment[j].x, medicalEquipment[j].y);
+              this.ctx.stroke();
+            }
+          }
+        }
+        
+        // Draw particles with theme-aware colors
+        const particleColor = currentTheme === 'dark' ? '#00d4ff' : '#0ea5e9';
+        this.particles.forEach(particle => {
+          this.ctx.save();
+          this.ctx.globalAlpha = particle.opacity;
+          this.ctx.fillStyle = particleColor;
+          this.ctx.beginPath();
+          this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          this.ctx.fill();
+          this.ctx.restore();
+        });
+        
+        // Draw machines
         medicalEquipment.forEach(machine => {
-          const x = this.centerX + Math.cos(machine.angle) * machine.radius;
-          const y = this.centerY + Math.sin(machine.angle) * machine.radius;
-          
           this.ctx.save();
           
           const isHovered = this.hoveredMachine === machine;
-          const pulseEffect = 1 + Math.sin(this.time * 3 + machine.angle) * 0.1;
-          const hoverEffect = isHovered ? 1.3 : 1;
+          const pulseEffect = 1 + Math.sin(this.time * 2 + machine.x * 0.01) * 0.05;
+          const hoverEffect = isHovered ? 1.2 : 1;
           const size = machine.size * pulseEffect * hoverEffect;
           
-          // Enhanced glow effect
+          // Glow effect
           this.ctx.shadowColor = machine.color;
-          this.ctx.shadowBlur = isHovered ? 40 + Math.sin(this.time * 4) * 10 : 20;
-          this.ctx.filter = `brightness(${isHovered ? 1.2 : 1})`;
+          this.ctx.shadowBlur = isHovered ? 30 : 15;
           
           if (machine.imageObj && machine.imageObj.complete) {
-            // Ensure proper aspect ratio and prevent squishing
             const img = machine.imageObj;
             const aspectRatio = img.naturalWidth / img.naturalHeight;
             let drawWidth = size;
@@ -992,50 +1035,35 @@
               drawWidth = size * aspectRatio;
             }
             
-            // Add rotation animation for more dynamic effect
-            this.ctx.translate(x, y);
-            this.ctx.rotate(Math.sin(this.time + machine.angle) * 0.1);
-            this.ctx.drawImage(img, -drawWidth/2, -drawHeight/2, drawWidth, drawHeight);
-            this.ctx.rotate(-Math.sin(this.time + machine.angle) * 0.1);
-            this.ctx.translate(-x, -y);
+            this.ctx.drawImage(img, machine.x - drawWidth/2, machine.y - drawHeight/2, drawWidth, drawHeight);
           } else {
-            // Fallback circle with enhanced styling
-            const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, size/2);
+            // Fallback circle
+            const gradient = this.ctx.createRadialGradient(
+              machine.x, machine.y, 0,
+              machine.x, machine.y, size/2
+            );
             gradient.addColorStop(0, machine.color);
-            gradient.addColorStop(1, `${machine.color}80`);
+            gradient.addColorStop(1, `${machine.color}40`);
             this.ctx.beginPath();
             this.ctx.fillStyle = gradient;
-            this.ctx.arc(x, y, size/2, 0, Math.PI * 2);
+            this.ctx.arc(machine.x, machine.y, size/2, 0, Math.PI * 2);
             this.ctx.fill();
           }
           
           this.ctx.restore();
           
-          // Draw enhanced label with background
-          this.ctx.save();
-          const labelY = y + size/2 + 30;
-          const labelText = machine.name;
-          const fontSize = isHovered ? 18 : 16;
-          this.ctx.font = `bold ${fontSize}px 'Segoe UI', sans-serif`;
-          this.ctx.textAlign = 'center';
-          
-          // Label background
-          const textMetrics = this.ctx.measureText(labelText);
-          const padding = 8;
-          this.ctx.fillStyle = `${machine.color}20`;
-          this.ctx.fillRect(
-            x - textMetrics.width/2 - padding,
-            labelY - fontSize - padding/2,
-            textMetrics.width + padding * 2,
-            fontSize + padding
-          );
-          
-          // Label text with glow
-          this.ctx.fillStyle = isHovered ? machine.color : '#ffffff';
-          this.ctx.shadowColor = machine.color;
-          this.ctx.shadowBlur = isHovered ? 15 : 5;
-          this.ctx.fillText(labelText, x, labelY);
-          this.ctx.restore();
+          // Draw label
+          if (isHovered) {
+            this.ctx.save();
+            const labelY = machine.y + size/2 + 25;
+            this.ctx.font = 'bold 16px "Segoe UI", sans-serif';
+            this.ctx.textAlign = 'center';
+            this.ctx.fillStyle = machine.color;
+            this.ctx.shadowColor = machine.color;
+            this.ctx.shadowBlur = 10;
+            this.ctx.fillText(machine.name, machine.x, labelY);
+            this.ctx.restore();
+          }
         });
       }
     }
@@ -1087,8 +1115,8 @@
       document.documentElement.setAttribute('data-theme', savedTheme);
       document.getElementById('themeText').textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
       
-      // Initialize the diagnostic universe
-      new DiagnosticUniverse();
+      // Initialize the medical visualization
+      new MedicalVisualization();
     });
   </script>
 
