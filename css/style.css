@@ -1,16 +1,46 @@
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-accent: #00ffc8;
+  --accent-primary: #00ffc8;
+  --accent-secondary: #00a8ff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(0, 255, 200, 0.2);
+}
+
+[data-theme="light"] {
+  /* Light theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-glass: rgba(0, 0, 0, 0.05);
+  --text-primary: #2c3e50;
+  --text-secondary: #6c757d;
+  --text-accent: #007bff;
+  --accent-primary: #007bff;
+  --accent-secondary: #28a745;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --glow-color: rgba(0, 123, 255, 0.2);
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #121212;
-  color: #f5f5f5;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-glass);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--border-color);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
@@ -20,14 +50,50 @@ header {
   z-index: 1000;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-container img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px var(--accent-primary));
+}
+
 header h1 {
-  color: #00ffc8;
-  font-size: 1.6rem;
+  color: var(--text-accent);
+  font-size: 2rem;
   margin: 0;
+  font-weight: 600;
+}
+
+.theme-toggle {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--glow-color);
+  box-shadow: 0 0 15px var(--glow-color);
+}
+
+nav {
+  display: flex;
+  align-items: center;
 }
 
 nav a {
-  color: #fff;
+  color: var(--text-primary);
   margin-left: 25px;
   text-decoration: none;
   font-weight: 500;
@@ -35,7 +101,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #00ffc8;
+  color: var(--text-accent);
 }
 
 main {
@@ -52,11 +118,11 @@ main {
 .hero h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .hero p {
-  color: #aaa;
+  color: var(--text-secondary);
   font-size: 1.2rem;
 }
 
@@ -65,22 +131,94 @@ main {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-glass);
   border-radius: 14px;
   padding: 30px;
   margin: 20px 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: scale(1.01);
+  box-shadow: 0 8px 30px var(--shadow-color), 0 0 20px var(--glow-color);
+}
+
+.card h3 {
+  color: var(--text-accent);
+  margin-bottom: 15px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.02);
 }
 
 footer {
   text-align: center;
   padding: 30px 20px;
   font-size: 0.9rem;
-  color: #888;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-glass);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logo-container {
+    justify-content: center;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  nav a {
+    margin: 0;
+  }
+  
+  main {
+    padding: 20px 15px;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-large {
+  margin-bottom: 40px;
+}
+
+.glow {
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

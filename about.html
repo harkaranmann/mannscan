@@ -1,31 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta ch    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Our Mission & Values</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">📍 Our Mission</h4>
+            <p style="font-size: 1.2rem; line-height: 1.6;">Mann Scanning Centre is dedicated to providing comprehensive and reliable diagnostic services with a steadfast commitment to accuracy, patient comfort, and timely delivery of results, empowering individuals and healthcare providers with the information needed for effective health management.</p>
+          </div>
+          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">💎 Our Values</h4>
+            <p style="font-size: 1.2rem; line-height: 1.6;">Patient-centric care is at our core. We understand that undergoing diagnostic tests can be anxiety-inducing, and our team creates a supportive, reassuring environment. Every step from appointment scheduling to report delivery is handled with professionalism and empathy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Our Expert Medical Team</h3>
+        <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 30px;">At Mann Scanning Centre, our diagnostic excellence is upheld by a team of highly skilled and dedicated professionals including licensed doctors, certified laboratory technicians, and specialized staff extensively trained in advanced diagnostic techniques and patient care.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px;">
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🩺 Radiologists</h4>
+            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+              <li style="margin-bottom: 10px;">• Dr. H.S. Mann, MBBS, PG Dip Sonography</li>
+              <li style="margin-bottom: 10px;">• Dr. Harkaran Singh Mann, M.D. Radiodiagnosis</li>
+              <li style="margin-bottom: 10px;">• Dr. Purnoor Mann, DMRD</li>
+            </ul>
+          </div>
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">⚡ Technologists</h4>
+            <p style="font-size: 1.1rem; line-height: 1.6;">Certified MRI, CT, and ultrasound technologists with extensive training in advanced diagnostic equipment operation and patient safety protocols.</p>
+          </div>
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🤝 Support Staff</h4>
+            <p style="font-size: 1.1rem; line-height: 1.6;">Dedicated patient care coordinators ensuring seamless appointment scheduling, comfortable facility experience, and clear communication throughout your diagnostic journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us | Mann Scanning Centre</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+  
   <header>
     <div class="logo-container">
-      <img src="images/logo.svg" alt="Mann Scan Logo" style="height:40px;" />
-      <h1>Mann Scanning Centre</h1>
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scan Logo" style="height: 70px; width: auto; object-fit: contain;" />
+      <h1 style="font-size: 2.2rem;">Mann Scanning Centre</h1>
     </div>
-    <nav>
+    <nav style="font-size: 16px; gap: 30px;">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
-      <a href="https://nroduit.github.io/en/launch-weasis/" target="_blank">View DICOMs</a>
+      <a href="lmp-calculator.html">LMP Calculator</a>
+      <a href="https://www.dicomviewer.com/" target="_blank">DICOM Viewer</a>
     </nav>
   </header>
 
-  <main>
+  <main style="padding-top: 100px;">
     <section class="hero">
       <h2>About Our Centre</h2>
       <p>Where Expertise Meets Excellence in Imaging</p>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap;">
+          <img src="images/logo wool_nobg.png" alt="Mann Scanning Centre" style="height: 120px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px var(--glow-color));" />
+          <div style="flex: 1; min-width: 300px;">
+            <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Our Philosophy</h3>
+            <p style="font-size: 1.3rem; line-height: 1.6;">At Mann Scanning Centre, we are committed to delivering precise diagnostic imaging with the highest standard of patient care. Our experienced team ensures that every scan is personalized to meet each patient's unique needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Why Choose Us?</h3>
+        <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.2rem; list-style: none; padding: 0;">
+          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
+            <strong style="color: var(--accent-primary);">State-of-the-art Equipment:</strong> Latest GE and Samsung diagnostic machines
+          </li>
+          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
+            <strong style="color: var(--accent-primary);">Expert Radiologists:</strong> Highly qualified medical professionals
+          </li>
+          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
+            <strong style="color: var(--accent-primary);">Patient-Centered Care:</strong> Comfortable environment with personalized attention
+          </li>
+          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
+            <strong style="color: var(--accent-primary);">Quick Results:</strong> Fast turnaround times for urgent cases
+          </li>
+          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
+            <strong style="color: var(--accent-primary);">Comprehensive Services:</strong> Full range of diagnostic imaging under one roof
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="section">
@@ -45,10 +122,112 @@
         </ul>
       </div>
     </section>
+
+    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Our Comprehensive Diagnostic Services</h3>
+        <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 30px;">Mann Scanning Centre offers a complete suite of diagnostic services to cater to a wide array of medical needs. Our integrated approach allows for a more holistic understanding of an individual's health status.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🧠 Advanced Imaging</h4>
+            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+              <li>• MRI (1.5T/3T Systems)</li>
+              <li>• CT Scan (64/128 Slice)</li>
+              <li>• 4D Ultrasound</li>
+              <li>• Digital Mammography</li>
+              <li>• DEXA Bone Density</li>
+            </ul>
+          </div>
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🔬 Laboratory Services</h4>
+            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+              <li>• Comprehensive Blood Tests</li>
+              <li>• Urine Analysis</li>
+              <li>• Hormone Panels</li>
+              <li>• Cardiac Markers</li>
+              <li>• Tumor Markers</li>
+            </ul>
+          </div>
+          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🩺 Preventive Care</h4>
+            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+              <li>• Executive Health Checkups</li>
+              <li>• Cancer Screening Packages</li>
+              <li>• Cardiac Risk Assessment</li>
+              <li>• Women's Health Packages</li>
+              <li>• Senior Citizen Checkups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">🏥 Our Facility & Location</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">📍 Convenient Location</h4>
+            <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 15px;"><strong>Address:</strong> 201 Gujral Nagar, Jalandhar, Punjab - 144002</p>
+            <p style="font-size: 1.1rem; line-height: 1.6;">Strategically located in the heart of Jalandhar with excellent road connectivity and accessibility for patients from surrounding areas. Easy access via public transport and ample parking facilities.</p>
+          </div>
+          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
+            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">🕒 Operating Hours</h4>
+            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+              <li><strong>Monday - Saturday:</strong> 9:00 AM - 6:00 PM</li>
+              <li><strong>Sunday:</strong> 11:00 AM - 1:00 PM</li>
+              <li><strong>Emergency Services:</strong> Available 24/7</li>
+              <li><strong>Appointment Booking:</strong> 01814695500</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">🏆 NABH Accreditation & Quality Standards</h3>
+        <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
+          <img src="images/nabh_nobg.png" alt="NABH Accredited" style="height: 100px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px var(--glow-color));" />
+          <div style="flex: 1; min-width: 300px;">
+            <p style="font-size: 1.2rem; line-height: 1.7;">Mann Scanning Centre is proud to be NABH (National Accreditation Board for Hospitals & Healthcare Providers) accredited, ensuring the highest standards of quality, safety, and patient care. This accreditation demonstrates our commitment to excellence in healthcare delivery and continuous improvement in diagnostic services.</p>
+          </div>
+        </div>
+        <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
+          <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">Quality Assurance Standards</h4>
+          <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
+            <li>• Rigorous quality control protocols for all diagnostic procedures</li>
+            <li>• Regular equipment calibration and maintenance schedules</li>
+            <li>• Continuous professional development for all staff members</li>
+            <li>• Patient safety protocols and infection control measures</li>
+            <li>• Timely and accurate report delivery systems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 Mann Scanning Centre — Jalandhar
+    <p>&copy; 2025 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
   </footer>
+
+  <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme or default to dark
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+  </script>
 </body>
 </html>

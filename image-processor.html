@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Background Remover - Mann Scanning Centre</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #ffffff;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .header h1 {
+      color: #00ffc8;
+      margin-bottom: 10px;
+    }
+    
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .machine-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid rgba(0, 255, 200, 0.2);
+    }
+    
+    .machine-card h3 {
+      color: #00ffc8;
+      margin-bottom: 15px;
+    }
+    
+    .image-container {
+      margin-bottom: 15px;
+    }
+    
+    .original-image, .processed-image {
+      max-width: 120px;
+      max-height: 120px;
+      border-radius: 50%;
+      margin: 5px;
+      border: 2px solid #333;
+    }
+    
+    .processed-image {
+      border-color: #00ffc8;
+    }
+    
+    .download-btn {
+      background: #00ffc8;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+    }
+    
+    .download-btn:hover {
+      background: #00d4a3;
+    }
+    
+    .download-btn:disabled {
+      background: #555;
+      color: #999;
+      cursor: not-allowed;
+    }
+    
+    .progress {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .instructions {
+      background: rgba(0, 255, 200, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .instructions h2 {
+      color: #00ffc8;
+      margin-bottom: 15px;
+    }
+    
+    .instructions ol {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .instructions li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔧 Medical Equipment Image Processor</h1>
+    <p>Automatically create clean, circular, background-removed versions of your diagnostic machine images</p>
+  </div>
+
+  <div class="instructions">
+    <h2>Instructions:</h2>
+    <ol>
+      <li>This tool will automatically load your machine images from the <code>/images/</code> folder</li>
+      <li>Each image will be processed to create a clean, circular version with background removal</li>
+      <li>Click "Download Clean Version" to save the processed PNG files</li>
+      <li>Replace the original images in your <code>/images/</code> folder with these clean versions</li>
+      <li>The animation will automatically use the improved images for better visual appeal</li>
+    </ol>
+  </div>
+
+  <div class="container" id="machineContainer">
+    <!-- Machine cards will be populated by JavaScript -->
+  </div>
+
+  <div class="progress" id="progressInfo">
+    <p>Loading and processing images...</p>
+  </div>
+
+  <script>
+    // Machine data matching the animation
+    const machines = [
+      { name: 'MRI Scanner', image: 'images/mri.jpg', color: '#00ffc8' },
+      { name: 'CT Scanner', image: 'images/ct.jpg', color: '#00a8ff' },
+      { name: 'Ultrasound Voluson', image: 'images/voluson.jpg', color: '#ff6b6b' },
+      { name: 'DEXA Scanner', image: 'images/dexa.jpg', color: '#ffd93d' },
+      { name: 'Mammography', image: 'images/mammography.jpg', color: '#ff9ff3' },
+      { name: 'FibroTouch', image: 'images/fibrotouch.jpg', color: '#54a0ff' },
+      { name: 'RS85 Ultrasound', image: 'images/rs85.jpg', color: '#5f27cd' },
+      { name: 'CBCT Scanner', image: 'images/cbct.jpg', color: '#00d2d3' }
+    ];
+
+    class ImageProcessor {
+      constructor() {
+        this.container = document.getElementById('machineContainer');
+        this.progressInfo = document.getElementById('progressInfo');
+        this.processedCount = 0;
+        this.init();
+      }
+
+      async init() {
+        this.container.innerHTML = '';
+        
+        for (const machine of machines) {
+          await this.processMachine(machine);
+        }
+        
+        this.progressInfo.innerHTML = `
+          <p style="color: #00ffc8;">✅ Processing complete! All ${machines.length} images have been processed.</p>
+          <p>Download the clean versions and replace your original images for optimal animation performance.</p>
+        `;
+      }
+
+      async processMachine(machine) {
+        // Create machine card
+        const card = document.createElement('div');
+        card.className = 'machine-card';
+        card.innerHTML = `
+          <h3>${machine.name}</h3>
+          <div class="image-container">
+            <div>Original:</div>
+            <img class="original-image" id="original-${machine.name.replace(/\s+/g, '')}" alt="Original ${machine.name}">
+            <div>Processed:</div>
+            <canvas class="processed-image" id="processed-${machine.name.replace(/\s+/g, '')}" width="120" height="120"></canvas>
+          </div>
+          <button class="download-btn" id="download-${machine.name.replace(/\s+/g, '')}" disabled>
+            Processing...
+          </button>
+        `;
+        this.container.appendChild(card);
+
+        // Load and process image
+        try {
+          const img = await this.loadImage(machine.image);
+          const originalImg = document.getElementById(`original-${machine.name.replace(/\s+/g, '')}`);
+          originalImg.src = machine.image;
+
+          const canvas = document.getElementById(`processed-${machine.name.replace(/\s+/g, '')}`);
+          const ctx = canvas.getContext('2d');
+          
+          this.createCleanCircularImage(img, machine.color, ctx, 120);
+          
+          const downloadBtn = document.getElementById(`download-${machine.name.replace(/\s+/g, '')}`);
+          downloadBtn.disabled = false;
+          downloadBtn.textContent = 'Download Clean Version';
+          downloadBtn.onclick = () => this.downloadImage(canvas, machine.name);
+          
+          this.processedCount++;
+          this.progressInfo.textContent = `Processed ${this.processedCount}/${machines.length} images...`;
+          
+        } catch (error) {
+          console.error(`Failed to process ${machine.name}:`, error);
+          const downloadBtn = document.getElementById(`download-${machine.name.replace(/\s+/g, '')}`);
+          downloadBtn.textContent = 'Failed to Load';
+          downloadBtn.disabled = true;
+        }
+      }
+
+      loadImage(src) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = src;
+        });
+      }
+
+      createCleanCircularImage(img, accentColor, ctx, size) {
+        // Clear canvas
+        ctx.clearRect(0, 0, size, size);
+        
+        // Calculate scaling
+        const scale = Math.min(size / img.width, size / img.height) * 0.85;
+        const scaledWidth = img.width * scale;
+        const scaledHeight = img.height * scale;
+        const x = (size - scaledWidth) / 2;
+        const y = (size - scaledHeight) / 2;
+        
+        // Create circular clipping path
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - 3, 0, Math.PI * 2);
+        ctx.clip();
+        
+        // Add subtle background
+        const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, size, size);
+        
+        // Draw enhanced image
+        ctx.filter = 'contrast(1.3) brightness(1.1) saturate(1.2)';
+        ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
+        ctx.filter = 'none';
+        
+        ctx.restore();
+        
+        // Add accent border
+        ctx.strokeStyle = accentColor;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      downloadImage(canvas, machineName) {
+        const link = document.createElement('a');
+        link.download = `${machineName.toLowerCase().replace(/\s+/g, '-')}-clean.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }
+    }
+
+    // Initialize when page loads
+    window.addEventListener('load', () => {
+      new ImageProcessor();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mann Scanning Centre - Advanced 3D Diagnostic Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-cyan: #00ffc8;
+      --secondary-blue: #0099ff;
+      --accent-purple: #8b5cf6;
+      --accent-pink: #ec4899;
+      --dark-bg: #0a0a0f;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
+      --shadow-glow: 0 0 30px rgba(0, 255, 200, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 200, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(0, 153, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 90% 10%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--text-primary);
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Enhanced Navigation Header */
+    .nav-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 2px solid var(--glass-border);
+      box-shadow: var(--shadow-glow);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-section img {
+      height: 40px;
+      filter: drop-shadow(0 0 15px var(--primary-cyan));
+      transition: all 0.3s ease;
+    }
+
+    .logo-section img:hover {
+      filter: drop-shadow(0 0 25px var(--primary-cyan));
+      transform: scale(1.05);
+    }
+
+    .logo-section h1 {
+      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-blue));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 200, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-links a:hover::before {
+      left: 100%;
+    }
+
+    .nav-links a:hover {
+      background: var(--glass-bg);
+      color: var(--primary-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 255, 200, 0.2);
+    }
+
+    /* 3D Canvas Container */
+    .canvas-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 2000px;
+    }
+
+    #universe3D {
+      display: block;
+      background: transparent;
+    }
+
+    /* Enhanced Machine Info Panel */
+    .machine-info-panel {
+      position: fixed;
+      right: -400px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      height: 80vh;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(25px);
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 30px;
+      color: var(--text-primary);
+      z-index: 999;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .machine-info-panel.visible {
+      right: 30px;
+    }
+
+    .machine-info-panel::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .machine-info-panel::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+
+    .machine-info-panel::-webkit-scrollbar-thumb {
+      background: var(--primary-cyan);
+      border-radius: 3px;
+    }
+
+    .close-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .close-panel:hover {
+      background: rgba(255, 0, 0, 0.2);
+      transform: scale(1.1);
+    }
+
+    .machine-header {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--glass-border);
+    }
+
+    .machine-header h2 {
+      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-blue));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .machine-type {
+      color: var(--accent-purple);
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .info-section {
+      margin-bottom: 25px;
+    }
+
+    .info-section h3 {
+      color: var(--primary-cyan);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-section h3::before {
+      content: '▶';
+      color: var(--accent-purple);
+      font-size: 0.8rem;
+    }
+
+    .info-section p, .info-section li {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .info-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-section li::before {
+      content: '•';
+      color: var(--primary-cyan);
+      margin-right: 10px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .spec-label {
+      color: var(--accent-purple);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .spec-value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Enhanced Floating Elements */
+    .floating-stats {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 20px 25px;
+      z-index: 500;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .floating-stats h3 {
+      color: var(--primary-cyan);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Controls */
+    .controls {
+      position: fixed;
+      top: 50%;
+      left: 30px;
+      transform: translateY(-50%);
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 20px;
+      z-index: 500;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    .control-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .control-label {
+      color: var(--primary-cyan);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .control-slider {
+      width: 120px;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .control-button {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      width: 100%;
+    }
+
+    .control-button:hover {
+      background: rgba(0, 255, 200, 0.1);
+      color: var(--primary-cyan);
+    }
+
+    .control-button.active {
+      background: var(--primary-cyan);
+      color: var(--dark-bg);
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--dark-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(0, 255, 200, 0.2);
+      border-top: 3px solid var(--primary-cyan);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: var(--primary-cyan);
+      font-size: 1.2rem;
+      font-weight: 500;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-header {
+        padding: 15px 20px;
+      }
+      
+      .nav-links {
+        gap: 15px;
+      }
+      
+      .nav-links a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      
+      .machine-info-panel {
+        width: 90vw;
+        right: -90vw;
+      }
+      
+      .machine-info-panel.visible {
+        right: 5vw;
+      }
+      
+      .controls {
+        left: 15px;
+        transform: translateY(-50%) scale(0.9);
+      }
+      
+      .floating-stats {
+        left: 15px;
+        bottom: 15px;
+        transform: scale(0.9);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Initializing 3D Diagnostic Universe...</div>
+  </div>
+
+  <!-- Navigation Header -->
+  <nav class="nav-header">
+    <div class="logo-section">
+      <img src="images/logo.svg" alt="Mann Scanning Centre Logo" onerror="this.style.display='none'">
+      <h1>Mann Scanning Centre</h1>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- 3D Canvas Container -->
+  <div class="canvas-container">
+    <canvas id="universe3D"></canvas>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control-group">
+      <label class="control-label">Rotation Speed</label>
+      <input type="range" class="control-slider" id="speedControl" min="0.5" max="3" value="1" step="0.1">
+    </div>
+    <div class="control-group">
+      <label class="control-label">View Angle</label>
+      <input type="range" class="control-slider" id="angleControl" min="0" max="90" value="45" step="5">
+    </div>
+    <div class="control-group">
+      <button class="control-button" id="pauseBtn">Pause</button>
+      <button class="control-button" id="resetBtn">Reset View</button>
+      <button class="control-button" id="particlesBtn">Toggle Particles</button>
+    </div>
+  </div>
+
+  <!-- Floating Stats -->
+  <div class="floating-stats">
+    <h3>Diagnostic Universe Stats</h3>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" id="machineCount">8</span>
+        <span class="stat-label">Machines</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="orbitCycles">0</span>
+        <span class="stat-label">Orbits</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" id="frameRate">60</span>
+        <span class="stat-label">FPS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Machine Info Panel -->
+  <div id="machineInfoPanel" class="machine-info-panel">
+    <button class="close-panel" onclick="closeMachinePanel()">×</button>
+    <div id="machineContent"></div>
+  </div>
+
+  <script>
+    // Comprehensive Medical Machine Database
+    const medicalMachines = {
+      'MRI': {
+        name: 'Magnetic Resonance Imaging',
+        type: 'Advanced Imaging',
+        description: 'State-of-the-art MRI technology providing detailed soft tissue imaging without radiation.',
+        capabilities: [
+          'Brain and spinal cord imaging',
+          'Joint and musculoskeletal analysis',
+          'Cardiac imaging and function',
+          'Abdominal and pelvic scans',
+          'Vascular imaging (MRA)',
+          'Functional brain mapping (fMRI)'
+        ],
+        specifications: {
+          'Field Strength': '1.5T / 3.0T',
+          'Bore Size': '70cm wide',
+          'Scan Time': '15-90 minutes',
+          'Resolution': 'Sub-millimeter',
+          'Sequences': '50+ protocols',
+          'Safety': 'No radiation'
+        },
+        procedures: [
+          'Brain MRI with/without contrast',
+          'Spine MRI (cervical, thoracic, lumbar)',
+          'Joint MRI (knee, shoulder, wrist)',
+          'Cardiac MRI with function analysis',
+          'Breast MRI screening',
+          'Whole-body MRI screening'
+        ],
+        color: '#00ffc8'
+      },
+      'CT': {
+        name: 'Computed Tomography',
+        type: 'Cross-Sectional Imaging',
+        description: 'High-resolution CT scanner with advanced dose reduction technology for detailed anatomical imaging.',
+        capabilities: [
+          'Ultra-fast emergency scanning',
+          'High-resolution lung imaging',
+          'Cardiac CT angiography',
+          'Whole-body trauma assessment',
+          'CT-guided procedures',
+          'Low-dose screening protocols'
+        ],
+        specifications: {
+          'Slice Thickness': '0.6mm',
+          'Rotation Time': '0.28 seconds',
+          'Coverage': '16cm per rotation',
+          'Dose Reduction': 'Up to 80%',
+          'Contrast': 'IV & Oral options',
+          'Reconstruction': 'Iterative IR'
+        },
+        procedures: [
+          'CT chest for lung screening',
+          'CT abdomen and pelvis',
+          'CT angiography (CTA)',
+          'CT cardiac scoring',
+          'CT head for trauma/stroke',
+          'CT-guided biopsies'
+        ],
+        color: '#0099ff'
+      },
+      'Ultrasound Voluson': {
+        name: 'Voluson Ultrasound System',
+        type: '4D Obstetric Imaging',
+        description: 'Advanced 4D ultrasound system providing real-time fetal imaging with exceptional detail.',
+        capabilities: [
+          'Real-time 4D fetal imaging',
+          'Advanced Doppler studies',
+          'Fetal heart assessment',
+          'Growth monitoring',
+          'Anomaly detection',
+          'Maternal health screening'
+        ],
+        specifications: {
+          'Imaging': '2D/3D/4D modes',
+          'Probes': 'Multi-frequency',
+          'Display': '23" 4K monitor',
+          'Storage': 'DICOM compliant',
+          'Safety': 'ALARA principle',
+          'Features': 'HDlive rendering'
+        },
+        procedures: [
+          'Routine pregnancy scans',
+          'Detailed fetal anatomy',
+          '4D bonding scans',
+          'Doppler blood flow studies',
+          'Growth assessment scans',
+          'Gender determination'
+        ],
+        color: '#8b5cf6'
+      },
+      'DEXA': {
+        name: 'Dual-Energy X-ray Absorptiometry',
+        type: 'Bone Density Measurement',
+        description: 'Precision bone density scanner for osteoporosis diagnosis and fracture risk assessment.',
+        capabilities: [
+          'Bone density measurement',
+          'Fracture risk assessment',
+          'Body composition analysis',
+          'Vertebral fracture assessment',
+          'Pediatric bone health',
+          'Treatment monitoring'
+        ],
+        specifications: {
+          'Precision': '< 1% CV',
+          'Scan Time': '10-30 seconds',
+          'Radiation': 'Minimal dose',
+          'Sites': 'Spine, hip, forearm',
+          'Software': 'Advanced analytics',
+          'Accuracy': '± 2-4%'
+        },
+        procedures: [
+          'Lumbar spine DEXA',
+          'Hip DEXA scan',
+          'Forearm DEXA',
+          'Whole body composition',
+          'Vertebral fracture assessment',
+          'Follow-up monitoring'
+        ],
+        color: '#ec4899'
+      },
+      'Mammography': {
+        name: 'Digital Mammography',
+        type: 'Breast Cancer Screening',
+        description: 'Digital mammography system with tomosynthesis for comprehensive breast cancer screening.',
+        capabilities: [
+          'High-resolution breast imaging',
+          '3D tomosynthesis',
+          'Computer-aided detection',
+          'Contrast-enhanced studies',
+          'Stereotactic biopsies',
+          'Screening and diagnostic'
+        ],
+        specifications: {
+          'Technology': 'Digital DR',
+          'Compression': 'Automatic',
+          'Dose': 'Low radiation',
+          'Resolution': 'High DQE',
+          '3D Slices': '1mm thickness',
+          'CAD': 'AI assistance'
+        },
+        procedures: [
+          'Screening mammography',
+          'Diagnostic mammography',
+          '3D tomosynthesis',
+          'Contrast mammography',
+          'Stereotactic biopsy',
+          'Post-surgical follow-up'
+        ],
+        color: '#f59e0b'
+      },
+      'FibroTouch': {
+        name: 'FibroTouch Elastography',
+        type: 'Liver Stiffness Assessment',
+        description: 'Non-invasive liver elastography system for fibrosis assessment and liver health monitoring.',
+        capabilities: [
+          'Liver stiffness measurement',
+          'Non-invasive fibrosis staging',
+          'Hepatitis monitoring',
+          'Treatment response tracking',
+          'Fatty liver assessment',
+          'Real-time elastography'
+        ],
+        specifications: {
+          'Technology': 'Transient elastography',
+          'Frequency': '50Hz vibration',
+          'Measurement': 'kPa units',
+          'Success Rate': '> 95%',
+          'Time': '5-10 minutes',
+          'Probe': 'M and XL options'
+        },
+        procedures: [
+          'Liver fibrosis staging',
+          'Hepatitis B/C monitoring',
+          'NAFLD assessment',
+          'Pre-treatment evaluation',
+          'Post-treatment follow-up',
+          'Cirrhosis screening'
+        ],
+        color: '#10b981'
+      },
+      'RS85': {
+        name: 'RS85 Ultrasound System',
+        type: 'High-End Diagnostic Ultrasound',
+        description: 'Premium ultrasound system with advanced imaging technologies for comprehensive diagnostic studies.',
+        capabilities: [
+          'Multi-organ imaging',
+          'Advanced Doppler studies',
+          'Elastography imaging',
+          'Contrast-enhanced studies',
+          'Interventional guidance',
+          '3D/4D reconstruction'
+        ],
+        specifications: {
+          'Probes': 'Full range available',
+          'Imaging': '2D/3D/4D/Doppler',
+          'Frequency': '2-18 MHz range',
+          'Beamforming': 'Advanced',
+          'Processing': 'Real-time',
+          'Display': 'High-resolution'
+        },
+        procedures: [
+          'Abdominal ultrasound',
+          'Cardiac echocardiography',
+          'Vascular studies',
+          'Thyroid imaging',
+          'Musculoskeletal scans',
+          'Interventional procedures'
+        ],
+        color: '#ef4444'
+      },
+      'CBCT': {
+        name: 'Cone Beam Computed Tomography',
+        type: 'Dental & Maxillofacial Imaging',
+        description: 'High-resolution CBCT system for detailed dental and maxillofacial imaging with low radiation dose.',
+        capabilities: [
+          'Dental implant planning',
+          'Orthodontic assessment',
+          'TMJ evaluation',
+          'Sinus imaging',
+          'Surgical planning',
+          'Endodontic evaluation'
+        ],
+        specifications: {
+          'FOV': 'Multiple sizes',
+          'Voxel Size': '0.076mm',
+          'Scan Time': '10-40 seconds',
+          'Dose': 'Low radiation',
+          'Resolution': 'Submillimeter',
+          '3D': 'Full volumetric'
+        },
+        procedures: [
+          'Pre-implant assessment',
+          'Orthodontic planning',
+          'TMJ dysfunction study',
+          'Sinus evaluation',
+          'Oral surgery planning',
+          'Root canal assessment'
+        ],
+        color: '#6366f1'
+      }
+    };
+
+    // Advanced 3D Universe Engine
+    class Advanced3DUniverse {
+      constructor() {
+        this.canvas = document.getElementById('universe3D');
+        this.ctx = this.canvas.getContext('2d');
+        this.machines = [];
+        this.particles = [];
+        this.stars = [];
+        this.time = 0;
+        this.isPaused = false;
+        this.showParticles = true;
+        this.rotationSpeed = 1;
+        this.viewAngle = 45;
+        this.centerX = 0;
+        this.centerY = 0;
+        this.centerZ = 0;
+        this.cameraDistance = 800;
+        this.frameCount = 0;
+        this.lastFrameTime = performance.now();
+        
+        this.setupCanvas();
+        this.createStarField();
+        this.initializeMachines();
+        this.setupEventListeners();
+        this.animate();
+        
+        // Hide loading screen after initialization
+        setTimeout(() => {
+          document.getElementById('loadingScreen').classList.add('hidden');
+        }, 2000);
+      }
+
+      setupCanvas() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        
+        this.centerX = this.canvas.width / 2;
+        this.centerY = this.canvas.height / 2;
+      }
+
+      createStarField() {
+        this.stars = [];
+        for (let i = 0; i < 200; i++) {
+          this.stars.push({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            z: Math.random() * 1000,
+            brightness: Math.random(),
+            twinkle: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      initializeMachines() {
+        const machineNames = Object.keys(medicalMachines);
+        const totalMachines = machineNames.length;
+        
+        machineNames.forEach((name, index) => {
+          const machine = medicalMachines[name];
+          const angle = (index / totalMachines) * Math.PI * 2;
+          const radius = 200 + (index % 3) * 60; // Varied orbital radii
+          const orbitSpeed = 0.002 + (index * 0.0003); // Varied speeds
+          const verticalOffset = (Math.sin(index) * 30); // 3D depth variation
+          
+          this.machines.push({
+            name: name,
+            data: machine,
+            angle: angle,
+            radius: radius,
+            orbitSpeed: orbitSpeed,
+            x: 0, y: 0, z: 0,
+            size: 40 + (index % 2) * 10,
+            image: null,
+            imageLoaded: false,
+            hoverScale: 1,
+            particles: [],
+            verticalOffset: verticalOffset,
+            pulsePhase: Math.random() * Math.PI * 2
+          });
+          
+          // Load machine image
+          this.loadMachineImage(this.machines[this.machines.length - 1], name.toLowerCase().replace(/\s+/g, ''));
+        });
+      }
+
+      loadMachineImage(machine, imageName) {
+        const img = new Image();
+        img.onload = () => {
+          machine.image = this.createCircularImage(img, machine.size);
+          machine.imageLoaded = true;
+        };
+        img.onerror = () => {
+          machine.imageLoaded = false;
+        };
+        
+        // Try different image naming conventions
+        const imageExtensions = ['jpg', 'png', 'jpeg'];
+        const imageNames = [imageName, imageName.replace('ultrasound', ''), imageName.replace('voluson', 'voluson')];
+        
+        let attemptIndex = 0;
+        const tryLoad = () => {
+          if (attemptIndex < imageNames.length * imageExtensions.length) {
+            const nameIndex = Math.floor(attemptIndex / imageExtensions.length);
+            const extIndex = attemptIndex % imageExtensions.length;
+            img.src = `images/${imageNames[nameIndex]}.${imageExtensions[extIndex]}`;
+            attemptIndex++;
+          }
+        };
+        
+        img.onerror = () => {
+          tryLoad();
+        };
+        
+        tryLoad();
+      }
+
+      createCircularImage(img, size) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = size * 2;
+        canvas.height = size * 2;
+        
+        // Create circular clipping path
+        ctx.beginPath();
+        ctx.arc(size, size, size * 0.9, 0, Math.PI * 2);
+        ctx.clip();
+        
+        // Add background glow
+        const gradient = ctx.createRadialGradient(size, size, 0, size, size, size);
+        gradient.addColorStop(0, 'rgba(0, 255, 200, 0.3)');
+        gradient.addColorStop(1, 'rgba(0, 255, 200, 0.1)');
+        ctx.fillStyle = gradient;
+        ctx.fill();
+        
+        // Draw image
+        ctx.drawImage(img, size * 0.1, size * 0.1, size * 1.8, size * 1.8);
+        
+        return canvas;
+      }
+
+      project3D(x, y, z) {
+        // Apply 3D perspective projection with angled view
+        const angleRad = (this.viewAngle * Math.PI) / 180;
+        
+        // Rotate around X axis for angled view
+        const rotatedY = y * Math.cos(angleRad) - z * Math.sin(angleRad);
+        const rotatedZ = y * Math.sin(angleRad) + z * Math.cos(angleRad);
+        
+        const perspective = this.cameraDistance / (this.cameraDistance + rotatedZ);
+        
+        return {
+          x: this.centerX + x * perspective,
+          y: this.centerY + rotatedY * perspective,
+          scale: perspective,
+          depth: rotatedZ
+        };
+      }
+
+      updateMachines() {
+        this.machines.forEach((machine, index) => {
+          // Update orbital position
+          machine.angle += machine.orbitSpeed * this.rotationSpeed;
+          
+          // Calculate 3D position with orbital mechanics
+          machine.x = Math.cos(machine.angle) * machine.radius;
+          machine.y = Math.sin(machine.angle) * machine.radius * 0.3; // Elliptical orbit
+          machine.z = Math.sin(machine.angle) * 50 + machine.verticalOffset;
+          
+          // Update pulse effect
+          machine.pulsePhase += 0.05;
+          
+          // Create particle trail
+          if (this.showParticles && this.frameCount % 3 === 0) {
+            const projected = this.project3D(machine.x, machine.y, machine.z);
+            machine.particles.push({
+              x: projected.x,
+              y: projected.y,
+              life: 1.0,
+              color: machine.data.color,
+              size: 2 * projected.scale
+            });
+          }
+          
+          // Update particles
+          machine.particles = machine.particles.filter(particle => {
+            particle.life -= 0.02;
+            particle.size *= 0.98;
+            return particle.life > 0;
+          });
+        });
+      }
+
+      updateStars() {
+        this.stars.forEach(star => {
+          star.twinkle += 0.05;
+          
+          // Parallax effect based on view angle
+          const parallaxFactor = (this.viewAngle / 90) * 0.5;
+          star.parallaxX = Math.sin(this.time * 0.1) * star.z * parallaxFactor * 0.001;
+          star.parallaxY = Math.cos(this.time * 0.1) * star.z * parallaxFactor * 0.001;
+        });
+      }
+
+      drawStarField() {
+        this.ctx.save();
+        
+        this.stars.forEach(star => {
+          const twinkle = Math.sin(star.twinkle) * 0.5 + 0.5;
+          const alpha = star.brightness * twinkle * 0.8;
+          const size = (star.z / 1000) * 2 + 0.5;
+          
+          this.ctx.globalAlpha = alpha;
+          this.ctx.fillStyle = '#ffffff';
+          this.ctx.beginPath();
+          this.ctx.arc(
+            star.x + (star.parallaxX || 0), 
+            star.y + (star.parallaxY || 0), 
+            size, 0, Math.PI * 2
+          );
+          this.ctx.fill();
+        });
+        
+        this.ctx.restore();
+      }
+
+      drawMachines() {
+        // Sort machines by depth for proper rendering order
+        const sortedMachines = [...this.machines].sort((a, b) => {
+          const aProjected = this.project3D(a.x, a.y, a.z);
+          const bProjected = this.project3D(b.x, b.y, b.z);
+          return bProjected.depth - aProjected.depth;
+        });
+
+        sortedMachines.forEach(machine => {
+          const projected = this.project3D(machine.x, machine.y, machine.z);
+          
+          if (projected.depth < -100) return; // Don't render if too far behind
+          
+          this.ctx.save();
+          
+          // Draw particle trail
+          if (this.showParticles) {
+            machine.particles.forEach(particle => {
+              this.ctx.globalAlpha = particle.life * 0.6;
+              this.ctx.fillStyle = particle.color;
+              this.ctx.beginPath();
+              this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+              this.ctx.fill();
+            });
+          }
+          
+          // Draw machine glow
+          const glowSize = machine.size * projected.scale * machine.hoverScale;
+          const pulse = Math.sin(machine.pulsePhase) * 0.3 + 0.7;
+          
+          this.ctx.globalAlpha = 0.3 * pulse;
+          const glowGradient = this.ctx.createRadialGradient(
+            projected.x, projected.y, 0,
+            projected.x, projected.y, glowSize * 1.5
+          );
+          glowGradient.addColorStop(0, machine.data.color);
+          glowGradient.addColorStop(1, 'transparent');
+          this.ctx.fillStyle = glowGradient;
+          this.ctx.beginPath();
+          this.ctx.arc(projected.x, projected.y, glowSize * 1.5, 0, Math.PI * 2);
+          this.ctx.fill();
+          
+          // Draw machine
+          this.ctx.globalAlpha = Math.max(0.3, projected.scale);
+          
+          if (machine.imageLoaded && machine.image) {
+            const imageSize = glowSize * 2;
+            this.ctx.drawImage(
+              machine.image,
+              projected.x - imageSize / 2,
+              projected.y - imageSize / 2,
+              imageSize,
+              imageSize
+            );
+          } else {
+            // Fallback circle
+            this.ctx.fillStyle = machine.data.color;
+            this.ctx.beginPath();
+            this.ctx.arc(projected.x, projected.y, glowSize, 0, Math.PI * 2);
+            this.ctx.fill();
+          }
+          
+          // Draw machine label
+          this.ctx.globalAlpha = projected.scale * 0.8;
+          this.ctx.fillStyle = '#ffffff';
+          this.ctx.font = `${12 * projected.scale}px Inter, sans-serif`;
+          this.ctx.textAlign = 'center';
+          this.ctx.fillText(
+            machine.name,
+            projected.x,
+            projected.y + glowSize + 20 * projected.scale
+          );
+          
+          this.ctx.restore();
+        });
+      }
+
+      drawCenterLogo() {
+        const projected = this.project3D(0, 0, 0);
+        
+        this.ctx.save();
+        
+        // Draw center glow
+        this.ctx.globalAlpha = 0.4;
+        const centerGlow = this.ctx.createRadialGradient(
+          projected.x, projected.y, 0,
+          projected.x, projected.y, 80 * projected.scale
+        );
+        centerGlow.addColorStop(0, 'rgba(0, 255, 200, 0.6)');
+        centerGlow.addColorStop(0.5, 'rgba(0, 255, 200, 0.2)');
+        centerGlow.addColorStop(1, 'transparent');
+        this.ctx.fillStyle = centerGlow;
+        this.ctx.beginPath();
+        this.ctx.arc(projected.x, projected.y, 80 * projected.scale, 0, Math.PI * 2);
+        this.ctx.fill();
+        
+        // Draw center circle
+        this.ctx.globalAlpha = 0.8;
+        this.ctx.strokeStyle = '#00ffc8';
+        this.ctx.lineWidth = 3 * projected.scale;
+        this.ctx.beginPath();
+        this.ctx.arc(projected.x, projected.y, 50 * projected.scale, 0, Math.PI * 2);
+        this.ctx.stroke();
+        
+        // Draw center text
+        this.ctx.globalAlpha = 1;
+        this.ctx.fillStyle = '#00ffc8';
+        this.ctx.font = `${16 * projected.scale}px Inter, sans-serif`;
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('MANN', projected.x, projected.y - 5 * projected.scale);
+        this.ctx.font = `${12 * projected.scale}px Inter, sans-serif`;
+        this.ctx.fillText('SCANNING', projected.x, projected.y + 10 * projected.scale);
+        
+        this.ctx.restore();
+      }
+
+      animate() {
+        if (!this.isPaused) {
+          this.time += 0.016;
+          this.updateMachines();
+          this.updateStars();
+        }
+        
+        // Clear canvas
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // Draw everything
+        this.drawStarField();
+        this.drawCenterLogo();
+        this.drawMachines();
+        
+        // Update stats
+        this.frameCount++;
+        const currentTime = performance.now();
+        if (currentTime - this.lastFrameTime >= 1000) {
+          document.getElementById('frameRate').textContent = this.frameCount;
+          document.getElementById('orbitCycles').textContent = Math.floor(this.time / 10);
+          this.frameCount = 0;
+          this.lastFrameTime = currentTime;
+        }
+        
+        requestAnimationFrame(() => this.animate());
+      }
+
+      setupEventListeners() {
+        // Canvas mouse events
+        this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+        this.canvas.addEventListener('click', (e) => this.handleClick(e));
+        
+        // Control events
+        document.getElementById('speedControl').addEventListener('input', (e) => {
+          this.rotationSpeed = parseFloat(e.target.value);
+        });
+        
+        document.getElementById('angleControl').addEventListener('input', (e) => {
+          this.viewAngle = parseFloat(e.target.value);
+        });
+        
+        document.getElementById('pauseBtn').addEventListener('click', () => {
+          this.isPaused = !this.isPaused;
+          document.getElementById('pauseBtn').textContent = this.isPaused ? 'Resume' : 'Pause';
+          document.getElementById('pauseBtn').classList.toggle('active', this.isPaused);
+        });
+        
+        document.getElementById('resetBtn').addEventListener('click', () => {
+          this.rotationSpeed = 1;
+          this.viewAngle = 45;
+          document.getElementById('speedControl').value = 1;
+          document.getElementById('angleControl').value = 45;
+        });
+        
+        document.getElementById('particlesBtn').addEventListener('click', () => {
+          this.showParticles = !this.showParticles;
+          document.getElementById('particlesBtn').classList.toggle('active', this.showParticles);
+        });
+        
+        // Window resize
+        window.addEventListener('resize', () => {
+          this.setupCanvas();
+        });
+      }
+
+      handleMouseMove(e) {
+        const rect = this.canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        this.machines.forEach(machine => {
+          const projected = this.project3D(machine.x, machine.y, machine.z);
+          const distance = Math.sqrt(
+            Math.pow(mouseX - projected.x, 2) + Math.pow(mouseY - projected.y, 2)
+          );
+          
+          const hoverRadius = machine.size * projected.scale;
+          if (distance < hoverRadius) {
+            machine.hoverScale = Math.min(machine.hoverScale + 0.05, 1.3);
+            this.canvas.style.cursor = 'pointer';
+          } else {
+            machine.hoverScale = Math.max(machine.hoverScale - 0.05, 1);
+          }
+        });
+        
+        // Reset cursor if not hovering over any machine
+        const anyHovered = this.machines.some(m => m.hoverScale > 1);
+        if (!anyHovered) {
+          this.canvas.style.cursor = 'default';
+        }
+      }
+
+      handleClick(e) {
+        const rect = this.canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        this.machines.forEach(machine => {
+          const projected = this.project3D(machine.x, machine.y, machine.z);
+          const distance = Math.sqrt(
+            Math.pow(mouseX - projected.x, 2) + Math.pow(mouseY - projected.y, 2)
+          );
+          
+          const clickRadius = machine.size * projected.scale;
+          if (distance < clickRadius) {
+            showMachineInfo(machine.name, machine.data);
+          }
+        });
+      }
+    }
+
+    // Machine Info Panel Functions
+    function showMachineInfo(machineName, machineData) {
+      const panel = document.getElementById('machineInfoPanel');
+      const content = document.getElementById('machineContent');
+      
+      content.innerHTML = `
+        <div class="machine-header">
+          <h2>${machineData.name}</h2>
+          <div class="machine-type">${machineData.type}</div>
+        </div>
+        
+        <div class="info-section">
+          <h3>Overview</h3>
+          <p>${machineData.description}</p>
+        </div>
+        
+        <div class="info-section">
+          <h3>Key Capabilities</h3>
+          <ul>
+            ${machineData.capabilities.map(cap => `<li>${cap}</li>`).join('')}
+          </ul>
+        </div>
+        
+        <div class="info-section">
+          <h3>Technical Specifications</h3>
+          <div class="specs-grid">
+            ${Object.entries(machineData.specifications).map(([key, value]) => `
+              <div class="spec-item">
+                <div class="spec-label">${key}</div>
+                <div class="spec-value">${value}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <h3>Common Procedures</h3>
+          <ul>
+            ${machineData.procedures.map(proc => `<li>${proc}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      
+      panel.classList.add('visible');
+    }
+
+    function closeMachinePanel() {
+      document.getElementById('machineInfoPanel').classList.remove('visible');
+    }
+
+    // Initialize the 3D Universe
+    let universe3D;
+    
+    window.addEventListener('load', () => {
+      universe3D = new Advanced3DUniverse();
+    });
+  </script>
+</body>
+</html>
