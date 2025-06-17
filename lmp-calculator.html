@@ -256,14 +256,22 @@
     function calculateDates() {
       const lmpInput = document.getElementById('lmpDate');
       const resultsDiv = document.getElementById('results');
-      
-      if (!lmpInput.value) {
+
+      const value = lmpInput.value;
+      if (!value) {
         alert('Please enter your LMP date');
+        resultsDiv.style.display = 'none';
         return;
       }
-      
-      const lmpDate = new Date(lmpInput.value);
+
+      const lmpDate = new Date(value);
       const today = new Date();
+
+      if (isNaN(lmpDate) || lmpDate > today) {
+        alert('Please enter a valid past date');
+        resultsDiv.style.display = 'none';
+        return;
+      }
       
       // Calculate conception date (approximately 14 days after LMP)
       const conceptionDate = new Date(lmpDate);

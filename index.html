@@ -1125,10 +1125,16 @@
     }
 
     function calculateGestation() {
-      const lmpDate = new Date(document.getElementById('lmpDate').value);
+      const lmpValue = document.getElementById('lmpDate').value;
+      if (!lmpValue) {
+        document.getElementById('lmpResult').style.display = 'none';
+        return;
+      }
+
+      const lmpDate = new Date(lmpValue);
       const today = new Date();
-      
-      if (lmpDate > today) {
+
+      if (isNaN(lmpDate) || lmpDate > today) {
         document.getElementById('lmpResult').style.display = 'none';
         return;
       }
