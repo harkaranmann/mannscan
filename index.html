@@ -1118,34 +1118,7 @@
       localStorage.setItem('theme', newTheme);
     }
 
-    // LMP Calculator Functions
-    function toggleLMP() {
-      const calculator = document.getElementById('lmpCalculator');
-      calculator.classList.toggle('show');
-    }
-
-    function calculateGestation() {
-      const lmpDate = new Date(document.getElementById('lmpDate').value);
-      const today = new Date();
-      
-      if (lmpDate > today) {
-        document.getElementById('lmpResult').style.display = 'none';
-        return;
-      }
-      
-      const diffTime = Math.abs(today - lmpDate);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      const weeks = Math.floor(diffDays / 7);
-      const days = diffDays % 7;
-      
-      const resultDiv = document.getElementById('lmpResult');
-      resultDiv.innerHTML = `
-        <strong>Gestational Age:</strong><br>
-        ${weeks} weeks ${days} days<br>
-        <small>(${diffDays} total days)</small>
-      `;
-      resultDiv.style.display = 'block';
-    }
+    // LMP Calculator Functions are now loaded from js/lmp.js
 
     // Initialize theme from localStorage
     window.addEventListener('load', () => {
@@ -1157,6 +1130,7 @@
       new MedicalVisualization();
     });
   </script>
+  <script src="js/lmp.js"></script>
 
   <!-- NABH Accreditation Logo -->
   <div class="nabh-logo" title="NABH Accredited Healthcare Facility">
