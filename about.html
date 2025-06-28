@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />    </section>
+
+    <section class="section">name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
   <title>About Us | Mann Scanning Centre | Expert Radiologists & Medical Team | Jalandhar</title>
@@ -211,33 +212,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
-    });
-  </script>
-</body>
-  <script>
-    // Theme toggle functionality
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      html.setAttribute('data-theme', newTheme);
-      const themeText = document.getElementById('themeText');
-      if (themeText) {
-        themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
-      }
-      
-      localStorage.setItem('theme', newTheme);
-    }
-
-    // Load saved theme or default to light
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      const themeText = document.getElementById('themeText');
-      if (themeText) {
-        themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-      }
     });
   </script>
 </body>

@@ -330,102 +330,128 @@ footer {
 
 @media (max-width: 768px) {
   .theme-toggle {
-    top: 100px;
+    top: 10px;
     left: 10px;
-    font-size: 12px;
-    padding: 8px 12px;
+    font-size: 11px;
+    padding: 6px 8px;
+    z-index: 1002;
   }
   
   .lmp-toggle {
-    top: 150px;
+    top: 10px;
     right: 10px;
+    font-size: 11px;
+    padding: 6px 8px;
+    z-index: 1002;
   }
   
   .lmp-calculator {
+    top: 50px;
     right: 10px;
     left: 10px;
     min-width: auto;
-    transform: translateY(100px);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
   }
   
   .lmp-calculator.show {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
   
   header {
-    padding: 15px 20px;
+    padding: 10px 15px;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
   
   .logo-container {
     justify-content: center;
+    order: 1;
   }
   
   .logo-container h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    text-align: center;
   }
   
   .logo-container img {
-    height: 60px;
+    height: 40px;
   }
   
   nav {
+    order: 2;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 4px;
+    width: 100%;
   }
   
   nav a {
     margin: 0;
-    font-size: 14px;
-    padding: 8px 14px;
+    font-size: 11px;
+    padding: 5px 8px;
+    min-width: auto;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    border-radius: 6px;
   }
   
   main {
-    padding: 20px 15px;
+    padding: 110px 15px 20px;
   }
   
   .hero h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .card {
-    padding: 20px;
-    margin: 15px 0;
+    padding: 15px;
+    margin: 10px 0;
   }
 }
 
 @media (max-width: 480px) {
   .theme-toggle {
-    top: 90px;
+    top: 8px;
     left: 8px;
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 10px;
+    padding: 4px 6px;
   }
   
   .lmp-toggle {
-    top: 140px;
+    top: 8px;
     right: 8px;
-    font-size: 12px;
-    padding: 8px 12px;
+    font-size: 10px;
+    padding: 4px 6px;
   }
   
   header {
-    padding: 10px 15px;
+    padding: 8px 12px;
   }
   
   .logo-container h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   .logo-container img {
-    height: 50px;
+    height: 35px;
   }
   
   nav a {
-    font-size: 13px;
-    padding: 6px 10px;
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  
+  main {
+    padding: 100px 12px 20px;
   }
 }
 
