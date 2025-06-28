@@ -63,7 +63,7 @@ Selection
 ```
 
 ### Key Fellowship Features
-- ✅ "Visit our website at mannscanningcentre.com" prominently displayed
+- ✅ "Visit our website at mannscan.in" prominently displayed
 - ✅ Email application with pre-filled content
 - ✅ Clear eligibility criteria for Radiologists and Sonologists
 - ✅ Detailed curriculum and program highlights

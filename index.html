@@ -716,19 +716,6 @@
   </style>
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <div class="theme-toggle" onclick="toggleTheme()">
-    🌓 <span id="themeText">Dark</span>
-  </div>
-
-  <!-- LMP Calculator -->
-  <button class="lmp-toggle" onclick="toggleLMP()">📅 LMP Calculator</button>
-  <div class="lmp-calculator" id="lmpCalculator">
-    <h4 style="margin-top: 0; color: var(--accent-primary); font-size: 1.2rem;">🤰 Gestational Age Calculator</h4>
-    <label for="lmpDate" style="font-size: 1rem;">Last Menstrual Period (LMP):</label>
-    <input type="date" id="lmpDate" class="lmp-input" onchange="calculateGestation()">
-    <div id="lmpResult" style="display: none;" class="lmp-result"></div>
-  </div>
 
   <!-- Header -->
   <header>
@@ -743,8 +730,39 @@
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
       <a href="https://viewer.ohif.org/" target="_blank">View DICOMs</a>
+      <button class="theme-toggle-mobile" onclick="toggleTheme()">🌓 <span id="themeText">Dark</span></button>
+      <button class="lmp-toggle-mobile" onclick="openLMPModal()">📅 LMP Calculator</button>
     </nav>
   </header>
+
+  <!-- LMP Calculator Modal -->
+  <div class="lmp-modal" id="lmpModal" style="display:none;">
+    <div class="lmp-modal-content">
+      <span class="lmp-modal-close" onclick="closeLMPModal()">&times;</span>
+      <h4 style="margin-top: 0; color: var(--accent-primary); font-size: 1.2rem;">🤰 Gestational Age Calculator</h4>
+      <label for="lmpDate" style="font-size: 1rem;">Last Menstrual Period (LMP):</label>
+      <input type="date" id="lmpDate" class="lmp-input" onchange="calculateGestation()">
+      <div id="lmpResult" style="display: none;" class="lmp-result"></div>
+    </div>
+  </div>
+
+
+  <script>
+    // LMP Modal Functions
+    function openLMPModal() {
+      document.getElementById('lmpModal').style.display = 'block';
+    }
+    function closeLMPModal() {
+      document.getElementById('lmpModal').style.display = 'none';
+    }
+    // Close modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('lmpModal');
+      if (event.target === modal) {
+        closeLMPModal();
+      }
+    }
+  </script>
 
   <!-- Hero Section with Floating Cards -->
   <section class="hero-section">
