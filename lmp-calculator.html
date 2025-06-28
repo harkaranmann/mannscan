@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>LMP Calculator | Gestational Age Calculator | Pregnancy Calculator | Mann Scanning Centre</title>
+  <meta name="description" content="Free online LMP (Last Menstrual Period) calculator to determine gestational age, due date, and pregnancy timeline. Accurate pregnancy calculator by Mann Scanning Centre." />
+  <meta name="keywords" content="LMP calculator, gestational age calculator, pregnancy calculator, due date calculator, last menstrual period, pregnancy timeline, obstetric calculator" />
+  <meta name="author" content="Mann Scanning Centre" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mannscan.in/lmp-calculator.html" />
+  <meta property="og:title" content="Free LMP Calculator - Pregnancy Due Date Calculator" />
+  <meta property="og:description" content="Calculate your gestational age and due date with our accurate LMP calculator. Free online tool for pregnancy timeline calculation." />
+  <meta property="og:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mannscan.in/lmp-calculator.html" />
+  
+  <!-- Tool Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "LMP Calculator",
+    "description": "Calculate gestational age and due date based on last menstrual period",
+    "url": "https://mannscan.in/lmp-calculator.html",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "provider": {
+      "@type": "MedicalBusiness",
+      "name": "Mann Scanning Centre"
+    },
+    "featureList": [
+      "Gestational age calculation",
+      "Due date estimation",
+      "Trimester identification",
+      "Pregnancy timeline"
+    ]
+  }
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style>
+    .calculator-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .calculator-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .input-group {
+      margin-bottom: 25px;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+    
+    .input-group input[type="date"] {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .input-group input[type="date"]:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+    
+    .calculate-btn {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .calculate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+    
+    .results {
+      margin-top: 30px;
+      padding: 25px;
+      background: var(--bg-glass);
+      border-radius: 15px;
+      border: 1px solid var(--accent-primary);
+      display: none;
+    }
+    
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 1.1rem;
+    }
+    
+    .result-item:last-child {
+      border-bottom: none;
+    }
+    
+    .result-label {
+      font-weight: 600;
+      color: var(--accent-primary);
+    }
+    
+    .result-value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    
+    .info-section {
+      background: var(--bg-glass);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .info-section h3 {
+      color: var(--accent-primary);
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+    }
+      .info-section p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }      .theme-toggle {
+      position: fixed;
+      top: 120px;
+      left: 20px;
+      z-index: 1002;
+      background: var(--bg-glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-primary);
+      font-size: 16px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+    }
+    
+    .theme-toggle:hover {
+      background: var(--accent-primary);
+      color: var(--bg-primary);
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px var(--glow-color);
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+  
+  <header>
+    <div class="logo-container">
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scan Logo" style="height: 70px; width: auto; object-fit: contain;" />
+      <h1 style="font-size: 2.2rem;">Mann Scanning Centre</h1>
+    </div>
+    <nav style="font-size: 16px; gap: 30px;">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">DICOM Viewer (Patients: Click to View Your DICOM Files)</a>
+    </nav>
+  </header>
+
+  <main style="padding-top: 120px;">
+    <div class="calculator-container">
+      <section class="hero">
+        <h2>LMP Calculator</h2>
+        <p>Calculate your pregnancy timeline and important dates</p>
+      </section>
+
+      <div class="calculator-card">
+        <h3 style="color: var(--accent-primary); margin-bottom: 30px; font-size: 1.8rem;">Enter Your Last Menstrual Period Date</h3>
+        
+        <div class="input-group">
+          <label for="lmpDate">Last Menstrual Period (LMP) Date:</label>
+          <input type="date" id="lmpDate" required />
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateDates()">Calculate Pregnancy Timeline</button>
+        
+        <div id="results" class="results">
+          <h4 style="color: var(--accent-primary); margin-bottom: 20px; font-size: 1.5rem;">Your Pregnancy Timeline</h4>
+          
+          <div class="result-item">
+            <span class="result-label">Conception Date (Estimated):</span>
+            <span class="result-value" id="conceptionDate">-</span>
+          </div>
+          
+          <div class="result-item">
+            <span class="result-label">Current Gestational Age:</span>
+            <span class="result-value" id="gestationalAge">-</span>
+          </div>
+          
+          <div class="result-item">
+            <span class="result-label">Expected Due Date:</span>
+            <span class="result-value" id="dueDate">-</span>
+          </div>
+          
+          <div class="result-item">
+            <span class="result-label">Current Trimester:</span>
+            <span class="result-value" id="trimester">-</span>
+          </div>
+          
+          <div class="result-item">
+            <span class="result-label">Weeks Until Due Date:</span>
+            <span class="result-value" id="weeksLeft">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h3>About LMP Dating</h3>
+        <p>The Last Menstrual Period (LMP) method is the most commonly used way to calculate pregnancy dates. This calculator uses the standard 280-day (40-week) pregnancy length from the first day of your last menstrual period.</p>
+        
+        <h3 style="margin-top: 25px;">Important Notes:</h3>
+        <p>• This calculator provides estimates based on a regular 28-day cycle</p>
+        <p>• Individual pregnancy lengths may vary</p>
+        <p>• Always consult with your healthcare provider for accurate dating</p>
+        <p>• Ultrasound measurements may provide more precise dating</p>
+        
+        <h3 style="margin-top: 25px;">Recommended Scans:</h3>
+        <p>• <strong>6-8 weeks:</strong> Early pregnancy viability scan</p>
+        <p>• <strong>11-14 weeks:</strong> NT scan (nuchal translucency)</p>
+        <p>• <strong>18-22 weeks:</strong> Detailed anomaly scan</p>
+        <p>• <strong>28-32 weeks:</strong> Growth scan (if indicated)</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
+  </footer>
+
+  <script>
+    function calculateDates() {
+      const lmpInput = document.getElementById('lmpDate');
+      const resultsDiv = document.getElementById('results');
+      
+      if (!lmpInput.value) {
+        alert('Please enter your LMP date');
+        return;
+      }
+      
+      const lmpDate = new Date(lmpInput.value);
+      const today = new Date();
+      
+      // Calculate conception date (approximately 14 days after LMP)
+      const conceptionDate = new Date(lmpDate);
+      conceptionDate.setDate(conceptionDate.getDate() + 14);
+      
+      // Calculate due date (280 days from LMP)
+      const dueDate = new Date(lmpDate);
+      dueDate.setDate(dueDate.getDate() + 280);
+      
+      // Calculate gestational age
+      const daysDiff = Math.floor((today - lmpDate) / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(daysDiff / 7);
+      const days = daysDiff % 7;
+      
+      // Calculate weeks left
+      const daysLeft = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
+      const weeksLeft = Math.floor(daysLeft / 7);
+      
+      // Determine trimester
+      let trimester;
+      if (weeks < 13) {
+        trimester = "First Trimester";
+      } else if (weeks < 27) {
+        trimester = "Second Trimester";
+      } else {
+        trimester = "Third Trimester";
+      }
+      
+      // Update results
+      document.getElementById('conceptionDate').textContent = conceptionDate.toLocaleDateString();
+      document.getElementById('gestationalAge').textContent = `${weeks} weeks, ${days} days`;
+      document.getElementById('dueDate').textContent = dueDate.toLocaleDateString();
+      document.getElementById('trimester').textContent = trimester;
+      document.getElementById('weeksLeft').textContent = weeksLeft > 0 ? `${weeksLeft} weeks` : 'Past due date';
+      
+      // Show results
+      resultsDiv.style.display = 'block';
+      resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }    // Load saved theme
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+  </script>
+</body>
+</html>
