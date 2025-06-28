@@ -736,7 +736,8 @@
       <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scan 3D Logo" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <nav>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+    <nav id="mobileNav">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -1329,6 +1330,22 @@
       
       localStorage.setItem('theme', newTheme);
     }
+
+    // Mobile Menu Toggle Function
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('show');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mobileNav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+        nav.classList.remove('show');
+      }
+    });
 
     // LMP Calculator Functions are now loaded from js/lmp.js
 
