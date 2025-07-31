@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Ultrasound Fellowship Program | Mann Scanning Centre Jalandhar</title>
+  <meta name="description" content="Comprehensive Ultrasound Fellowship Program for Radiologists and Sonologists at Mann Scanning Centre, Jalandhar. Apply for hands-on training with state-of-the-art equipment including GE Voluson Expert 22." />
+  <meta name="keywords" content="ultrasound fellowship, radiology fellowship, sonology training, GE Voluson Expert 22, medical fellowship program, diagnostic imaging fellowship, Jalandhar Punjab" />
+  <meta name="author" content="Mann Scanning Centre" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mannscan.in/fellowship.html" />
+  <meta property="og:title" content="Ultrasound Fellowship Program - Mann Scanning Centre" />
+  <meta property="og:description" content="Premier fellowship program for radiologists and sonologists with hands-on training on advanced ultrasound equipment including GE Voluson Expert 22." />
+  <meta property="og:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mannscan.in/fellowship.html" />
+  
+  <!-- Structured Data for Educational Program -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Mann Scanning Centre",
+    "description": "Comprehensive Ultrasound Fellowship Program for medical professionals",
+    "url": "https://mannscan.in/fellowship.html",
+    "logo": "https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png",
+    "image": "https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "201 Gujral Nagar",
+      "addressLocality": "Jalandhar",
+      "addressRegion": "Punjab",
+      "postalCode": "144002",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-181-4695500",
+      "contactType": "admissions",
+      "email": "drhsmann@gmail.com"
+    },
+    "program": {
+      "@type": "EducationalOccupationalProgram",
+      "name": "Ultrasound Fellowship Program",
+      "description": "Comprehensive fellowship training for radiologists and sonologists with hands-on experience on state-of-the-art equipment including GE Voluson Expert 22",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mann Scanning Centre"
+      },
+      "educationalCredentialAwarded": "Certificate of Completion",
+      "duration": "6-12 months",
+      "timeToComplete": "6-12 months",
+      "occupationalCategory": [
+        "Radiologist",
+        "Sonologist"
+      ],
+      "applicationDeadline": "Ongoing",
+      "applicationInstructions": "Complete the online application form or send CV and cover letter to drhsmann@gmail.com"
+    }
+  }
+  </script>
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  
+  <style>
+    /* Fellowship Specific Styles */
+    .tab-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--bg-glass);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 8px 40px var(--shadow-color);
+    }
+    
+    .tab-nav {
+      display: flex;
+      background: var(--bg-secondary);
+      border-bottom: 2px solid var(--border-color);
+      overflow-x: auto;
+    }
+    
+    .tab-nav button {
+      flex: 1;
+      padding: 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+    
+    .tab-nav button:hover {
+      background: var(--bg-glass);
+      color: var(--accent-primary);
+    }
+    
+    .tab-nav button.active {
+      color: var(--accent-primary);
+      background: var(--bg-glass);
+    }
+    
+    .tab-nav button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-primary);
+    }
+    
+    .tab-content {
+      padding: 40px;
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .equipment-card {
+      background: var(--bg-secondary);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px var(--shadow-color);
+      border-color: var(--accent-primary);
+    }
+    
+    .equipment-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid var(--accent-primary);
+    }
+    
+    .equipment-card h3 {
+      color: var(--accent-primary);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .application-form {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-secondary);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent-primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: var(--accent-primary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background: var(--bg-secondary);
+      border-radius: 15px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background: var(--accent-primary);
+      border: 4px solid var(--bg-primary);
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 50%;
+    }
+    
+    .timeline-item h3 {
+      color: var(--accent-primary);
+      margin-bottom: 10px;
+    }
+    
+    .timeline-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      .tab-nav {
+        flex-direction: column;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .timeline-item:nth-child(even),
+      .timeline-item:nth-child(odd) {
+        left: 0%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    🌓 <span id="themeText">Dark</span>
+  </button>
+  
+  <header>
+    <div class="logo-container">
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" />
+      <h1>Mann Scanning Centre</h1>
+    </div>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+    <nav id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="fellowship.html" class="active">Fellowship</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" style="background: linear-gradient(135deg, var(--bg-glass), var(--bg-secondary)); border-radius: 20px; margin: 30px auto; max-width: 1200px; padding: 60px 40px; border: 1px solid var(--border-color); text-align: center;">
+      <h2 style="color: var(--accent-primary); font-size: 3rem; margin-bottom: 20px;">Ultrasound Fellowship Program</h2>
+      <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.6;">Premier hands-on fellowship training for Radiologists and Sonologists using state-of-the-art equipment including GE Voluson Expert 22</p>
+    </section>
+
+    <div class="tab-container">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="openTab(event, 'program-details')">Program Details</button>
+        <button class="tab-btn" onclick="openTab(event, 'equipment')">Equipment</button>
+        <button class="tab-btn" onclick="openTab(event, 'curriculum')">Curriculum</button>
+        <button class="tab-btn" onclick="openTab(event, 'application')">Apply Now</button>
+        <button class="tab-btn" onclick="openTab(event, 'timeline')">Program Timeline</button>
+      </div>
+
+      <div id="program-details" class="tab-content active">
+        <h2 style="color: var(--accent-primary); font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Program Overview</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 40px;">
+          <div style="background: var(--bg-secondary); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 20px;">For Radiologists (MD/DNB/DMRD)</h3>
+            <ul style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li><strong>Advanced Foetal Ultrasound:</strong> Comprehensive training in anomaly scans (TIFFA), growth monitoring, advanced Doppler studies, NT/NB scans, and early pregnancy assessment.</li>
+              <li><strong>Foetal Echocardiography:</strong> In-depth evaluation of the fetal heart, including advanced 2D/3D/4D echo techniques and diagnosis of congenital heart defects.</li>
+              <li><strong>Specialized Modules:</strong> Neurosonography, musculoskeletal (MSK) ultrasound, and advanced 3D/4D imaging techniques.</li>
+              <li><strong>Clinical Practice:</strong> Hands-on training with a high volume of diverse cases, extensive case discussions, and independent reporting under supervision.</li>
+            </ul>
+          </div>
+          
+          <div style="background: var(--bg-secondary); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 20px;">For Sonologists (MBBS)</h3>
+            <ul style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li><strong>Comprehensive General Ultrasound:</strong> Extensive training covering abdomen, pelvis, small parts (thyroid, breast), and advanced Doppler imaging.</li>
+              <li><strong>Foetal Ultrasound Fundamentals:</strong> Strong foundation in basic fetal biometry, anomaly screening, and monitoring fetal well-being.</li>
+              <li><strong>Practical Skills:</strong> Emphasis on hands-on scanning techniques, patient communication, ethical considerations, and protocol optimization.</li>
+              <li><strong>Mentorship:</strong> Direct guidance and continuous feedback from experienced senior radiologists in a supportive learning environment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-glass); border-radius: 20px; padding: 40px; border: 2px solid var(--accent-primary); margin-bottom: 40px;">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">Program Highlights</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 15px;">🏆</div>
+              <h4 style="color: var(--accent-primary); margin-bottom: 10px;">NABH Accredited</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Quality assured training environment</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 15px;">👨‍⚕️</div>
+              <h4 style="color: var(--accent-primary); margin-bottom: 10px;">Expert Faculty</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Nationally recognized radiologists</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
+              <h4 style="color: var(--accent-primary); margin-bottom: 10px;">High Case Volume</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Extensive hands-on experience</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 15px;">🎓</div>
+              <h4 style="color: var(--accent-primary); margin-bottom: 10px;">Certificate</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Recognized completion certificate</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+          <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color); text-align: center;">
+            <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Eligibility</h4>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;"><strong>Radiologists:</strong> MD/DNB/DMRD or equivalent qualification.<br><br><strong>Sonologists:</strong> MBBS with recognized ultrasound certification or equivalent experience.</p>
+          </div>
+          <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color); text-align: center;">
+            <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Duration & Certification</h4>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">Flexible duration from <strong>6 to 12 months</strong>, tailored to the specific track. A certificate of completion from Mann Scanning Centre is awarded upon successful program completion.</p>
+          </div>
+          <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color); text-align: center;">
+            <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Batch Size</h4>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">Limited to <strong>6-8 fellows per batch</strong> to ensure personalized attention and hands-on learning experience with our advanced equipment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="equipment" class="tab-content">
+        <h2 style="color: var(--accent-primary); font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Advanced Equipment</h2>
+        <p style="font-size: 1.2rem; color: var(--text-secondary); text-align: center; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.6;">Train on the latest ultrasound technology including our flagship GE Voluson Expert 22 and other premium systems.</p>
+        
+        <div class="equipment-grid">
+          <div class="equipment-card">
+            <img src="images/voluson - nobg.png" alt="GE Voluson Expert 22">
+            <h3>🚀 GE Voluson Expert 22</h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;"><strong>Latest Generation Platform</strong></p>
+            <ul style="text-align: left; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              <li>• AI-powered SonoCNS fetal brain imaging</li>
+              <li>• 5D technology with HDlive Studio</li>
+              <li>• Advanced elastography capabilities</li>
+              <li>• Premium maternal-fetal medicine</li>
+              <li>• Enhanced 3D/4D rendering</li>
+              <li>• Real-time AI assistance</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <img src="images/voluson - nobg.png" alt="GE Voluson E10">
+            <h3>🎯 GE Voluson E10</h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;"><strong>High-Performance Platform</strong></p>
+            <ul style="text-align: left; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              <li>• HDlive 3D/4D imaging</li>
+              <li>• Advanced Doppler capabilities</li>
+              <li>• SonoBiometry automation</li>
+              <li>• Superior image quality</li>
+              <li>• Comprehensive obstetric tools</li>
+              <li>• Multi-frequency probes</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <img src="images/voluson - nobg.png" alt="GE Voluson S8">
+            <h3>💎 GE Voluson S8</h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;"><strong>Reliable Performance Platform</strong></p>
+            <ul style="text-align: left; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              <li>• 4D real-time imaging</li>
+              <li>• Excellent image resolution</li>
+              <li>• Comprehensive probe selection</li>
+              <li>• User-friendly interface</li>
+              <li>• Proven clinical reliability</li>
+              <li>• Cost-effective excellence</li>
+            </ul>
+          </div>
+
+          <div class="equipment-card">
+            <img src="images/rs85 - nobg.png" alt="Samsung RS85">
+            <h3>💖 Samsung RS85 Premium</h3>
+            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 15px;"><strong>AI-Enhanced Cardiac Imaging</strong></p>
+            <ul style="text-align: left; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              <li>• Cardiac echocardiography</li>
+              <li>• Vascular Doppler studies</li>
+              <li>• Advanced AI algorithms</li>
+              <li>• Superior resolution</li>
+              <li>• Elastography capabilities</li>
+              <li>• Comprehensive organ evaluation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--bg-glass), var(--bg-secondary)); padding: 40px; border-radius: 20px; border: 2px solid var(--accent-primary); margin-top: 40px;">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">🏆 Technology Excellence</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">Advanced Probes</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Complete range of transducers including convex, linear, endocavity, and specialized probes</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">AI Integration</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Cutting-edge artificial intelligence for automated measurements and enhanced diagnostics</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">Elastography</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Advanced tissue stiffness assessment for comprehensive diagnostic capabilities</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">4D/5D Imaging</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Real-time 4D and 5D HDlive technology for superior anatomical visualization</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="curriculum" class="tab-content">
+        <h2 style="color: var(--accent-primary); font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Comprehensive Curriculum</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px;">
+          <div style="background: var(--bg-secondary); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 20px;">📚 Didactic Training</h3>
+            <ul style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li>Weekly lectures on ultrasound physics and principles</li>
+              <li>Image optimization and artifact recognition</li>
+              <li>Pathology correlation and differential diagnosis</li>
+              <li>Research methodology and evidence-based practice</li>
+              <li>Quality assurance and safety protocols</li>
+              <li>Recent advances in ultrasound technology</li>
+            </ul>
+          </div>
+          
+          <div style="background: var(--bg-secondary); border-radius: 20px; padding: 30px; border: 1px solid var(--border-color);">
+            <h3 style="color: var(--accent-primary); font-size: 1.8rem; margin-bottom: 20px;">👨‍🏫 Hands-on Training</h3>
+            <ul style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li>Daily supervised scanning sessions</li>
+              <li>Progressive case complexity from basic to advanced</li>
+              <li>Probe handling and scanning technique mastery</li>
+              <li>Patient communication and scanning protocols</li>
+              <li>Independent reporting with faculty feedback</li>
+              <li>Emergency ultrasound procedures</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-glass); border-radius: 20px; padding: 40px; border: 2px solid var(--accent-primary); margin-bottom: 40px;">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">🎯 Specialized Modules</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🤰 Obstetric Ultrasound</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>First trimester screening and dating</li>
+                <li>Advanced anomaly scanning (TIFFA)</li>
+                <li>Fetal growth assessment and Doppler</li>
+                <li>Multiple pregnancy management</li>
+                <li>High-risk pregnancy monitoring</li>
+              </ul>
+            </div>
+            
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">❤️ Fetal Echocardiography</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>Fetal cardiac anatomy and physiology</li>
+                <li>Advanced 2D/3D/4D echo techniques</li>
+                <li>Congenital heart defect diagnosis</li>
+                <li>Fetal arrhythmia assessment</li>
+                <li>Genetic syndromes association</li>
+              </ul>
+            </div>
+            
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🩻 Abdominal Ultrasound</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>Hepatobiliary and pancreatic imaging</li>
+                <li>Renal and urinary tract evaluation</li>
+                <li>Spleen and retroperitoneal assessment</li>
+                <li>Abdominal wall and hernia diagnosis</li>
+                <li>Emergency abdominal ultrasound</li>
+              </ul>
+            </div>
+            
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🦴 Small Parts & MSK</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>Thyroid and parathyroid imaging</li>
+                <li>Breast ultrasound and biopsy guidance</li>
+                <li>Musculoskeletal tendon and ligament</li>
+                <li>Joint and soft tissue pathology</li>
+                <li>Peripheral nerve evaluation</li>
+              </ul>
+            </div>
+            
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🩸 Vascular Ultrasound</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>Carotid and vertebral artery Doppler</li>
+                <li>Peripheral arterial and venous studies</li>
+                <li>Renal artery evaluation</li>
+                <li>Transcranial Doppler</li>
+                <li>Abdominal vessel assessment</li>
+              </ul>
+            </div>
+            
+            <div style="background: var(--bg-secondary); border-radius: 15px; padding: 25px; border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🧠 Neurosonography</h4>
+              <ul style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li>Transcranial color Doppler (TCCD)</li>
+                <li>Neonatal brain ultrasound</li>
+                <li>Spinal ultrasound</li>
+                <li>Nerve conduction studies</li>
+                <li>Critical care neurosonography</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--bg-glass), var(--bg-secondary)); padding: 40px; border-radius: 20px; border: 2px solid var(--accent-primary);">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">📊 Assessment & Certification</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">📝 Continuous Assessment</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Regular evaluations including case presentations, image interpretation tests, and practical scanning assessments</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">🏆 Final Examination</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Comprehensive assessment covering theoretical knowledge, practical skills, and case management abilities</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">📋 Certification</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6">Certificate of completion with detailed performance evaluation and recommendation letters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="application" class="tab-content">
+        <h2 style="color: var(--accent-primary); font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Apply for Fellowship Program</h2>
+        <p style="font-size: 1.2rem; color: var(--text-secondary); text-align: center; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.6;">Ready to advance your career in ultrasound imaging? Limited seats available for 2025-2026 batch.</p>
+        
+        <div class="application-form">
+          <form id="fellowshipForm" action="process_fellowship.php" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="degree">Primary Degree *</label>
+                <select id="degree" name="degree" required>
+                  <option value="">Select your degree</option>
+                  <option value="MD">MD (Doctor of Medicine)</option>
+                  <option value="DNB">DNB (Diplomate of National Board)</option>
+                  <option value="DMRD">DMRD (Diploma in Medical Radio Diagnosis)</option>
+                  <option value="MBBS">MBBS (Bachelor of Medicine, Bachelor of Surgery)</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="specialization">Specialization *</label>
+                <select id="specialization" name="specialization" required>
+                  <option value="">Select your specialization</option>
+                  <option value="Radiologist">Radiologist</option>
+                  <option value="Sonologist">Sonologist</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Years of Experience *</label>
+              <input type="number" id="experience" name="experience" min="0" max="50" required>
+            </div>
+
+            <div class="form-group">
+              <label for="institution">Current Institution/Hospital</label>
+              <input type="text" id="institution" name="institution">
+            </div>
+
+            <div class="form-group">
+              <label for="programType">Preferred Program Type *</label>
+              <select id="programType" name="programType" required>
+                <option value="">Select program duration</option>
+                <option value="6-months">6 Months Intensive</option>
+                <option value="12-months">12 Months Comprehensive</option>
+                <option value="custom">Custom Duration</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="startDate">Preferred Start Date</label>
+              <input type="date" id="startDate" name="startDate">
+            </div>
+
+            <div class="form-group">
+              <label for="motivation">Why do you want to join this fellowship program? *</label>
+              <textarea id="motivation" name="motivation" rows="4" placeholder="Please describe your professional goals and how this fellowship will help you achieve them..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="expectations">What are your expectations from this program? *</label>
+              <textarea id="expectations" name="expectations" rows="3" placeholder="Please describe what you hope to learn and achieve..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="cv">Upload CV/Resume *</label>
+              <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+              <small style="color: var(--text-secondary);">Accepted formats: PDF, DOC, DOCX (Max 5MB)</small>
+            </div>
+
+            <div class="form-group">
+              <label for="certificates">Upload Certificates/Documents</label>
+              <input type="file" id="certificates" name="certificates" accept=".pdf,.doc,.docx" multiple>
+              <small style="color: var(--text-secondary);">Upload relevant certificates (Optional)</small>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <input type="checkbox" id="terms" name="terms" required>
+                I agree to the terms and conditions and confirm that all information provided is accurate *
+              </label>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </form>
+        </div>
+
+        <div style="background: var(--bg-glass); border-radius: 20px; padding: 40px; margin-top: 40px; border: 2px solid var(--accent-primary);">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">📋 Application Requirements</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">📄 Required Documents</h4>
+              <ul style="text-align: left; font-size: 1rem; color: var(--text-secondary); margin: 0; padding-left: 20px;">
+                <li>Updated CV/Resume</li>
+                <li>Academic transcripts</li>
+                <li>Professional certificates</li>
+                <li>Medical license copy</li>
+                <li>Two letters of recommendation</li>
+              </ul>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">🎯 Selection Criteria</h4>
+              <ul style="text-align: left; font-size: 1rem; color: var(--text-secondary); margin: 0; padding-left: 20px;">
+                <li>Academic performance</li>
+                <li>Clinical experience</li>
+                <li>Professional references</li>
+                <li>Clear career objectives</li>
+                <li>Commitment to learning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="timeline" class="tab-content">
+        <h2 style="color: var(--accent-primary); font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Program Timeline</h2>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>📝 Application Phase</h3>
+            <p><strong>Duration:</strong> Ongoing (Rolling admissions)<br>
+            <strong>Activities:</strong> Submit complete application, document verification, initial screening</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3>📞 Interview & Assessment</h3>
+            <p><strong>Duration:</strong> 1-2 weeks after application<br>
+            <strong>Activities:</strong> Virtual or in-person interview, technical assessment, reference verification</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3>🎯 Selection & Offer</h3>
+            <p><strong>Duration:</strong> 1 week after interview<br>
+            <strong>Activities:</strong> Final selection, offer letter, program details confirmation</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3>📋 Pre-Program Preparation</h3>
+            <p><strong>Duration:</strong> 2-4 weeks before start<br>
+            <strong>Activities:</strong> Orientation, equipment familiarization, study materials distribution</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3>👨‍🏫 Program Start</h3>
+            <p><strong>Duration:</strong> 6-12 months<br>
+            <strong>Activities:</strong> Intensive hands-on training, didactic sessions, case discussions, assessments</p>
+          </div>
+          
+          <div class="timeline-item">
+            <h3>🏆 Program Completion</h3>
+            <p><strong>Duration:</strong> Final month<br>
+            <strong>Activities:</strong> Final examination, project submission, certification ceremony, career guidance</p>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--bg-glass), var(--bg-secondary)); padding: 40px; border-radius: 20px; border: 2px solid var(--accent-primary); margin-top: 40px;">
+          <h3 style="color: var(--accent-primary); font-size: 2rem; margin-bottom: 25px; text-align: center;">📅 Important Dates</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">🚀 2025 Batchh4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Applications open: January 2025<br>
+              Program start: April 2025<br>
+              Duration: 6-12 months</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">🎯 2026 Batch</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Applications open: July 2025<br>
+              Program start: October 2025<br>
+              Duration: 6-12 months</p>
+            </div>
+            <div style="text-align: center;">
+              <h4 style="color: var(--accent-secondary); font-size: 1.3rem; margin-bottom: 15px;">⏰ Application Deadlines</h4>
+              <p style="color: var(--text-secondary); line-height: 1.6;">Early bird: 2 months before start<br>
+              Regular: 1 month before start<br>
+              Late: 2 weeks before start (subject to availability)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="background: var(--bg-secondary); padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 40px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 20px;">Contact Information</h4>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+        <div>
+          <strong style="color: var(--accent-primary);">📧 Email:</strong><br>
+          drhsmann@gmail.com<br>
+          harkaran@msn.com<br>
+          harkaran@mannscan.in
+        </div>
+        <div>
+          <strong style="color: var(--accent-primary);">📞 Phone:</strong><br>
+          +91-181-4695500<br>
+          +91-98765-43210 (WhatsApp)
+        </div>
+        <div>
+          <strong style="color: var(--accent-primary);">📍 Address:</strong><br>
+          201 Gujral Nagar<br>
+          Jalandhar, Punjab - 144002
+        </div>
+      </div>
+      <p style="font-size: 1.1rem; margin-bottom: 15px;">© 2025 Mann Scanning Centre — NABH Accredited Healthcare Facility</p>
+      <p style="color: var(--text-secondary); font-size: 1rem;">Precision • Care • Excellence • Trust</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab functionality
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      tablinks = document.getElementsByClassName("tab-btn");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      const themeText = document.getElementById('themeText');
+      if (themeText) {
+        themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
+      }
+      
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('show');
+    }
+
+    // Form validation
+    document.getElementById('fellowshipForm').addEventListener('submit', function(e) {
+      const cv = document.getElementById('cv').files[0];
+      const terms = document.getElementById('terms').checked;
+      
+      if (!terms) {
+        e.preventDefault();
+        alert('Please agree to the terms and conditions to proceed with your application.');
+        return;
+      }
+      
+      if (cv && cv.size > 5 * 1024 * 1024) { // 5MB
+        e.preventDefault();
+        alert('CV file size should be less than 5MB.');
+        return;
+      }
+      
+      // Show loading state
+      const submitBtn = document.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+      
+      // Form will be submitted to PHP script
+    });
+
+    // Load saved theme
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeText = document.getElementById('themeText');
+      if (themeText) {
+        themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+      }
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mobileNav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+        nav.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
