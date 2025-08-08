@@ -175,7 +175,7 @@ After deployment, test:
 After deployment:
 - **Primary**: https://mannscan.in
 - **GitHub Direct**: https://harkaranmann.github.io/mannscan
-- **Fellowship Page**: https://mannscan.in/#fellowship
+- **Fellowship Page**: https://mannscan.in/fellowship.html
 - **Sitemap**: https://mannscan.in/sitemap.xml
 
 ---

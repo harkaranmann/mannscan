@@ -256,6 +256,6 @@ After deployment:
 - **Primary**: https://mannscan.in
 - **GitHub**: https://YOUR_USERNAME.github.io/mannscan-website
 - **Sitemap**: https://mannscan.in/sitemap.xml
-- **Fellowship**: https://mannscan.in/#fellowship
+- **Fellowship**: https://mannscan.in/fellowship.html
 
 Replace `YOUR_USERNAME` with your actual GitHub username throughout this guide.

@@ -20,6 +20,29 @@
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mannscan.in/about.html" />
+
+  <!-- Structured Data for About Page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "MedicalBusiness",
+      "name": "Mann Scanning Centre",
+      "url": "https://mannscan.in",
+      "logo": "https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png",
+      "telephone": "+91-181-4695500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "201 Gujral Nagar",
+        "addressLocality": "Jalandhar",
+        "addressRegion": "Punjab",
+        "postalCode": "144002",
+        "addressCountry": "IN"
+      }
+    }
+  }
+  </script>
   
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -39,6 +62,7 @@
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
       <a href="services.html">Services</a>
+      <a href="fellowship.html">Fellowship</a>
       <a href="contact.html">Contact</a>
       <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
     </nav>
