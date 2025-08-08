@@ -55,14 +55,15 @@
     const days = diffDays % 7;
     
     // Calculate estimated due date (EDD)
-    const edd = new Date(lmpDate);
-    edd.setDate(edd.getDate() + 280); // 40 weeks = 280 days
-    
-    return { 
-      weeks, 
-      days, 
+    const eddDate = new Date(lmpDate);
+    eddDate.setDate(eddDate.getDate() + 280); // 40 weeks = 280 days
+    const edd = eddDate.toISOString().split('T')[0];
+
+    return {
+      weeks,
+      days,
       totalDays: diffDays,
-      edd: edd.toLocaleDateString(),
+      edd,
       trimester: getTrimester(weeks)
     };
   }

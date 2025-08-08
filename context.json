@@ -40,6 +40,7 @@
     "about.html": "About page listing doctors and clinic philosophy, styled to match the home page with consistent navigation.",
     "services.html": "Detailed, card-based services page with comprehensive descriptions, preparation guidelines, and clinical applications for each service.",
     "contact.html": "Styled contact page with complete contact information, hours, location, and walk-in policy.",
+    "fellowship.html": "Dedicated fellowship page with program overview and online application form.",
     "lmp-calculator.html": "Standalone gestational age calculator with error handling and validation.",
     "dicom_viewer": "Navigation bar includes a 'View DICOMs' link directing patients to OHIF Viewer for secure DICOM file viewing."
   },

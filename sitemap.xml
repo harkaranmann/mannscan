@@ -29,6 +29,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mannscan.in/fellowship.html</loc>
+    <lastmod>2025-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://mannscan.in/lmp-calculator.html</loc>
     <lastmod>2025-06-28</lastmod>
     <changefreq>yearly</changefreq>
