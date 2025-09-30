@@ -5,37 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO Meta Tags -->
-  <title>Mann Scanning Centre | Advanced Diagnostic Imaging & Ultrasound Fellowship | Jalandhar, Punjab</title>
-  <meta name="description" content="NABH-accredited diagnostic imaging center in Jalandhar offering MRI, CT, Ultrasound, Mammography, DEXA scans. Apply for our comprehensive Ultrasound Fellowship Program for radiologists and sonologists." />
-  <meta name="keywords" content="diagnostic imaging, MRI scan, CT scan, ultrasound, mammography, DEXA scan, radiologist fellowship, sonologist training, NABH accredited, Jalandhar, Punjab, medical imaging, diagnostic center" />
+  <title>Mann Scanning Centre | NABH Accredited Diagnostic Imaging Center | Jalandhar, Punjab</title>
+  <meta name="description" content="Leading NABH-accredited diagnostic imaging center in Jalandhar offering advanced MRI, CT, 4D Ultrasound, Mammography, DEXA scans with expert radiologists. Book appointments online for comprehensive medical imaging services." />
+  <meta name="keywords" content="Mann Scanning Centre, diagnostic imaging Jalandhar, MRI scan Punjab, CT scan Jalandhar, 4D ultrasound, mammography screening, DEXA bone scan, NABH accredited hospital, radiologist Jalandhar, medical imaging center, ultrasound fellowship, diagnostic center Punjab, Dr Harkaran Singh Mann" />
   <meta name="author" content="Mann Scanning Centre" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
   
-  <!-- Local SEO -->
+  <!-- Enhanced Local SEO -->
   <meta name="geo.region" content="IN-PB" />
-  <meta name="geo.placename" content="Jalandhar, Punjab" />
+  <meta name="geo.placename" content="Jalandhar, Punjab, India" />
   <meta name="geo.position" content="31.3260;75.5762" />
   <meta name="ICBM" content="31.3260, 75.5762" />
   <meta name="language" content="English" />
   <meta name="distribution" content="global" />
   <meta name="rating" content="general" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="classification" content="Medical, Healthcare, Diagnostic Imaging" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mannscan.in/" />
-  <meta property="og:title" content="Mann Scanning Centre - Advanced Diagnostic Imaging & Fellowship Programs" />
-  <meta property="og:description" content="Leading diagnostic imaging facility in Jalandhar with comprehensive fellowship programs for medical professionals. NABH-accredited with state-of-the-art equipment." />
+  <meta property="og:title" content="Mann Scanning Centre - NABH Accredited Diagnostic Imaging Center Jalandhar" />
+  <meta property="og:description" content="Leading diagnostic imaging facility in Jalandhar with advanced MRI, CT, 4D Ultrasound, Mammography services. NABH-accredited with expert radiologists and state-of-the-art equipment." />
   <meta property="og:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Mann Scanning Centre Logo - Advanced Diagnostic Imaging" />
   <meta property="og:site_name" content="Mann Scanning Centre" />
   <meta property="og:locale" content="en_IN" />
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://mannscan.in/" />
-  <meta property="twitter:title" content="Mann Scanning Centre - Advanced Diagnostic Imaging" />
-  <meta property="twitter:description" content="NABH-accredited diagnostic center offering fellowship programs and advanced imaging services in Jalandhar, Punjab." />
+  <meta property="twitter:title" content="Mann Scanning Centre - Advanced Diagnostic Imaging Jalandhar" />
+  <meta property="twitter:description" content="NABH-accredited diagnostic center offering advanced MRI, CT, 4D Ultrasound, and Mammography services in Jalandhar, Punjab with expert radiologists." />
   <meta property="twitter:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
+  <meta property="twitter:image:alt" content="Mann Scanning Centre - Diagnostic Imaging Center" />
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mannscan.in/" />
@@ -543,12 +550,12 @@
       line-height: 1.5;
     }
 
-    /* Enhanced Cards */
+    /* Enhanced Cards - Improved symmetry and consistency */
     .services-preview {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      padding: 60px;
+      padding: 60px 20px;
       max-width: 1400px;
       margin: 0 auto;
     }
@@ -556,11 +563,16 @@
     .service-card {
       background: var(--bg-glass);
       border-radius: 20px;
-      padding: 40px;
+      padding: 30px;
       border: 1px solid var(--border-color);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 300px;
     }
 
     .service-card:hover {
@@ -570,25 +582,76 @@
     }
 
     .service-card img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       border: 3px solid var(--accent-primary);
+      flex-shrink: 0;
     }
 
     .service-card h3 {
       color: var(--accent-primary);
-      margin-bottom: 20px;
-      font-size: 1.6rem;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
       line-height: 1.3;
+      text-align: center;
     }
 
     .service-card p {
       color: var(--text-secondary);
       line-height: 1.6;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Image optimization and lazy loading */
+    img {
+      max-width: 100%;
+      height: auto;
+      loading: lazy;
+    }
+
+    /* Optimize logo images */
+    .logo-container img {
+      height: 70px;
+      filter: drop-shadow(0 0 15px var(--accent-primary));
+      will-change: filter;
+    }
+
+    .service-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid var(--accent-primary);
+      flex-shrink: 0;
+      will-change: transform;
+    }
+
+    /* Performance optimizations */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-display: swap;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Reduce motion for accessibility and performance */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* Footer */

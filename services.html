@@ -75,6 +75,32 @@
   }
   </script>
   
+  <style>
+    /* Performance Optimizations */
+    * {
+      box-sizing: border-box;
+    }
+    
+    @font-face {
+      font-display: swap;
+    }
+    
+    img {
+      loading: lazy;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Reduce motion for accessibility and performance */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
@@ -101,13 +127,13 @@
 
   <main>
     <section class="hero">
-      <h2>Our Services</h2>
-      <p>We provide high-quality imaging using state-of-the-art diagnostic equipment.</p>
+      <h2>Our Medical Services</h2>
+      <p>Comprehensive diagnostic imaging and medical services with state-of-the-art technology and expert care.</p>
     </section>
 
     <section class="section">
       <div class="card">
-        <img src="images/mri - nobg.png" alt="MRI" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/mri - nobg.png" alt="MRI Scanner" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">🧠 MRI – GE Signa Explorer 1.5T with Breast Coil</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">What is MRI?</h4>
@@ -139,7 +165,7 @@
       </div>
 
       <div class="card">
-        <img src="images/ct - nobg.png" alt="CT" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/ct - nobg.png" alt="CT Scanner" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">⚡ CT Scan – GE Brivo 365</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Advanced Multi-Slice CT Technology</h4>
@@ -171,7 +197,7 @@
       </div>
 
       <div class="card">
-        <img src="images/voluson - nobg.png" alt="Ultrasound" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/voluson - nobg.png" alt="Ultrasound Machine" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">🤰 Ultrasound & Doppler – GE Voluson Expert 22 / E10 / S8</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Premium 4D/5D Ultrasound Technology</h4>
@@ -307,14 +333,14 @@
       </div>
 
       <div class="card">
-        <img src="images/fibrotouch.jpg" alt="Fibroscan" style="width:100%; border-radius:8px;" />
+        <img src="images/fibrotouch.jpg" alt="Fibroscan Machine" loading="lazy" style="width:100%; border-radius:8px;" />
         <h3>Liver Elastography / Fat Assessment</h3>
         <p><strong>Use:</strong> Non-invasive liver stiffness & fat measurement.</p>
         <p><strong>Prep:</strong> Fasting 3–4 hrs preferred. Quick & painless scan.</p>
       </div>
 
       <div class="card">
-        <img src="images/mammography - nobg.png" alt="Mammography" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/mammography - nobg.png" alt="Mammography Machine" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">🎗️ Digital Mammography & X-Ray</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Advanced Breast Cancer Screening</h4>
@@ -346,7 +372,7 @@
       </div>
 
       <div class="card">
-        <img src="images/dexa - nobg.png" alt="DEXA" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/dexa - nobg.png" alt="DEXA Scanner" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">🦴 DEXA – Bone & Body Composition Analysis</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">Precision Bone Density Measurement</h4>
@@ -378,7 +404,7 @@
       </div>
 
       <div class="card">
-        <img src="images/rs85 - nobg.png" alt="Samsung RS85" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
+        <img src="images/rs85 - nobg.png" alt="Samsung RS85 Ultrasound" loading="lazy" style="width:100%; border-radius:8px; margin-bottom: 20px;" />
         <h3 style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;">💖 Samsung RS85 Premium Ultrasound</h3>
         <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color); margin-bottom: 20px;">
           <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 15px;">AI-Enhanced Cardiac & Vascular Imaging</h4>
@@ -415,7 +441,7 @@
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
           <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <img src="images/fibrotouch.jpg" alt="Fibroscan" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;" />
+            <img src="images/fibrotouch.jpg" alt="Fibroscan Machine" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;" />
             <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">Liver Elastography</h4>
             <p style="font-size: 1.1rem; line-height: 1.6;">Non-invasive liver stiffness and fat assessment using FibroTouch technology. Quick, painless evaluation for liver fibrosis and steatosis without biopsy.</p>
             <ul style="font-size: 1rem; line-height: 1.6; list-style: none; padding: 0; margin-top: 15px;">
@@ -427,7 +453,7 @@
           </div>
 
           <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <img src="images/cbct.jpg" alt="CBCT" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;" />
+            <img src="images/cbct.jpg" alt="CBCT Scanner" loading="lazy" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;" />
             <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">CBCT - Cone Beam CT</h4>
             <p style="font-size: 1.1rem; line-height: 1.6;">Advanced 3D imaging for dental and maxillofacial applications. High-resolution imaging with lower radiation dose compared to conventional CT scans.</p>
             <ul style="font-size: 1rem; line-height: 1.6; list-style: none; padding: 0; margin-top: 15px;">
