@@ -202,6 +202,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
+      <a href="fellowship.html">Fellowship</a>
       <a href="contact.html">Contact</a>
       <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">DICOM Viewer (Patients: Click to View Your DICOM Files)</a>
     </nav>
@@ -278,17 +279,23 @@
   </footer>
 
   <script>
+    function parseDate(value) {
+      const [y, m, d] = value.split('-').map(Number);
+      return new Date(y, m - 1, d);
+    }
+
     function calculateDates() {
       const lmpInput = document.getElementById('lmpDate');
       const resultsDiv = document.getElementById('results');
-      
+
       if (!lmpInput.value) {
         alert('Please enter your LMP date');
         return;
       }
-      
-      const lmpDate = new Date(lmpInput.value);
+
+      const lmpDate = parseDate(lmpInput.value);
       const today = new Date();
+      today.setHours(0, 0, 0, 0);
       
       // Calculate conception date (approximately 14 days after LMP)
       const conceptionDate = new Date(lmpDate);

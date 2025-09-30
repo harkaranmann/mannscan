@@ -27,6 +27,7 @@ mannscan-main/
 ├── about.html              # About us and team information
 ├── services.html           # Detailed services with preparation guides
 ├── contact.html            # Contact information and location
+├── fellowship.html         # Fellowship details and application form
 ├── lmp-calculator.html     # Standalone LMP calculator page
 ├── favicon.ico             # Website favicon
 ├── css/

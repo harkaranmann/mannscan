@@ -26,13 +26,25 @@
     document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
   }
   
+  function parseDate(value) {
+    const parts = value.toString().split('-').map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+  }
+
+  function formatDate(date) {
+    return new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split('T')[0];
+  }
+
   function calculateGestationData(lmpDateInput, todayDate = new Date()) {
     if (!lmpDateInput) {
       throw new Error('LMP date is required');
     }
-    
-    const lmpDate = new Date(lmpDateInput);
-    const today = new Date(todayDate);
+
+    const lmpDate = parseDate(lmpDateInput);
+    const today = todayDate instanceof Date ? new Date(todayDate) : parseDate(todayDate);
+    today.setHours(0, 0, 0, 0);
     
     if (isNaN(lmpDate.getTime())) {
       throw new Error('Invalid LMP date format');
@@ -55,14 +67,15 @@
     const days = diffDays % 7;
     
     // Calculate estimated due date (EDD)
-    const edd = new Date(lmpDate);
-    edd.setDate(edd.getDate() + 280); // 40 weeks = 280 days
-    
-    return { 
-      weeks, 
-      days, 
+    const eddDate = new Date(lmpDate);
+    eddDate.setDate(eddDate.getDate() + 280); // 40 weeks = 280 days
+    const edd = formatDate(eddDate);
+
+    return {
+      weeks,
+      days,
       totalDays: diffDays,
-      edd: edd.toLocaleDateString(),
+      edd,
       trimester: getTrimester(weeks)
     };
   }
@@ -142,12 +155,12 @@
         });
         
         // Set max date to today
-        lmpInput.max = new Date().toISOString().split('T')[0];
-        
+        lmpInput.max = formatDate(new Date());
+
         // Set reasonable min date (42 weeks ago)
         const minDate = new Date();
-        minDate.setDate(minDate.getDate() - (42 * 7));
-        lmpInput.min = minDate.toISOString().split('T')[0];
+        minDate.setDate(minDate.getDate() - 42 * 7);
+        lmpInput.min = formatDate(minDate);
       }
     });
   }
