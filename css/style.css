@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   /* Dark theme (default) */
   --bg-primary: #0a0a0f;
   --bg-secondary: #151520;
@@ -528,7 +528,8 @@ footer {
     gap: 10px;
   }
   
-  nav.active {
+  nav.active,
+  nav.show {
     display: flex;
   }
   
@@ -767,3 +768,6 @@ html {
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+/* Mobile nav fix: support 'show' class toggled by JS */
+@media (max-width: 768px) { nav.show { display: flex; } }
+
