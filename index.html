@@ -808,7 +808,7 @@
       <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scan 3D Logo" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <nav id="mobileNav">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
@@ -855,7 +855,7 @@
     <div class="floating-container">
       <canvas id="medicalVisualization"></canvas>
       <!-- Center logo in animation -->
-      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" class="center-logo" />
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" class="center-logo" loading="lazy" />
     </div>
     
     <div class="hero-content">
@@ -875,49 +875,49 @@
   <!-- Services Preview -->
   <section class="services-preview">
     <div class="service-card">
-      <img src="images/mri - nobg.png" alt="MRI Scanner" />
+      <img src="images/mri - nobg.png" alt="MRI Scanner" loading="lazy" />
       <h3>Magnetic Resonance Imaging (MRI)</h3>
       <p>Advanced high-field MRI systems providing exceptional soft tissue imaging without radiation. Ideal for neurological disorders, musculoskeletal injuries, and comprehensive whole-body screening with sub-millimeter resolution.</p>
     </div>
     
     <div class="service-card">
-      <img src="images/ct - nobg.png" alt="CT Scanner" />
+      <img src="images/ct - nobg.png" alt="CT Scanner" loading="lazy" />
       <h3>Computed Tomography (CT)</h3>
       <p>Multi-detector CT scanners delivering rapid, precise cross-sectional imaging. Essential for emergency trauma, stroke evaluation, pulmonary embolism detection, and comprehensive cancer staging with advanced dose reduction technology.</p>
     </div>
     
     <div class="service-card">
-      <img src="images/voluson - nobg.png" alt="4D Ultrasound" />
+      <img src="images/voluson - nobg.png" alt="4D Ultrasound" loading="lazy" />
       <h3>4D Ultrasound & Obstetric Imaging</h3>
       <p>GE Voluson E10 premium ultrasound with AI-enhanced imaging. Specialized in high-risk pregnancy monitoring, fetal anomaly screening, and real-time 4D visualization for comprehensive maternal-fetal care.</p>
     </div>
     
     <div class="service-card">
-      <img src="images/mammography - nobg.png" alt="Digital Mammography" />
+      <img src="images/mammography - nobg.png" alt="Digital Mammography" loading="lazy" />
       <h3>Digital Mammography & Breast Imaging</h3>
       <p>State-of-the-art digital mammography with tomosynthesis capabilities. Specialized breast cancer screening with 70μm resolution, auto-optimized compression, and advanced detection algorithms for early diagnosis.</p>
     </div>
     
     <div class="service-card">
-      <img src="images/dexa - nobg.png" alt="DEXA Bone Density" />
+      <img src="images/dexa - nobg.png" alt="DEXA Bone Density" loading="lazy" />
       <h3>DEXA Bone Density Scanning</h3>
       <p>Precise osteoporosis screening and bone health assessment following WHO guidelines. Advanced dual-energy X-ray absorptiometry for fracture risk evaluation and metabolic bone disease monitoring.</p>
     </div>
     
     <div class="service-card">
-      <img src="images/fibrotouch.jpg" alt="Fibrotouch Liver Scanner" />
+      <img src="images/fibrotouch.jpg" alt="Fibrotouch Liver Scanner" loading="lazy" />
       <h3>Fibrotouch Liver Elastography</h3>
       <p>Non-invasive liver fibrosis assessment using advanced elastography technology. Instant results for fatty liver evaluation, hepatitis monitoring, and chronic liver disease management without biopsy.</p>
     </div>
 
     <div class="service-card">
-      <img src="images/ultrasound and womb_nobg.png" alt="Foetal Echo" />
+      <img src="images/ultrasound and womb_nobg.png" alt="Foetal Echo" loading="lazy" />
       <h3>Specialized Fetal Echocardiography</h3>
       <p>Advanced fetal heart assessment using specialized high-frequency probes. Expert evaluation of congenital heart defects, cardiac development monitoring, and comprehensive fetal cardiac screening for high-risk pregnancies.</p>
     </div>
 
     <div class="service-card">
-      <img src="images/ct - nobg.png" alt="Digital X-Ray" />
+      <img src="images/ct - nobg.png" alt="Digital X-Ray" loading="lazy" />
       <h3>Digital X-Ray Imaging</h3>
       <p>Instant high-quality digital radiography with low radiation exposure. Comprehensive imaging for chest conditions, bone fractures, joint assessment, and emergency diagnostics with immediate PACS integration.</p>
     </div>
@@ -1042,7 +1042,7 @@
 
   <!-- NABH Accreditation Logo -->
   <div class="nabh-logo" onclick="window.open('https://www.nabh.co/', '_blank')">
-    <img src="images/nabh_nobg.png" alt="NABH Logo" />
+    <img src="images/nabh_nobg.png" alt="NABH Logo" loading="lazy" />
     <div class="nabh-tooltip">NABH Accredited<br>Click for details</div>
   </div>
 
@@ -1433,19 +1433,37 @@
       localStorage.setItem('theme', newTheme);
     }
 
-    // Mobile Menu Toggle Function
+    // Mobile Menu Toggle Function (normalized with scroll lock + aria)
     function toggleMobileMenu() {
       const nav = document.getElementById('mobileNav');
-      nav.classList.toggle('show');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
+      const isOpen = nav.classList.toggle('show');
+      document.body.classList.toggle('menu-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
       const nav = document.getElementById('mobileNav');
       const toggle = document.querySelector('.mobile-menu-toggle');
-      
+      if (!nav || !toggle) return;
       if (!nav.contains(event.target) && !toggle.contains(event.target)) {
         nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const nav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (!nav || !toggle) return;
+        nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
       }
     });
 
@@ -1461,7 +1479,7 @@
       new MedicalVisualization();
     });
   </script>
-  <script src="js/lmp.js"></script>
+  <script src="js/lmp.js" defer></script>
 
   <!-- NABH Accreditation Logo -->
   <div class="nabh-logo" title="NABH Accredited Healthcare Facility">
@@ -1472,4 +1490,3 @@
   </div>
 </body>
 </html>
-

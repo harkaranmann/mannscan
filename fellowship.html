@@ -341,10 +341,10 @@
   
   <header>
     <div class="logo-container" role="link" tabindex="0" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" />
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" loading="lazy" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <nav id="mobileNav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -883,10 +883,14 @@
       localStorage.setItem('theme', newTheme);
     }
 
-    // Mobile menu toggle
+    // Mobile menu toggle (normalized with scroll lock + aria)
     function toggleMobileMenu() {
       const nav = document.getElementById('mobileNav');
-      nav.classList.toggle('show');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
+      const isOpen = nav.classList.toggle('show');
+      document.body.classList.toggle('menu-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 
     // Form validation
@@ -929,9 +933,23 @@
     document.addEventListener('click', function(event) {
       const nav = document.getElementById('mobileNav');
       const toggle = document.querySelector('.mobile-menu-toggle');
-      
+      if (!nav || !toggle) return;
       if (!nav.contains(event.target) && !toggle.contains(event.target)) {
         nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const nav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (!nav || !toggle) return;
+        nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
       }
     });
   </script>

@@ -99,7 +99,7 @@
     </nav>
   </header>
   
-  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
   <nav id="mobileNav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -288,20 +288,45 @@
       }
     });
 
-    // Mobile menu toggle
+    // Mobile menu toggle (normalized + scroll lock + aria)
     function toggleMobileMenu() {
-      const mobileNav = document.getElementById('mobileNav');
-      if (mobileNav) {
-        mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
-      }
+      const nav = document.getElementById('mobileNav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
+      const isOpen = nav.classList.toggle('show');
+      document.body.classList.toggle('menu-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.getElementById('mobileNav');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
+      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+        nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const nav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (!nav || !toggle) return;
+        nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   </script>
   
   <!-- Centre Logo -->
   <div class="centre-logo" style="position: fixed; bottom: 25px; right: 25px; z-index: 1000; width: 100px; height: 100px; background: var(--bg-glass); backdrop-filter: blur(15px); border: 2px solid var(--border-color); border-radius: 50%; padding: 10px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 20px var(--shadow-color); cursor: pointer;">
-    <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px var(--glow-color));" />
+    <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" loading="lazy" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 8px var(--glow-color));" />
     <div class="centre-tooltip" style="position: absolute; bottom: 110px; right: 0; background: var(--bg-glass); backdrop-filter: blur(15px); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 18px; color: var(--text-primary); font-size: 0.9rem; white-space: nowrap; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; box-shadow: 0 4px 15px var(--shadow-color);">Mann Scanning Centre<br>Advanced Diagnostics</div>
   </div>
 </body>
 </html>
-

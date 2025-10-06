@@ -111,10 +111,10 @@
   
   <header>
     <div class="logo-container" role="link" tabindex="0" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" />
+      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" loading="lazy" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">â˜°</button>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">â˜°</button>
     <nav id="mobileNav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -551,24 +551,31 @@
   <script>
     function toggleMobileMenu() {
       const nav = document.getElementById('mobileNav');
-      if (!nav) return;
-      nav.classList.toggle('show');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
+      const isOpen = nav.classList.toggle('show');
+      document.body.classList.toggle('menu-open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
     document.addEventListener('click', function(e) {
       const nav = document.getElementById('mobileNav');
-      if (!nav) return;
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      if (!nav || !toggle) return;
       if (nav.classList.contains('show') && !nav.contains(e.target) && !e.target.closest('.mobile-menu-toggle')) {
         nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
       }
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         const nav = document.getElementById('mobileNav');
+        const toggle = document.querySelector('.mobile-menu-toggle');
         if (nav) nav.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
       }
     });
   </script>
 </body>
 </html>
-
-
