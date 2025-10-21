@@ -899,89 +899,21 @@
     const fellowshipForm = document.getElementById('fellowshipForm');
     const formStatus = document.getElementById('formStatus');
     
-    fellowshipForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const terms = document.getElementById('terms').checked;
-      
-      if (!terms) {
-        alert('Please agree to the terms and conditions to proceed with your application.');
-        return;
-      }
-      
-      // Show loading state
-      const submitBtn = fellowshipForm.querySelector('.submit-btn');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Submitting...';
-      submitBtn.disabled = true;
-      if (formStatus) {
-        formStatus.textContent = 'Submitting your application...';
-        formStatus.style.color = 'var(--text-secondary)';
-      }
-      
-      // Check if Web3Forms key is configured
-      const accessKeyInput = fellowshipForm.querySelector('input[name="access_key"]');
-      const accessKey = accessKeyInput ? accessKeyInput.value.trim() : '';
-      
-      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
-        // Fallback to mailto if Web3Forms not configured
-        const formData = new FormData(fellowshipForm);
-        const emailBody = generateEmailBody(formData);
-        const mailtoLink = `mailto:drhsmann@gmail.com?subject=Fellowship Application - ${formData.get('firstName')} ${formData.get('lastName')}&body=${encodeURIComponent(emailBody)}`;
+    if (fellowshipForm) {
+      fellowshipForm.addEventListener('submit', function(e) {
+        const terms = document.getElementById('terms');
         
-        window.location.href = mailtoLink;
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        if (formStatus) {
-          formStatus.textContent = 'Open your email client to complete the application. If that does not work, email your details directly to drhsmann@gmail.com.';
-          formStatus.style.color = 'var(--accent-secondary)';
-        } else {
-          alert('📧 Your email client will open to send the application. If this doesn\'t work, please email your details directly to drhsmann@gmail.com');
+        if (!terms || !terms.checked) {
+          e.preventDefault();
+          alert('Please agree to the terms and conditions to proceed with your application.');
+          return false;
         }
-        return;
-      }
-      
-      try {
-        const formData = new FormData(fellowshipForm);
-        const response = await fetch(fellowshipForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            Accept: 'application/json'
-          }
-        });
         
-        const data = await response.json();
-        
-        console.log('Web3Forms API Response:', data); // Debug log
-        console.log('Response status:', response.status); // Debug log
-        
-        if (data.success) {
-          if (formStatus) {
-            formStatus.textContent = '✅ Application submitted successfully! We will be in touch soon.';
-            formStatus.style.color = 'var(--accent-primary)';
-          } else {
-            alert('✅ Application submitted successfully! We will contact you soon at ' + document.getElementById('email').value);
-          }
-          fellowshipForm.reset();
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        } else {
-          throw new Error(data.message || 'Submission failed');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error); // Debug log
-        if (formStatus) {
-          formStatus.textContent = '❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com. Error: ' + error.message;
-          formStatus.style.color = '#d9534f';
-        } else {
-          alert('❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com. Error: ' + error.message);
-        }
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
-    });
+        // Let the form submit naturally to Web3Forms
+        // Standard form POST works better than fetch (no CORS issues)
+        return true;
+      });
+    }
     
     function generateEmailBody(formData) {
       const safe = (value, fallback = 'Not provided') => {
