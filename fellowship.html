@@ -648,10 +648,13 @@
         <div class="application-form">
           <form id="fellowshipForm" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="58540b16-481a-4b4f-84dd-117c9d3976b8">
-            <input type="hidden" name="subject" value="New Fellowship Application">
-            <input type="hidden" name="from_name" value="Mann Scanning Centre Fellowship">
+            <input type="hidden" name="subject" value="New Fellowship Application - Mann Scanning Centre">
+            <input type="hidden" name="from_name" value="Fellowship Application Form">
+            <!-- The redirect happens via JavaScript, but this is fallback -->
             <input type="hidden" name="redirect" value="https://mannscan.in/fellowship.html?success=true">
-            <input type="hidden" name="botcheck" value="">
+            <input type="hidden" name="botcheck" class="hidden" style="display: none;">
+            
+            <div id="formStatus" style="margin-bottom: 20px; padding: 15px; border-radius: 10px; display: none;"></div>
 
             <div class="form-row">
               <div class="form-group">
@@ -951,6 +954,9 @@
         
         const data = await response.json();
         
+        console.log('Web3Forms API Response:', data); // Debug log
+        console.log('Response status:', response.status); // Debug log
+        
         if (data.success) {
           if (formStatus) {
             formStatus.textContent = '✅ Application submitted successfully! We will be in touch soon.';
@@ -962,14 +968,15 @@
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         } else {
-          throw new Error('Submission failed');
+          throw new Error(data.message || 'Submission failed');
         }
       } catch (error) {
+        console.error('Form submission error:', error); // Debug log
         if (formStatus) {
-          formStatus.textContent = '❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com.';
+          formStatus.textContent = '❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com. Error: ' + error.message;
           formStatus.style.color = '#d9534f';
         } else {
-          alert('❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com');
+          alert('❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com. Error: ' + error.message);
         }
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
