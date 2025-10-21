@@ -646,7 +646,13 @@
         <p style="font-size: 1.2rem; color: var(--text-secondary); text-align: center; max-width: 800px; margin: 0 auto 40px auto; line-height: 1.6;">Ready to advance your career in ultrasound imaging? Limited seats available for 2025-2026 batch.</p>
         
         <div class="application-form">
-          <form id="fellowshipForm" action="process_fellowship.php" method="POST">
+          <form id="fellowshipForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New Fellowship Application">
+            <input type="hidden" name="from_name" value="Mann Scanning Centre Fellowship">
+            <input type="hidden" name="redirect" value="https://mannscan.in/fellowship.html?success=true">
+            <input type="hidden" name="botcheck" value="">
+
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name *</label>
@@ -739,6 +745,7 @@
               If the form does not submit, please email your details to 
               <a href="mailto:drhsmann@gmail.com" style="color: var(--accent-primary); font-weight: 600;">drhsmann@gmail.com</a>.
             </p>
+            <div id="formStatus" style="margin-top: 16px; font-size: 0.95rem;"></div>
           </form>
         </div>
 
@@ -885,24 +892,118 @@
       toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     }
 
-    // Form validation
-    document.getElementById('fellowshipForm').addEventListener('submit', function(e) {
+    // Form validation and submission
+    const fellowshipForm = document.getElementById('fellowshipForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    fellowshipForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
       const terms = document.getElementById('terms').checked;
       
       if (!terms) {
-        e.preventDefault();
         alert('Please agree to the terms and conditions to proceed with your application.');
         return;
       }
       
       // Show loading state
-      const submitBtn = document.querySelector('.submit-btn');
+      const submitBtn = fellowshipForm.querySelector('.submit-btn');
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Submitting...';
       submitBtn.disabled = true;
+      if (formStatus) {
+        formStatus.textContent = 'Submitting your application...';
+        formStatus.style.color = 'var(--text-secondary)';
+      }
       
-      // Form will be submitted to PHP script
+      // Check if Web3Forms key is configured
+      const accessKeyInput = fellowshipForm.querySelector('input[name="access_key"]');
+      const accessKey = accessKeyInput ? accessKeyInput.value.trim() : '';
+      
+      if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+        // Fallback to mailto if Web3Forms not configured
+        const formData = new FormData(fellowshipForm);
+        const emailBody = generateEmailBody(formData);
+        const mailtoLink = `mailto:drhsmann@gmail.com?subject=Fellowship Application - ${formData.get('firstName')} ${formData.get('lastName')}&body=${encodeURIComponent(emailBody)}`;
+        
+        window.location.href = mailtoLink;
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        if (formStatus) {
+          formStatus.textContent = 'Open your email client to complete the application. If that does not work, email your details directly to drhsmann@gmail.com.';
+          formStatus.style.color = 'var(--accent-secondary)';
+        } else {
+          alert('📧 Your email client will open to send the application. If this doesn\'t work, please email your details directly to drhsmann@gmail.com');
+        }
+        return;
+      }
+      
+      try {
+        const formData = new FormData(fellowshipForm);
+        const response = await fetch(fellowshipForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          if (formStatus) {
+            formStatus.textContent = '✅ Application submitted successfully! We will be in touch soon.';
+            formStatus.style.color = 'var(--accent-primary)';
+          } else {
+            alert('✅ Application submitted successfully! We will contact you soon at ' + document.getElementById('email').value);
+          }
+          fellowshipForm.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        if (formStatus) {
+          formStatus.textContent = '❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com.';
+          formStatus.style.color = '#d9534f';
+        } else {
+          alert('❌ There was an error submitting your application. Please email your details directly to drhsmann@gmail.com');
+        }
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
     });
+    
+    function generateEmailBody(formData) {
+      const safe = (value, fallback = 'Not provided') => {
+        const trimmed = (value || '').toString().trim();
+        return trimmed.length ? trimmed : fallback;
+      };
+      
+      return `
+Fellowship Application
+
+Name: ${safe(formData.get('firstName'))} ${safe(formData.get('lastName'))}
+Email: ${safe(formData.get('email'))}
+Phone: ${safe(formData.get('phone'))}
+Degree: ${safe(formData.get('degree'))}
+Specialization: ${safe(formData.get('specialization'))}
+Experience: ${safe(formData.get('experience'), 'Not specified')} years
+Institution: ${safe(formData.get('institution'))}
+Program Type: ${safe(formData.get('programType'))}
+Start Date: ${safe(formData.get('startDate'))}
+
+Motivation:
+${safe(formData.get('motivation'), 'Not provided')}
+
+Expectations:
+${safe(formData.get('expectations'), 'Not provided')}
+
+Terms Accepted: Yes
+`;
+    }
 
     // Load saved theme
     document.addEventListener('DOMContentLoaded', function() {
