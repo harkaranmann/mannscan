@@ -2,7 +2,7 @@
 
 The fellowship application form now uses a third-party service so it can run on static hosting (e.g., GitHub Pages). Follow the steps below to activate email delivery.
 
-## Option 1: Web3Forms (Recommended – already wired up)
+## Option 1: Web3Forms (Recommended - already wired up)
 
 ### Steps to Activate
 
