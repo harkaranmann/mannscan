@@ -9,7 +9,7 @@ The fellowship application form now uses a third-party service so it can run on 
 1. **Get your access key**
    - Go to https://web3forms.com/
    - Click **Get Started for Free**
-   - Sign up with **drhsmann@gmail.com**
+   - Sign up with **harkaran@msn.com**
    - Confirm the verification email sent by Web3Forms
    - Copy the access key from your Web3Forms dashboard
 
@@ -26,7 +26,7 @@ The fellowship application form now uses a third-party service so it can run on 
    - Switch to the **Apply Now** tab
    - Submit a test application
    - Approve the first confirmation email from Web3Forms if prompted
-   - Check **drhsmann@gmail.com** for the submission details
+   - Check **harkaran@msn.com** for the submission details
 
 ### Why Web3Forms?
 - Free forever with generous limits
