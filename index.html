@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
   <title>Mann Scanning Centre | NABH Accredited Diagnostic Imaging Center | Jalandhar, Punjab</title>
@@ -238,24 +238,16 @@
       color: white;
     }
 
-    /* Remove any unwanted outlines and focus indicators */
-    *, *:before, *:after {
-      outline: none !important;
-      -webkit-tap-highlight-color: transparent !important;
-    }
-    
-    /* Prevent accessibility tool highlights */
+    /* Accessible focus styles — visible for keyboard, hidden for mouse */
     *:focus {
-      outline: none !important;
-      box-shadow: none !important;
+      outline: none;
     }
-    
-    /* Remove browser default focus styles */
-    button:focus,
-    input:focus,
-    a:focus,
-    div:focus {
-      outline: none !important;
+    *:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+    * {
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* Adjust theme toggle for different screen sizes */
@@ -293,14 +285,10 @@
         margin: 5px;
         font-size: 14px;
       }
-    }
 
-    .theme-toggle:hover {
-      background: var(--accent-primary);
-      color: var(--bg-primary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px var(--glow-color);
+      body::before {
+        display: none;
+      }
     }
 
     /* LMP Calculator Dropdown */
@@ -614,11 +602,10 @@
       align-items: center;
     }
 
-    /* Image optimization and lazy loading */
+    /* Image optimization */
     img {
       max-width: 100%;
       height: auto;
-      loading: lazy;
     }
 
     /* Optimize logo images */
@@ -974,7 +961,7 @@
     </div>
     <div style="text-align: center; margin-top: 25px; background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 2px solid var(--accent-primary);">
       <h3 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">Apply for Fellowship Program</h3>
-      <p style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 12px; font-weight: 500;">🎓 <strong style="color: var(--accent-secondary);">Current batch is full!</strong> Now accepting applications for the 2025-2026 batch.</p>
+      <p style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 12px; font-weight: 500;">✅ <strong style="color: #00c853;">Applications Now Open!</strong> Apply for the 2025-2026 fellowship batch — limited seats available.</p>
       <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px;">Submit your details through our dedicated fellowship application page.</p>
 
       <a href="fellowship.html" style="display: inline-block; background: var(--accent-primary); color: var(--bg-primary); padding: 15px 25px; border-radius: 10px; font-weight: 600; text-decoration: none;">Apply Online</a>
@@ -1038,7 +1025,7 @@
       </div>
     </div>
     <div style="text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; margin-top: 30px;">
-      <p>© 2025 Mann Scanning Centre — Your Trusted Diagnostic Partner in Jalandhar</p>
+      <p>© 2026 Mann Scanning Centre — Your Trusted Diagnostic Partner in Jalandhar</p>
       <p style="margin-top: 10px; color: var(--accent-primary);">Precision • Care • Excellence • Trust</p>
     </div>
   </footer>
@@ -1481,15 +1468,23 @@
       // Initialize the medical visualization
       new MedicalVisualization();
     });
+
+    // Scroll-reveal animation
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.card, .section, .service-card').forEach(el => {
+        el.classList.add('fade-in-up');
+        revealObserver.observe(el);
+      });
+    }
   </script>
   <script src="js/lmp.js" defer></script>
-
-  <!-- NABH Accreditation Logo -->
-  <div class="nabh-logo" title="NABH Accredited Healthcare Facility">
-    <img src="images/nabh_nobg.png" alt="NABH Accredited" />
-    <div class="nabh-tooltip">
-      NABH Accredited<br>Quality Healthcare
-    </div>
-  </div>
 </body>
 </html>

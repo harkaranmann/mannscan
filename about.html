@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
   <title>About Mann Scanning Centre | Expert Radiologists & NABH Accredited Team | Jalandhar</title>
@@ -33,6 +33,46 @@
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mannscan.in/about.html" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Mann Scanning Centre",
+    "url": "https://mannscan.in/about.html",
+    "description": "NABH-accredited diagnostic imaging centre in Jalandhar, Punjab with expert radiologists providing MRI, CT, Ultrasound, Mammography, DEXA and other advanced diagnostic services.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "201 Gujral Nagar",
+      "addressLocality": "Jalandhar",
+      "addressRegion": "Punjab",
+      "postalCode": "144002",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-181-4695500",
+    "employee": [
+      {
+        "@type": "Physician",
+        "name": "Dr. Hardipinder Singh Mann",
+        "jobTitle": "Founder & Senior Radiologist",
+        "description": "MBBS, PG Diploma in Sonography with decades of experience in diagnostic imaging."
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. Harkaran Singh Mann",
+        "jobTitle": "Consultant Radiologist",
+        "description": "M.D. Radiodiagnosis with specialization in advanced diagnostic imaging."
+      },
+      {
+        "@type": "Physician",
+        "name": "Dr. Purnoor Mann",
+        "jobTitle": "Consultant Radiologist",
+        "description": "DMRD with expertise in diagnostic radiology."
+      }
+    ]
+  }
+  </script>
   
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -212,7 +252,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
+    <p>&copy; 2026 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
   </footer>
 
   <script>
@@ -224,6 +264,10 @@
       
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
+      const themeText = document.getElementById('themeText');
+      if (themeText) {
+        themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
+      }
     }
 
     // Mobile Menu Toggle Function
@@ -264,7 +308,27 @@
     document.addEventListener('DOMContentLoaded', function() {
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
+      const themeText = document.getElementById('themeText');
+      if (themeText) {
+        themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+      }
     });
+
+    // Scroll-reveal animation
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.card, .section').forEach(el => {
+        el.classList.add('fade-in-up');
+        revealObserver.observe(el);
+      });
+    }
   </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
   <title>Whole Body MRI & Diagnostic Services | MRI, CT, Ultrasound, Mammography | Mann Scanning Centre Jalandhar</title>
@@ -87,12 +87,7 @@
       box-sizing: border-box;
     }
     
-    @font-face {
-      font-display: swap;
-    }
-    
     img {
-      loading: lazy;
       max-width: 100%;
       height: auto;
     }
@@ -112,7 +107,7 @@
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-    Toggle Theme: <span id="themeText">Dark</span>
+    🌓 <span id="themeText">Dark</span>
   </button>
   
   <header>
@@ -120,7 +115,7 @@
       <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" loading="lazy" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <nav id="mobileNav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -512,7 +507,7 @@
 
   <footer style="background: var(--bg-secondary); padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color);">
     <div style="max-width: 1200px; margin: 0 auto;">
-      <p style="font-size: 1.1rem; margin-bottom: 15px;">&copy; 2025 Mann Scanning Centre - NABH Accredited Diagnostic Facility</p>
+      <p style="font-size: 1.1rem; margin-bottom: 15px;">&copy; 2026 Mann Scanning Centre - NABH Accredited Diagnostic Facility</p>
       <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 20px;">
         <div>
           <strong style="color: var(--accent-primary);"> Contact:</strong> 01814695500
@@ -582,6 +577,22 @@
         if (toggle) toggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    // Scroll-reveal animation
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.card, .section').forEach(el => {
+        el.classList.add('fade-in-up');
+        revealObserver.observe(el);
+      });
+    }
   </script>
 </body>
 </html>

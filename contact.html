@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
   <title>Contact Mann Scanning Centre | Book Appointment Online | Jalandhar, Punjab</title>
@@ -89,7 +89,8 @@
       <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" />
       <h1>Mann Scanning Centre</h1>
     </div>
-    <nav>
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav id="mobileNav">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -98,16 +99,6 @@
       <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
     </nav>
   </header>
-  
-  <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
-  <nav id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="fellowship.html">Fellowship</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
-  </nav>
   
   <main>
     <section class="hero">
@@ -161,7 +152,7 @@
             <div style="margin-bottom: 25px;">
               <h4 style="color: var(--accent-secondary); font-size: 1.4rem; margin-bottom: 15px;">Advanced Imaging Services</h4>
               <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-                <li>• MRI (1.5T/3T) with Breast Coil</li>
+                <li>• MRI (1.5T) with Breast Coil</li>
                 <li>• CT Scan - Multi-Detector Technology</li>
                 <li>• 4D Ultrasound & Doppler</li>
                 <li>• Digital Mammography</li>
@@ -259,7 +250,7 @@
   </main>
   
   <footer>
-    © 2025 Mann Scanning Centre — Jalandhar
+    © 2026 Mann Scanning Centre — Jalandhar
   </footer>
 
   <script>
@@ -321,6 +312,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    // Scroll-reveal animation
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.card, .section').forEach(el => {
+        el.classList.add('fade-in-up');
+        revealObserver.observe(el);
+      });
+    }
   </script>
   
   <!-- Centre Logo -->

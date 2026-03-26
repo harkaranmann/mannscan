@@ -1,4 +1,36 @@
+# Mann Scanning Centre - mannscan.in
+# NABH Accredited Diagnostic Imaging Centre, Jalandhar, Punjab
+
 User-agent: *
 Allow: /
+Disallow: /config_smtp.php
+Disallow: /process_fellowship.php
+Disallow: /check_php_config.php
+Disallow: /test_email.php
+Disallow: /tests/
+Disallow: /.git/
 
+# Sitemap
 Sitemap: https://mannscan.in/sitemap.xml
+
+# AI Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

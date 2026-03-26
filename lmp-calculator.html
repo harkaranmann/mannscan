@@ -2,7 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
   <title>LMP Calculator | Gestational Age Calculator | Pregnancy Calculator | Mann Scanning Centre</title>
@@ -284,7 +284,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
+    <p>&copy; 2026 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
   </footer>
 
   <script>
@@ -385,6 +385,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    // Scroll-reveal animation
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.card, .section').forEach(el => {
+        el.classList.add('fade-in-up');
+        revealObserver.observe(el);
+      });
+    }
   </script>
 </body>
 </html>

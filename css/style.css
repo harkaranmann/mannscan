@@ -712,6 +712,9 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+input:focus:not(:focus-visible), textarea:focus:not(:focus-visible), select:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -774,3 +777,366 @@ body.menu-open {
 }
 /* Mobile nav fix: support 'show' class toggled by JS */
 @media (max-width: 768px) { nav.show { display: flex; } }
+
+/* ===== Mobile Optimizations (iPhone / Samsung) ===== */
+
+/* Safe area insets for notched devices (iPhone X+, Samsung Galaxy punch-hole) */
+@supports (padding: env(safe-area-inset-top)) {
+  header {
+    padding-top: calc(15px + env(safe-area-inset-top));
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
+  }
+
+  footer {
+    padding-bottom: calc(50px + env(safe-area-inset-bottom));
+  }
+
+  main {
+    padding-left: calc(15px + env(safe-area-inset-left));
+    padding-right: calc(15px + env(safe-area-inset-right));
+  }
+}
+
+/* Minimum touch target sizes (44x44px per Apple/Google guidelines) */
+@media (max-width: 768px) {
+  nav a,
+  .mobile-menu-toggle,
+  .theme-toggle,
+  .lmp-toggle,
+  .btn,
+  button,
+  a[href^="tel:"],
+  a[href^="mailto:"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Smooth momentum scrolling on iOS */
+  main,
+  .card,
+  nav {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text size adjust on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Hide background MRI image on mobile for performance */
+  body::before {
+    display: none;
+  }
+
+  /* Better mobile card interaction */
+  .card:hover {
+    transform: none;
+  }
+
+  .card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* Prevent horizontal scroll from any overflow */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Full-width images on mobile */
+  .card img {
+    max-width: 100%;
+  }
+}
+
+/* Small phones (iPhone SE, Galaxy S mini) */
+@media (max-width: 380px) {
+  .logo-container h1 {
+    font-size: 1.1rem;
+  }
+
+  .logo-container img {
+    height: 30px;
+  }
+
+  .hero h2,
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p,
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+/* Landscape orientation on phones */
+@media (max-width: 812px) and (orientation: landscape) {
+  header {
+    min-height: 50px;
+    padding: 8px 20px;
+  }
+
+  .logo-container img {
+    height: 40px;
+  }
+
+  .logo-container h1 {
+    font-size: 1.3rem;
+  }
+
+  main {
+    padding-top: 70px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== Visual Enhancements ===== */
+
+/* Scroll-reveal animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced card hover with animated glow border */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, transparent, var(--accent-primary), transparent);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover::before {
+  opacity: 0.5;
+}
+
+/* Button shine sweep on hover */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+/* Section divider accent line */
+.section::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  margin: 40px auto 0;
+  border-radius: 2px;
+}
+
+.section:last-child::after {
+  display: none;
+}
+
+/* Hero heading gradient */
+.hero h2 {
+  background: linear-gradient(135deg, var(--accent-primary), var(--text-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle scale on logo hover */
+.logo-container:hover img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 20px var(--accent-primary));
+}
+
+/* Nav link underline animation */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width 0.3s ease, left 0.3s ease;
+  border-radius: 1px;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 60%;
+  left: 20%;
+}
+
+/* Enhanced footer with top gradient line */
+footer::before {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  margin: 0 auto 30px;
+  border-radius: 1px;
+}
+
+/* Smooth image reveal on load */
+.card img {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Enhanced theme toggle pulse */
+.theme-toggle {
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0 4px 20px var(--shadow-color); }
+  50% { box-shadow: 0 4px 25px var(--glow-color); }
+}
+
+/* Better light mode glass contrast */
+[data-theme="light"] .card {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(14, 165, 233, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 0 20px var(--glow-color);
+}
+
+[data-theme="light"] header {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] footer {
+  background: rgba(248, 250, 252, 0.9);
+}
+
+[data-theme="light"] nav a:hover,
+[data-theme="light"] nav a.active {
+  background: rgba(14, 165, 233, 0.08);
+}
+
+[data-theme="light"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(14, 165, 233, 0.25);
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(14, 165, 233, 0.2);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card::before,
+  .btn::after,
+  nav a::after {
+    display: none;
+  }
+
+  .theme-toggle {
+    animation: none;
+  }
+
+  .card img {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Mobile: disable hover-dependent pseudo-elements */
+@media (max-width: 768px) {
+  .card::before {
+    display: none;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  .theme-toggle {
+    animation: none;
+  }
+}
