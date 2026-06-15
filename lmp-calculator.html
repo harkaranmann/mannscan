@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  
-  <!-- SEO Meta Tags -->
+
   <title>LMP Calculator | Gestational Age Calculator | Pregnancy Calculator | Mann Scanning Centre</title>
   <meta name="description" content="Free online LMP (Last Menstrual Period) calculator to determine gestational age, due date, and pregnancy timeline. Accurate pregnancy calculator by Mann Scanning Centre." />
   <meta name="keywords" content="LMP calculator, gestational age calculator, pregnancy calculator, due date calculator, last menstrual period, pregnancy timeline, obstetric calculator" />
   <meta name="author" content="Mann Scanning Centre" />
   <meta name="robots" content="index, follow" />
-  
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mannscan.in/lmp-calculator.html" />
   <meta property="og:title" content="Free LMP Calculator - Pregnancy Due Date Calculator" />
   <meta property="og:description" content="Calculate your gestational age and due date with our accurate LMP calculator. Free online tool for pregnancy timeline calculation." />
   <meta property="og:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
-  
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://mannscan.in/lmp-calculator.html" />
-  
-  <!-- Tool Structured Data -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,377 +30,146 @@
     "url": "https://mannscan.in/lmp-calculator.html",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "INR"
-    },
-    "provider": {
-      "@type": "MedicalBusiness",
-      "name": "Mann Scanning Centre"
-    },
-    "featureList": [
-      "Gestational age calculation",
-      "Due date estimation",
-      "Trimester identification",
-      "Pregnancy timeline"
-    ]
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "provider": { "@type": "MedicalBusiness", "name": "Mann Scanning Centre" },
+    "featureList": ["Gestational age calculation", "Due date estimation", "Trimester identification", "Pregnancy timeline"]
   }
   </script>
-  
+
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <style>
-    .calculator-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    
-    .calculator-card {
-      background: var(--bg-glass);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 40px;
-      margin-bottom: 30px;
-    }
-    
-    .input-group {
-      margin-bottom: 25px;
-    }
-    
-    .input-group label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent-primary);
-    }
-    
-    .input-group input[type="date"] {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-      background: var(--bg-secondary);
-      color: var(--text-primary);
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
-    
-    .input-group input[type="date"]:focus {
-      outline: none;
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 10px var(--glow-color);
-    }
-    
-    .calculate-btn {
-      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
-    
-    .calculate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px var(--shadow-color);
-    }
-    
-    .results {
-      margin-top: 30px;
-      padding: 25px;
-      background: var(--bg-glass);
-      border-radius: 15px;
-      border: 1px solid var(--accent-primary);
-      display: none;
-    }
-    
-    .result-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 1.1rem;
-    }
-    
-    .result-item:last-child {
-      border-bottom: none;
-    }
-    
-    .result-label {
-      font-weight: 600;
-      color: var(--accent-primary);
-    }
-    
-    .result-value {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-    
-    .info-section {
-      background: var(--bg-glass);
-      border-radius: 15px;
-      padding: 30px;
-      margin-top: 30px;
-      border: 1px solid var(--border-color);
-    }
-    
-    .info-section h3 {
-      color: var(--accent-primary);
-      margin-bottom: 20px;
-      font-size: 1.6rem;
-    }
-      .info-section p {
-      line-height: 1.6;
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 15px;
-    }      .theme-toggle {
-      position: fixed;
-      top: 120px;
-      left: 20px;
-      z-index: 1002;
-      background: var(--bg-glass);
-      backdrop-filter: blur(15px);
-      border: 1px solid var(--border-color);
-      border-radius: 25px;
-      padding: 12px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: var(--text-primary);
-      font-size: 16px;
-      box-shadow: 0 4px 20px var(--shadow-color);
-    }
-    
-    .theme-toggle:hover {
-      background: var(--accent-primary);
-      color: var(--bg-primary);
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px var(--glow-color);
-    }
-  </style>
+  <script src="js/site.js"></script>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-  
-  <header>
-    <div class="logo-container" role="link" tabindex="0" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scan Logo" loading="lazy" style="height: 70px; width: auto; object-fit: contain;" />
-      <h1 style="font-size: 2.2rem;">Mann Scanning Centre</h1>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand" role="link" tabindex="0" onclick="window.location.href='index.html'">
+        <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre logo" />
+        <span class="brand-name">Mann Scanning Centre<small>Diagnostic Imaging</small></span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="fellowship.html">Fellowship</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn--primary nav-cta">Book a scan</a>
+        <button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <nav id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="fellowship.html">Fellowship</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">DICOM Viewer</a>
-    </nav>
-    <nav style="font-size: 16px; gap: 30px;">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="fellowship.html">Fellowship</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">DICOM Viewer (Patients: Click to View Your DICOM Files)</a>
-    </nav>
   </header>
 
-  <main style="padding-top: 120px;">
-    <div class="calculator-container">
-      <section class="hero">
-        <h2>LMP Calculator</h2>
-        <p>Calculate your pregnancy timeline and important dates</p>
-      </section>
+  <section class="page-hero">
+    <div class="hero__bg"></div>
+    <div class="container page-hero__inner reveal visible">
+      <span class="eyebrow eyebrow--center">Patient tools</span>
+      <h1>LMP &amp; gestational age calculator</h1>
+      <p>Estimate your pregnancy timeline, gestational age and due date from the first day of your last menstrual period.</p>
+    </div>
+  </section>
 
-      <div class="calculator-card">
-        <h3 style="color: var(--accent-primary); margin-bottom: 30px; font-size: 1.8rem;">Enter Your Last Menstrual Period Date</h3>
-        
-        <div class="input-group">
-          <label for="lmpDate">Last Menstrual Period (LMP) Date:</label>
+  <section class="section section--tight">
+    <div class="container">
+      <div class="form-card calc-card reveal">
+        <h3 style="font-size:1.4rem; margin-bottom:6px;">Enter your LMP date</h3>
+        <p style="font-size:.96rem; margin-bottom:22px;">The first day of your last menstrual period.</p>
+        <div class="form-group">
+          <label for="lmpDate">Last menstrual period (LMP)</label>
           <input type="date" id="lmpDate" required />
         </div>
-        
-        <button class="calculate-btn" onclick="calculateDates()">Calculate Pregnancy Timeline</button>
-        
-        <div id="results" class="results">
-          <h4 style="color: var(--accent-primary); margin-bottom: 20px; font-size: 1.5rem;">Your Pregnancy Timeline</h4>
-          
-          <div class="result-item">
-            <span class="result-label">Conception Date (Estimated):</span>
-            <span class="result-value" id="conceptionDate">-</span>
-          </div>
-          
-          <div class="result-item">
-            <span class="result-label">Current Gestational Age:</span>
-            <span class="result-value" id="gestationalAge">-</span>
-          </div>
-          
-          <div class="result-item">
-            <span class="result-label">Expected Due Date:</span>
-            <span class="result-value" id="dueDate">-</span>
-          </div>
-          
-          <div class="result-item">
-            <span class="result-label">Current Trimester:</span>
-            <span class="result-value" id="trimester">-</span>
-          </div>
-          
-          <div class="result-item">
-            <span class="result-label">Weeks Until Due Date:</span>
-            <span class="result-value" id="weeksLeft">-</span>
-          </div>
+        <button class="btn btn--primary btn--block" onclick="calculateDates()">Calculate pregnancy timeline</button>
+
+        <div id="results" class="calc-result">
+          <h4 style="font-size:1.2rem; margin-bottom:14px;">Your pregnancy timeline</h4>
+          <div class="calc-row"><span class="k">Estimated conception date</span><span class="v" id="conceptionDate">—</span></div>
+          <div class="calc-row"><span class="k">Current gestational age</span><span class="v" id="gestationalAge">—</span></div>
+          <div class="calc-row"><span class="k">Expected due date</span><span class="v" id="dueDate">—</span></div>
+          <div class="calc-row"><span class="k">Current trimester</span><span class="v" id="trimester">—</span></div>
+          <div class="calc-row"><span class="k">Weeks until due date</span><span class="v" id="weeksLeft">—</span></div>
         </div>
       </div>
 
-      <div class="info-section">
-        <h3>About LMP Dating</h3>
-        <p>The Last Menstrual Period (LMP) method is the most commonly used way to calculate pregnancy dates. This calculator uses the standard 280-day (40-week) pregnancy length from the first day of your last menstrual period.</p>
-        
-        <h3 style="margin-top: 25px;">Important Notes:</h3>
-        <p>• This calculator provides estimates based on a regular 28-day cycle</p>
-        <p>• Individual pregnancy lengths may vary</p>
-        <p>• Always consult with your healthcare provider for accurate dating</p>
-        <p>• Ultrasound measurements may provide more precise dating</p>
-        
-        <h3 style="margin-top: 25px;">Recommended Scans:</h3>
-        <p>• <strong>6-8 weeks:</strong> Early pregnancy viability scan</p>
-        <p>• <strong>11-14 weeks:</strong> NT scan (nuchal translucency)</p>
-        <p>• <strong>18-22 weeks:</strong> Detailed anomaly scan</p>
-        <p>• <strong>28-32 weeks:</strong> Growth scan (if indicated)</p>
+      <div class="grid grid--2 reveal" style="max-width:980px; margin:28px auto 0; gap:24px;">
+        <div class="panel">
+          <h3 style="font-size:1.3rem;">About LMP dating</h3>
+          <p style="font-size:.98rem;">The Last Menstrual Period method is the most common way to calculate pregnancy dates, using the standard 280-day (40-week) pregnancy length from the first day of your last period.</p>
+          <h4 style="font-family:var(--font-sans); font-size:14px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-3); margin:18px 0 12px;">Important notes</h4>
+          <ul class="checklist" style="gap:9px;">
+            <li>Estimates assume a regular 28-day cycle.</li>
+            <li>Individual pregnancy lengths may vary.</li>
+            <li>Always consult your healthcare provider for accurate dating.</li>
+            <li>Ultrasound measurements may provide more precise dating.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3 style="font-size:1.3rem;">Recommended scans</h3>
+          <ul class="checklist" style="gap:12px;">
+            <li><strong>6–8 weeks</strong> — early pregnancy viability scan</li>
+            <li><strong>11–14 weeks</strong> — NT scan (nuchal translucency)</li>
+            <li><strong>18–22 weeks</strong> — detailed anomaly scan</li>
+            <li><strong>28–32 weeks</strong> — growth scan (if indicated)</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary" style="margin-top:20px;">Book a scan</a>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <p>&copy; 2026 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0; border-top:none; justify-content:center; text-align:center;">
+        <p>&copy; 2026 Mann Scanning Centre — NABH Accredited Facility. This tool provides estimates only and is not a substitute for professional medical advice.</p>
+      </div>
+    </div>
   </footer>
 
+  <a href="contact.html" class="fab" aria-label="Book a scan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    <span>Book a scan</span>
+  </a>
+
   <script>
-    function parseDate(value) {
-      const [y, m, d] = value.split('-').map(Number);
-      return new Date(y, m - 1, d);
-    }
-
+    function parseDate(value) { var p = value.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
     function calculateDates() {
-      const lmpInput = document.getElementById('lmpDate');
-      const resultsDiv = document.getElementById('results');
-
-      if (!lmpInput.value) {
-        alert('Please enter your LMP date');
-        return;
-      }
-
-      const lmpDate = parseDate(lmpInput.value);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      
-      // Calculate conception date (approximately 14 days after LMP)
-      const conceptionDate = new Date(lmpDate);
-      conceptionDate.setDate(conceptionDate.getDate() + 14);
-      
-      // Calculate due date (280 days from LMP)
-      const dueDate = new Date(lmpDate);
-      dueDate.setDate(dueDate.getDate() + 280);
-      
-      // Calculate gestational age
-      const daysDiff = Math.floor((today - lmpDate) / (1000 * 60 * 60 * 24));
-      const weeks = Math.floor(daysDiff / 7);
-      const days = daysDiff % 7;
-      
-      // Calculate weeks left
-      const daysLeft = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
-      const weeksLeft = Math.floor(daysLeft / 7);
-      
-      // Determine trimester
-      let trimester;
-      if (weeks < 13) {
-        trimester = "First Trimester";
-      } else if (weeks < 27) {
-        trimester = "Second Trimester";
-      } else {
-        trimester = "Third Trimester";
-      }
-      
-      // Update results
-      document.getElementById('conceptionDate').textContent = conceptionDate.toLocaleDateString();
-      document.getElementById('gestationalAge').textContent = `${weeks} weeks, ${days} days`;
-      document.getElementById('dueDate').textContent = dueDate.toLocaleDateString();
+      var input = document.getElementById('lmpDate');
+      var results = document.getElementById('results');
+      if (!input.value) { alert('Please enter your LMP date'); return; }
+      var lmp = parseDate(input.value);
+      var today = new Date(); today.setHours(0,0,0,0);
+      if (lmp > today) { alert('LMP date cannot be in the future.'); return; }
+      var conception = new Date(lmp); conception.setDate(conception.getDate() + 14);
+      var due = new Date(lmp); due.setDate(due.getDate() + 280);
+      var daysDiff = Math.floor((today - lmp) / 86400000);
+      var weeks = Math.floor(daysDiff / 7), days = daysDiff % 7;
+      var daysLeft = Math.floor((due - today) / 86400000);
+      var weeksLeft = Math.floor(daysLeft / 7);
+      var trimester = weeks < 13 ? 'First trimester' : (weeks < 27 ? 'Second trimester' : 'Third trimester');
+      document.getElementById('conceptionDate').textContent = conception.toLocaleDateString();
+      document.getElementById('gestationalAge').textContent = weeks + ' weeks, ' + days + ' days';
+      document.getElementById('dueDate').textContent = due.toLocaleDateString();
       document.getElementById('trimester').textContent = trimester;
-      document.getElementById('weeksLeft').textContent = weeksLeft > 0 ? `${weeksLeft} weeks` : 'Past due date';
-      
-      // Show results
-      resultsDiv.style.display = 'block';
-      resultsDiv.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('weeksLeft').textContent = weeksLeft > 0 ? (weeksLeft + ' weeks') : 'Past due date';
+      results.classList.add('show');
+      results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    }    // Load saved theme
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    });
-    // Mobile menu toggle and handlers
-    function toggleMobileMenu() {
-      const nav = document.getElementById('mobileNav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      if (!nav || !toggle) return;
-      const isOpen = nav.classList.toggle('show');
-      document.body.classList.toggle('menu-open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-    document.addEventListener('click', function(event) {
-      const nav = document.getElementById('mobileNav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      if (!nav || !toggle) return;
-      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-        nav.classList.remove('show');
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
+    document.addEventListener('DOMContentLoaded', function () {
+      var input = document.getElementById('lmpDate');
+      if (input) {
+        var t = new Date();
+        input.max = t.toISOString().split('T')[0];
+        var min = new Date(); min.setDate(min.getDate() - 42*7);
+        input.min = min.toISOString().split('T')[0];
       }
     });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const nav = document.getElementById('mobileNav');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (!nav || !toggle) return;
-        nav.classList.remove('show');
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Scroll-reveal animation
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.card, .section').forEach(el => {
-        el.classList.add('fade-in-up');
-        revealObserver.observe(el);
-      });
-    }
   </script>
 </body>
 </html>
-

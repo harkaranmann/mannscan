@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  
+
   <!-- SEO Meta Tags -->
   <title>About Mann Scanning Centre | Expert Radiologists & NABH Accredited Team | Jalandhar</title>
   <meta name="description" content="Meet our expert team of radiologists Dr. Harkaran Singh Mann, Dr. Hardipinder Singh Mann, and Dr. Purnoor Mann at NABH-accredited Mann Scanning Centre. Decades of experience in advanced diagnostic imaging and medical fellowship training in Jalandhar, Punjab." />
@@ -11,30 +11,27 @@
   <meta name="author" content="Mann Scanning Centre" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta name="googlebot" content="index, follow" />
-  
-  <!-- Enhanced Local SEO -->
   <meta name="geo.region" content="IN-PB" />
   <meta name="geo.placename" content="Jalandhar, Punjab, India" />
   <meta name="classification" content="Medical, Healthcare, Radiology" />
-  
-  <!-- Open Graph -->
+
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mannscan.in/about.html" />
   <meta property="og:title" content="About Mann Scanning Centre - Expert Radiologists & Medical Team Jalandhar" />
-  <meta property="og:description" content="Meet our experienced team of radiologists Dr. Harkaran Singh Mann, Dr. Hardipinder Singh Mann, and Dr. Purnoor Mann providing world-class diagnostic imaging services at NABH-accredited facility." />
+  <meta property="og:description" content="Meet our experienced team of radiologists providing world-class diagnostic imaging services at NABH-accredited facility." />
   <meta property="og:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
   <meta property="og:image:alt" content="Mann Scanning Centre Medical Team" />
-  
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="About Mann Scanning Centre - Expert Medical Team" />
   <meta property="twitter:description" content="Expert radiologists providing advanced diagnostic imaging services in Jalandhar, Punjab." />
   <meta property="twitter:image" content="https://mannscan.in/images/glass%203d%20logo%20mannscan%20no%20bg.png" />
-  
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://mannscan.in/about.html" />
-  
-  <!-- Structured Data -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,293 +39,239 @@
     "name": "Mann Scanning Centre",
     "url": "https://mannscan.in/about.html",
     "description": "NABH-accredited diagnostic imaging centre in Jalandhar, Punjab with expert radiologists providing MRI, CT, Ultrasound, Mammography, DEXA and other advanced diagnostic services.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "201 Gujral Nagar",
-      "addressLocality": "Jalandhar",
-      "addressRegion": "Punjab",
-      "postalCode": "144002",
-      "addressCountry": "IN"
-    },
+    "address": { "@type": "PostalAddress", "streetAddress": "201 Gujral Nagar", "addressLocality": "Jalandhar", "addressRegion": "Punjab", "postalCode": "144002", "addressCountry": "IN" },
     "telephone": "+91-181-4695500",
     "employee": [
-      {
-        "@type": "Physician",
-        "name": "Dr. Hardipinder Singh Mann",
-        "jobTitle": "Founder & Senior Radiologist",
-        "description": "MBBS, PG Diploma in Sonography with decades of experience in diagnostic imaging."
-      },
-      {
-        "@type": "Physician",
-        "name": "Dr. Harkaran Singh Mann",
-        "jobTitle": "Consultant Radiologist",
-        "description": "M.D. Radiodiagnosis with specialization in advanced diagnostic imaging."
-      },
-      {
-        "@type": "Physician",
-        "name": "Dr. Purnoor Mann",
-        "jobTitle": "Consultant Radiologist",
-        "description": "DMRD with expertise in diagnostic radiology."
-      }
+      { "@type": "Physician", "name": "Dr. Hardipinder Singh Mann", "jobTitle": "Founder & Senior Radiologist", "description": "MBBS, PG Diploma in Sonography with decades of experience in diagnostic imaging." },
+      { "@type": "Physician", "name": "Dr. Harkaran Singh Mann", "jobTitle": "Consultant Radiologist", "description": "M.D. Radiodiagnosis with specialization in advanced diagnostic imaging." },
+      { "@type": "Physician", "name": "Dr. Purnoor Mann", "jobTitle": "Consultant Radiologist", "description": "DMRD with expertise in diagnostic radiology." }
     ]
   }
   </script>
-  
+
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="js/site.js"></script>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-    🌓 <span id="themeText">Dark</span>
-  </button>
-  
-  <header>
-    <div class="logo-container" role="link" tabindex="0" onclick="window.location.href='index.html'" style="cursor:pointer">
-      <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" />
-      <h1>Mann Scanning Centre</h1>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand" role="link" tabindex="0" onclick="window.location.href='index.html'">
+        <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre logo" />
+        <span class="brand-name">Mann Scanning Centre<small>Diagnostic Imaging</small></span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="fellowship.html">Fellowship</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn--primary nav-cta">Book a scan</a>
+        <button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
     </div>
-    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <nav id="mobileNav">
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="services.html">Services</a>
-      <a href="fellowship.html">Fellowship</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a>
-    </nav>
   </header>
 
-  <main style="padding-top: 100px;">
-    <section class="hero">
-      <h2>About Our Centre</h2>
-      <p>Where Expertise Meets Excellence in Imaging</p>
-    </section>
+  <section class="page-hero">
+    <div class="hero__bg"></div>
+    <div class="container page-hero__inner reveal visible">
+      <span class="eyebrow eyebrow--center">About our centre</span>
+      <h1>Where expertise meets excellence in imaging</h1>
+      <p>For over two decades, Mann Scanning Centre has delivered precise diagnostic imaging with the highest standard of patient care in Jalandhar, Punjab.</p>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="card">
-        <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap;">
-          <img src="images/logo wool_nobg.png" alt="Mann Scanning Centre" style="height: 120px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px var(--glow-color));" />
-          <div style="flex: 1; min-width: 300px;">
-            <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Our Philosophy</h3>
-            <p style="font-size: 1.3rem; line-height: 1.6;">At Mann Scanning Centre, we are committed to delivering precise diagnostic imaging with the highest standard of patient care. Our experienced team ensures that every scan is personalized to meet each patient's unique needs.</p>
-          </div>
-        </div>
+  <!-- Philosophy -->
+  <section class="section section--tight">
+    <div class="container grid grid--2" style="align-items:center; gap:52px;">
+      <div class="reveal" style="display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius-lg); padding:48px; min-height:300px;">
+        <img src="images/logo wool_nobg.png" alt="Mann Scanning Centre" style="max-height:220px; width:auto;" loading="lazy" />
       </div>
-    </section>
+      <div class="reveal">
+        <span class="eyebrow">Our philosophy</span>
+        <h2 class="section__title" style="margin-bottom:20px;">Personalised, precise, compassionate</h2>
+        <p>At Mann Scanning Centre, we are committed to delivering accurate diagnostic imaging with the highest standard of patient care. Our experienced team ensures that every scan is personalised to meet each patient's unique needs — combining advanced technology with genuine human warmth.</p>
+        <p>We believe a diagnosis is more than an image. It is the first step in a patient's journey, and we treat it with the care and rigour it deserves.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="section">
-      <div class="card">
-        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Why Choose Us?</h3>
-        <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.2rem; list-style: none; padding: 0;">
-          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
-            <strong style="color: var(--accent-primary);">State-of-the-art Equipment:</strong> Latest GE and Samsung diagnostic machines
-          </li>
-          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
-            <strong style="color: var(--accent-primary);">Expert Radiologists:</strong> Highly qualified medical professionals
-          </li>
-          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
-            <strong style="color: var(--accent-primary);">Patient-Centered Care:</strong> Comfortable environment with personalized attention
-          </li>
-          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
-            <strong style="color: var(--accent-primary);">Quick Results:</strong> Fast turnaround times for urgent cases
-          </li>
-          <li style="margin-bottom: 15px; padding: 15px; background: var(--bg-glass); border-radius: 10px; border-left: 4px solid var(--accent-primary);">
-            <strong style="color: var(--accent-primary);">Comprehensive Services:</strong> Full range of diagnostic imaging under one roof
-          </li>
+  <!-- Team -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--center">Our people</span>
+        <h2 class="section__title">Expert medical team</h2>
+        <p class="section__intro">Led by a family of radiologists with deep roots in diagnostic imaging across the region.</p>
+      </div>
+      <div class="grid grid--3 reveal">
+        <article class="card doctor">
+          <div class="doctor__avatar">HM</div>
+          <h4>Dr. Hardipinder Singh Mann</h4>
+          <div class="role">Founder &amp; Senior Consultant</div>
+          <p style="color:var(--text-3); font-weight:600; font-size:.9rem; margin-bottom:12px;">MBBS, PG Diploma in Sonography</p>
+          <p>Pioneer in establishing advanced imaging services in the region, with extensive experience in diagnostic imaging and ultrasound procedures.</p>
+        </article>
+        <article class="card doctor">
+          <div class="doctor__avatar">HS</div>
+          <h4>Dr. Harkaran Singh Mann</h4>
+          <div class="role">Consultant Radiologist</div>
+          <p style="color:var(--text-3); font-weight:600; font-size:.9rem; margin-bottom:12px;">M.D. Radiodiagnosis</p>
+          <p>Specialist in advanced diagnostic radiology with expertise in cross-sectional imaging, interventional procedures and fellowship training.</p>
+        </article>
+        <article class="card doctor">
+          <div class="doctor__avatar">PM</div>
+          <h4>Dr. Purnoor Mann</h4>
+          <div class="role">Consultant Radiologist</div>
+          <p style="color:var(--text-3); font-weight:600; font-size:.9rem; margin-bottom:12px;">DMRD</p>
+          <p>Experienced radiologist specialising in diagnostic imaging interpretation and patient care, contributing to accurate diagnosis and treatment planning.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="section">
+    <div class="container grid grid--2" style="align-items:center; gap:52px;">
+      <div class="reveal">
+        <span class="eyebrow">Why choose us</span>
+        <h2 class="section__title" style="margin-bottom:22px;">A standard you can rely on</h2>
+        <ul class="checklist">
+          <li><strong>State-of-the-art equipment</strong> — the latest GE and Samsung diagnostic machines.</li>
+          <li><strong>Expert radiologists</strong> — highly qualified medical professionals.</li>
+          <li><strong>Patient-centred care</strong> — a comfortable environment with personalised attention.</li>
+          <li><strong>Quick results</strong> — fast turnaround times, including urgent cases.</li>
+          <li><strong>Comprehensive services</strong> — the full range of diagnostic imaging under one roof.</li>
         </ul>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h3 style="font-size: 2.2rem; margin-bottom: 25px; text-align: center;">👨‍⚕️ Our Expert Medical Team</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 30px;">
-          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color); text-align: center;">
-            <div style="width: 80px; height: 80px; background: var(--accent-primary); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">👨‍⚕️</div>
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 10px;">Dr. Hardipinder Singh Mann</h4>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 15px;">MBBS, PG Diploma in Sonography</p>
-            <p style="font-size: 1.1rem; line-height: 1.6;">Founder & Senior Consultant with extensive experience in diagnostic imaging and ultrasound procedures. Pioneer in establishing advanced imaging services in the region.</p>
-          </div>
-          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color); text-align: center;">
-            <div style="width: 80px; height: 80px; background: var(--accent-primary); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">🩺</div>
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 10px;">Dr. Harkaran Singh Mann</h4>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 15px;">M.D. Radiodiagnosis</p>
-            <p style="font-size: 1.1rem; line-height: 1.6;">Specialist in advanced diagnostic radiology with expertise in cross-sectional imaging, interventional procedures, and fellowship training programs.</p>
-          </div>
-          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color); text-align: center;">
-            <div style="width: 80px; height: 80px; background: var(--accent-primary); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;">🔬</div>
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 10px;">Dr. Purnoor Mann</h4>
-            <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 15px;">DMRD (Diploma in Medical Radio-Diagnosis)</p>
-            <p style="font-size: 1.1rem; line-height: 1.6;">Experienced radiologist specializing in diagnostic imaging interpretation and patient care, contributing to accurate diagnosis and treatment planning.</p>
-          </div>
+      <div class="grid grid--3 reveal" style="gap:18px;">
+        <div class="panel panel--soft">
+          <h4 class="panel-accent" style="font-family:var(--font-sans); font-size:15px; text-transform:uppercase; letter-spacing:.04em;">Advanced imaging</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--text-2); line-height:1.9; font-size:.96rem;">
+            <li>MRI scanning</li><li>CT scan technology</li><li>4D ultrasound</li><li>Digital mammography</li><li>DEXA bone density</li><li>Digital X-ray</li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">Our Comprehensive Diagnostic Services</h3>
-        <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 30px;">Mann Scanning Centre offers a complete suite of advanced diagnostic imaging services to cater to a wide array of medical needs. Our integrated approach allows for comprehensive medical evaluation and accurate diagnosis.</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
-          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🧠 Advanced Imaging</h4>
-            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-              <li>• MRI Scanning Systems</li>
-              <li>• CT Scan Technology</li>
-              <li>• 4D Ultrasound</li>
-              <li>• Digital Mammography</li>
-              <li>• DEXA Bone Density</li>
-              <li>• Digital X-Ray</li>
-            </ul>
-          </div>
-          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🔍 Specialized Services</h4>
-            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-              <li>• Fibrotouch Liver Elastography</li>
-              <li>• Foetal Echo Doppler</li>
-              <li>• Color Doppler Studies</li>
-              <li>• Interventional Procedures</li>
-              <li>• Emergency Imaging</li>
-            </ul>
-          </div>
-          <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">🩺 Patient Care</h4>
-            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-              <li>• Comprehensive Health Screening</li>
-              <li>• Women's Health Imaging</li>
-              <li>• Pregnancy Monitoring</li>
-              <li>• Senior Care Packages</li>
-              <li>• Pediatric Imaging</li>
-            </ul>
-          </div>
+        <div class="panel panel--soft">
+          <h4 class="panel-accent" style="font-family:var(--font-sans); font-size:15px; text-transform:uppercase; letter-spacing:.04em;">Specialised</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--text-2); line-height:1.9; font-size:.96rem;">
+            <li>Liver elastography</li><li>Foetal echo Doppler</li><li>Colour Doppler studies</li><li>Interventional procedures</li><li>Emergency imaging</li>
+          </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">🏥 Our Facility & Location</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">📍 Convenient Location</h4>
-            <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 15px;"><strong>Address:</strong> 201 Gujral Nagar, Jalandhar, Punjab - 144002</p>
-            <p style="font-size: 1.1rem; line-height: 1.6;">Strategically located in the heart of Jalandhar with excellent road connectivity and accessibility for patients from surrounding areas. Easy access via public transport and ample parking facilities.</p>
-          </div>
-          <div style="background: var(--bg-glass); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color);">
-            <h4 style="color: var(--accent-primary); font-size: 1.5rem; margin-bottom: 15px;">🕒 Operating Hours</h4>
-            <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-              <li><strong>Monday - Saturday:</strong> 9:00 AM - 6:00 PM</li>
-              <li><strong>Sunday:</strong> 11:00 AM - 1:00 PM</li>
-              <li><strong>Emergency Services:</strong> Available 24/7</li>
-              <li><strong>Appointment Booking:</strong> 01814695500</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="card">
-        <h3 style="font-size: 2.2rem; margin-bottom: 25px;">🏆 NABH Accreditation & Quality Standards</h3>
-        <div style="display: flex; align-items: center; gap: 30px; margin-bottom: 25px; flex-wrap: wrap;">
-          <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre Logo" style="height: 120px; width: auto; object-fit: contain; filter: drop-shadow(0 0 15px var(--glow-color));" />
-          <div style="flex: 1; min-width: 300px;">
-            <p style="font-size: 1.2rem; line-height: 1.7;">Mann Scanning Centre is proud to be NABH (National Accreditation Board for Hospitals & Healthcare Providers) accredited, ensuring the highest standards of quality, safety, and patient care. This accreditation demonstrates our commitment to excellence in healthcare delivery and continuous improvement in diagnostic services.</p>
-          </div>
-        </div>
-        <div style="background: var(--bg-glass); padding: 25px; border-radius: 15px; border: 1px solid var(--border-color);">
-          <h4 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 15px;">Quality Assurance Standards</h4>
-          <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8;">
-            <li>• Rigorous quality control protocols for all diagnostic procedures</li>
-            <li>• Regular equipment calibration and maintenance schedules</li>
-            <li>• Continuous professional development for all staff members</li>
-            <li>• Patient safety protocols and infection control measures</li>
-            <li>• Accurate and professional imaging reports</li>
+        <div class="panel panel--soft">
+          <h4 class="panel-accent" style="font-family:var(--font-sans); font-size:15px; text-transform:uppercase; letter-spacing:.04em;">Patient care</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--text-2); line-height:1.9; font-size:.96rem;">
+            <li>Health screening</li><li>Women's health imaging</li><li>Pregnancy monitoring</li><li>Senior care packages</li><li>Pediatric imaging</li>
           </ul>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2026 Mann Scanning Centre. All rights reserved. | NABH Accredited Facility</p>
+  <!-- Facility & NABH -->
+  <section class="section section--alt">
+    <div class="container grid grid--2 reveal" style="gap:24px;">
+      <div class="panel">
+        <span class="eyebrow">Visit us</span>
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">Convenient location</h3>
+        <p style="margin-bottom:18px;"><strong style="color:var(--text);">201 Gujral Nagar, Jalandhar, Punjab — 144002.</strong> Strategically located in the heart of Jalandhar with excellent road connectivity, easy public transport access and ample parking.</p>
+        <h4 style="font-family:var(--font-sans); font-size:14px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-3); margin-bottom:12px;">Operating hours</h4>
+        <ul class="checklist">
+          <li><strong>Monday – Saturday:</strong> 9:00 AM – 6:00 PM</li>
+          <li><strong>Sunday:</strong> 11:00 AM – 1:00 PM</li>
+          <li><strong>Emergency services:</strong> available 24/7</li>
+          <li><strong>Appointments:</strong> 0181-4695500</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">Quality assurance</span>
+        <h3 style="font-size:1.5rem; margin-bottom:10px;">NABH accreditation</h3>
+        <p style="margin-bottom:18px;">Mann Scanning Centre is proud to be accredited by the National Accreditation Board for Hospitals &amp; Healthcare Providers (NABH), ensuring the highest standards of quality, safety and patient care.</p>
+        <ul class="checklist">
+          <li>Rigorous quality control for all diagnostic procedures.</li>
+          <li>Regular equipment calibration and maintenance.</li>
+          <li>Continuous professional development for all staff.</li>
+          <li>Patient safety and infection control protocols.</li>
+          <li>Accurate, professional imaging reports.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta reveal">
+        <h2>Experience the difference</h2>
+        <p>Book your scan with a team that treats every diagnosis with precision and care.</p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn--primary">Book an appointment</a>
+          <a href="services.html" class="btn btn--ghost">View services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="images/glass 3d logo mannscan no bg.png" alt="Mann Scanning Centre logo" />
+            <span>Mann Scanning Centre</span>
+          </div>
+          <p>NABH-accredited diagnostic imaging in the heart of Jalandhar — precision, care and excellence in every scan.</p>
+          <p class="footer-tagline">Precision &middot; Care &middot; Excellence</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="fellowship.html">Fellowship</a></li>
+            <li><a href="lmp-calculator.html">LMP calculator</a></li>
+            <li><a href="https://viewer.ohif.org/" target="_blank" rel="noopener">View DICOMs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">MRI &amp; Whole-body MRI</a></li>
+            <li><a href="services.html">CT scanning</a></li>
+            <li><a href="services.html">4D ultrasound</a></li>
+            <li><a href="services.html">Mammography</a></li>
+            <li><a href="services.html">DEXA bone density</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 201 Gujral Nagar, Jalandhar, Punjab 144002</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+911814695500">0181-4695500</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg> <a href="mailto:drhsmann@gmail.com">drhsmann@gmail.com</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Mon–Sat 9–6 &middot; Sun 11–1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mann Scanning Centre — Your trusted diagnostic partner in Jalandhar.</p>
+        <p>NABH Accredited Healthcare Facility</p>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    // Theme toggle functionality
-    function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      const themeText = document.getElementById('themeText');
-      if (themeText) {
-        themeText.textContent = newTheme === 'dark' ? 'Light' : 'Dark';
-      }
-    }
+  <a href="contact.html" class="fab" aria-label="Book a scan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    <span>Book a scan</span>
+  </a>
 
-    // Mobile Menu Toggle Function
-    function toggleMobileMenu() {
-      const nav = document.getElementById('mobileNav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      if (!nav || !toggle) return;
-      const isOpen = nav.classList.toggle('show');
-      document.body.classList.toggle('menu-open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const nav = document.getElementById('mobileNav');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      
-      if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-        nav.classList.remove('show');
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const nav = document.getElementById('mobileNav');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (!nav || !toggle) return;
-        nav.classList.remove('show');
-        document.body.classList.remove('menu-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Load saved theme or default to light
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      const themeText = document.getElementById('themeText');
-      if (themeText) {
-        themeText.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
-      }
-    });
-
-    // Scroll-reveal animation
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.card, .section').forEach(el => {
-        el.classList.add('fade-in-up');
-        revealObserver.observe(el);
-      });
-    }
-  </script>
 </body>
 </html>
