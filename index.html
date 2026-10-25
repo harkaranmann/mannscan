@@ -201,14 +201,14 @@
       <div class="reveal">
         <span class="eyebrow">The technology</span>
         <ul class="reel__list" role="tablist" aria-label="Imaging modalities">
-          <li class="reel__item" role="tab" tabindex="0" data-tag="GE SIGNA &middot; 1.5T MRI"><h3>MRI &amp; Whole-body MRI</h3><p>Radiation-free soft-tissue detail for brain, spine, joints and whole-body screening.</p></li>
-          <li class="reel__item" role="tab" tabindex="0" data-tag="Multi-detector CT"><h3>CT scanning</h3><p>Rapid cross-sectional imaging for trauma, chest, abdomen and CT angiography.</p></li>
-          <li class="reel__item" role="tab" tabindex="0" data-tag="GE Voluson Expert 22"><h3>4D ultrasound</h3><p>AI-enhanced obstetric imaging for high-risk pregnancy and fetal anomaly screening.</p></li>
-          <li class="reel__item" role="tab" tabindex="0" data-tag="Digital mammography + tomosynthesis"><h3>Mammography</h3><p>Low-dose, full-field digital imaging for early breast cancer detection.</p></li>
-          <li class="reel__item" role="tab" tabindex="0" data-tag="DEXA bone densitometry"><h3>DEXA bone density</h3><p>Osteoporosis screening, fracture-risk assessment and body composition.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-0" aria-controls="reel-panel" aria-selected="true" data-tag="GE SIGNA &middot; 1.5T MRI"><h3>MRI &amp; Whole-body MRI</h3><p>Radiation-free soft-tissue detail for brain, spine, joints and whole-body screening.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-1" aria-controls="reel-panel" aria-selected="false" data-tag="Multi-detector CT"><h3>CT scanning</h3><p>Rapid cross-sectional imaging for trauma, chest, abdomen and CT angiography.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-2" aria-controls="reel-panel" aria-selected="false" data-tag="GE Voluson Expert 22"><h3>4D ultrasound</h3><p>AI-enhanced obstetric imaging for high-risk pregnancy and fetal anomaly screening.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-3" aria-controls="reel-panel" aria-selected="false" data-tag="Digital mammography + tomosynthesis"><h3>Mammography</h3><p>Low-dose, full-field digital imaging for early breast cancer detection.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-4" aria-controls="reel-panel" aria-selected="false" data-tag="DEXA bone densitometry"><h3>DEXA bone density</h3><p>Osteoporosis screening, fracture-risk assessment and body composition.</p></li>
         </ul>
       </div>
-      <div class="reel__stage reveal">
+      <div class="reel__stage reveal" id="reel-panel" role="tabpanel" aria-labelledby="reel-tab-0">
         <video muted playsinline preload="none" data-src="videos/mri.mp4" poster="videos/mri.jpg" aria-label="MRI scanner in motion"></video>
         <video muted playsinline preload="none" data-src="videos/ct.mp4" poster="videos/ct.jpg" aria-label="CT scanner in motion"></video>
         <video muted playsinline preload="none" data-src="videos/ultrasound.mp4" poster="videos/ultrasound.jpg" aria-label="Voluson ultrasound system"></video>

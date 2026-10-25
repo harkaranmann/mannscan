@@ -109,6 +109,9 @@
   function loadVideo(v) {
     if (v.dataset.src && !v.src) { v.src = v.dataset.src; v.load(); }
   }
+  function playVideo(v) {
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
     applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
@@ -161,21 +164,23 @@
       requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('in'); }); });
     });
 
-    /* Lazy / in-view videos */
-    var vids = document.querySelectorAll('video.lazy-video, video[data-src]');
+    /* Lazy / in-view videos (the showcase manages its own films) */
+    var vids = Array.prototype.filter.call(
+      document.querySelectorAll('video.lazy-video, video[data-src]'),
+      function (v) { return !v.closest('.reel__stage'); });
     if ('IntersectionObserver' in window) {
       var vio = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           var v = en.target;
           if (en.isIntersecting) {
             loadVideo(v);
-            if (!reduced && !v.closest('.reel__stage')) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+            if (!reduced) playVideo(v);
           } else if (!v.paused) { v.pause(); }
         });
       }, { rootMargin: '200px 0px' });
       vids.forEach(function (v) { vio.observe(v); });
     } else {
-      vids.forEach(loadVideo);
+      vids.forEach(function (v) { loadVideo(v); if (!reduced) playVideo(v); });
     }
 
     /* Scroll-driven vars: film parallax, expanding frame, header state */
@@ -230,50 +235,91 @@
     document.querySelectorAll('.reel').forEach(function (reel) {
       var items = Array.prototype.slice.call(reel.querySelectorAll('.reel__item'));
       var videos = Array.prototype.slice.call(reel.querySelectorAll('.reel__stage video'));
+      var stage = reel.querySelector('.reel__stage');
       var tag = reel.querySelector('.reel__tag');
-      var current = -1, timer = null, DUR = 7000;
+      var current = -1, DUR = 7000;
+      // One clock drives both rotation and the CSS progress bar, so they never drift apart.
+      var timer = null, remaining = DUR, startedAt = 0, running = false;
+      var visible = !('IntersectionObserver' in window), hovering = false, offTimer = null;
       reel.style.setProperty('--dur', DUR + 'ms');
-      function show(i, x, y) {
+
+      function next() { show((current + 1) % items.length); }
+      function sync() {
+        var should = !reduced && visible && !hovering && current >= 0;
+        reel.classList.toggle('paused', !should);
+        if (should && !running) {
+          running = true; startedAt = Date.now();
+          timer = setTimeout(next, remaining);
+          if (videos[current]) playVideo(videos[current]);
+        } else if (!should && running) {
+          running = false; clearTimeout(timer);
+          remaining = Math.max(0, remaining - (Date.now() - startedAt));
+          if (!visible && videos[current]) videos[current].pause();
+        }
+      }
+
+      function show(i, x) {
         if (i === current) return;
-        var stage = reel.querySelector('.reel__stage');
         stage.style.setProperty('--cx', x || '50%');
-        stage.style.setProperty('--cy', y || '50%');
+        clearTimeout(offTimer);
+        var prev = videos[current];
         videos.forEach(function (v, k) {
           v.classList.remove('off');
-          if (k === current) { v.classList.remove('on'); v.classList.add('off'); }
+          if (v === prev) { v.classList.remove('on'); v.classList.add('off'); }
           else if (k !== i) { v.classList.remove('on'); v.pause(); }
         });
+        // The outgoing film stays visible under the circle wipe; pause it once the wipe ends.
+        if (prev) offTimer = setTimeout(function () { if (prev.classList.contains('off')) prev.pause(); }, 1400);
         var v = videos[i];
         loadVideo(v);
         v.currentTime = 0;
-        if (!reduced) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
         v.classList.add('on');
         items.forEach(function (it, k) {
-          it.classList.toggle('active', k === i);
-          it.setAttribute('aria-selected', k === i ? 'true' : 'false');
-          // restart the progress bar animation
-          if (k === i) { it.style.animation = 'none'; void it.offsetWidth; it.style.animation = ''; }
+          var on = k === i;
+          it.classList.toggle('active', on);
+          it.setAttribute('aria-selected', on ? 'true' : 'false');
+          it.tabIndex = on ? 0 : -1;
         });
+        stage.setAttribute('aria-labelledby', items[i].id);
         if (tag) tag.textContent = items[i].dataset.tag || '';
         current = i;
-        clearTimeout(timer);
-        if (!reduced) timer = setTimeout(function () { show((current + 1) % items.length); }, DUR);
+        running = false; clearTimeout(timer); remaining = DUR;
+        if (!reduced && visible && !hovering) playVideo(v);
+        sync();
       }
+
       items.forEach(function (it, k) {
         it.addEventListener('click', function (e) {
           var r = it.getBoundingClientRect();
-          show(k, (e.clientX ? Math.round((e.clientX - r.left) / r.width * 100) : 50) + '%', '50%');
+          show(k, (e.clientX ? Math.round((e.clientX - r.left) / r.width * 100) : 50) + '%');
         });
         it.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(k); }
+          var to = null;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') to = (k + 1) % items.length;
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') to = (k - 1 + items.length) % items.length;
+          else if (e.key === 'Home') to = 0;
+          else if (e.key === 'End') to = items.length - 1;
+          else if (e.key === 'Enter' || e.key === ' ') to = k;
+          if (to === null) return;
+          e.preventDefault();
+          show(to);
+          items[to].focus();
         });
       });
-      reel.addEventListener('mouseenter', function () { reel.classList.add('paused'); clearTimeout(timer); });
-      reel.addEventListener('mouseleave', function () {
-        reel.classList.remove('paused');
-        if (!reduced) timer = setTimeout(function () { show((current + 1) % items.length); }, DUR / 2);
-      });
-      show(0);
+      // Mouse only: touch devices emulate mouseenter and would leave the reel frozen.
+      reel.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovering = true; sync(); } });
+      reel.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { hovering = false; sync(); } });
+
+      // Nothing loads or rotates until the showcase is on screen.
+      items.forEach(function (it, k) { it.tabIndex = k === 0 ? 0 : -1; });
+      if (!visible) {
+        new IntersectionObserver(function (entries) {
+          visible = entries[0].isIntersecting;
+          if (visible && current < 0) show(0); else sync();
+        }, { threshold: 0.25 }).observe(reel);
+      } else {
+        show(0);
+      }
     });
 
     /* Count-up numbers */
