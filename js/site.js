@@ -181,6 +181,12 @@
     /* Scroll-driven vars: film parallax, expanding frame, header state */
     var film = document.querySelector('.film');
     var expands = document.querySelectorAll('.expand');
+    // Hero film plays only when motion is welcome; otherwise the poster stays.
+    var filmVideo = film && film.querySelector('.film__video');
+    if (filmVideo && !reduced) {
+      filmVideo.preload = 'auto';
+      var fp = filmVideo.play(); if (fp && fp.catch) fp.catch(function () {});
+    }
     if (film && header) header.classList.add('is-over-film');
     var ticking = false;
     function onScroll() {
