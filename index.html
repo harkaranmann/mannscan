@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -54,7 +54,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Cormorant:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Structured Data for Local Business -->
   <script type="application/ld+json">
@@ -154,43 +154,81 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero__bg"></div>
-    <div class="container hero__grid">
-      <div class="reveal visible">
-        <span class="eyebrow">NABH Accredited &middot; Jalandhar, Punjab</span>
-        <h1 class="hero__title">Advanced imaging,<br><span class="accent">delivered with precision.</span></h1>
-        <p class="hero__text">Whole-body MRI, CT, 4D ultrasound, mammography and more — interpreted by expert radiologists in a calm, modern facility built around your comfort.</p>
-        <div class="hero__actions">
-          <a href="contact.html" class="btn btn--primary">Book an appointment
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="services.html" class="btn btn--ghost">Explore services</a>
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat"><div class="num">25+</div><div class="lbl">Years of expertise</div></div>
-          <div class="hero__stat"><div class="num">8</div><div class="lbl">Imaging modalities</div></div>
-          <div class="hero__stat"><div class="num">24/7</div><div class="lbl">Emergency imaging</div></div>
-        </div>
+  <!-- Film hero -->
+  <section class="film" aria-label="Introduction">
+    <video class="film__video" muted loop playsinline preload="metadata" poster="videos/hero.jpg" aria-hidden="true">
+      <source src="videos/hero-sm.mp4" type="video/mp4" media="(max-width: 760px)" />
+      <source src="videos/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="film__inner">
+      <span class="eyebrow">NABH Accredited &middot; Jalandhar, Punjab</span>
+      <h1 class="film__title split">Imaging, <span class="chrome">reimagined.</span></h1>
+      <p class="film__text">Whole-body MRI, CT, 4D ultrasound, mammography and DEXA &mdash; on premium GE &amp; Samsung systems, read by expert radiologists.</p>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary">Book an appointment</a>
+        <a href="#modalities" class="btn btn--ghost">Watch the technology</a>
       </div>
-      <div class="hero__visual reveal visible">
-        <img src="images/mri2 - nobg.png" alt="Advanced MRI scanner at Mann Scanning Centre" loading="eager" />
-        <div class="hero__visual-tag">
-          <span class="dot"></span>
-          <div><b>GE &amp; Samsung systems</b><span>Premium diagnostic technology</span></div>
-        </div>
+    </div>
+    <span class="film__scroll" aria-hidden="true"></span>
+  </section>
+
+  <!-- Trust marquee -->
+  <section class="trust" aria-label="Highlights">
+    <div class="trust__inner">
+      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg> NABH-accredited facility</div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM1 7a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg> Expert radiologists</div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg> Same-day reporting</div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 24/7 emergency imaging</div>
+      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Home sample collection</div>
+      <div class="trust__item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg> NABH-accredited facility</div>
+      <div class="trust__item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM1 7a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg> Expert radiologists</div>
+      <div class="trust__item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg> Same-day reporting</div>
+      <div class="trust__item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 24/7 emergency imaging</div>
+      <div class="trust__item" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Home sample collection</div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <section class="statement">
+    <div class="container reveal">
+      <p>Eight imaging modalities. One roof. <span class="dim">Every scan engineered for clarity, and every report written by a specialist who reads it like it matters.</span></p>
+    </div>
+  </section>
+
+  <!-- Modality showcase -->
+  <section class="reel" id="modalities" aria-label="Our imaging technology">
+    <div class="container reel__grid">
+      <div class="reveal">
+        <span class="eyebrow">The technology</span>
+        <ul class="reel__list" role="tablist" aria-label="Imaging modalities">
+          <li class="reel__item" role="tab" id="reel-tab-0" aria-controls="reel-panel" aria-selected="true" data-tag="GE SIGNA &middot; 1.5T MRI"><h3>MRI &amp; Whole-body MRI</h3><p>Radiation-free soft-tissue detail for brain, spine, joints and whole-body screening.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-1" aria-controls="reel-panel" aria-selected="false" data-tag="Multi-detector CT"><h3>CT scanning</h3><p>Rapid cross-sectional imaging for trauma, chest, abdomen and CT angiography.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-2" aria-controls="reel-panel" aria-selected="false" data-tag="GE Voluson Expert 22"><h3>4D ultrasound</h3><p>AI-enhanced obstetric imaging for high-risk pregnancy and fetal anomaly screening.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-3" aria-controls="reel-panel" aria-selected="false" data-tag="Digital mammography + tomosynthesis"><h3>Mammography</h3><p>Low-dose, full-field digital imaging for early breast cancer detection.</p></li>
+          <li class="reel__item" role="tab" id="reel-tab-4" aria-controls="reel-panel" aria-selected="false" data-tag="DEXA bone densitometry"><h3>DEXA bone density</h3><p>Osteoporosis screening, fracture-risk assessment and body composition.</p></li>
+        </ul>
+      </div>
+      <div class="reel__stage reveal" id="reel-panel" role="tabpanel" aria-labelledby="reel-tab-0">
+        <video muted playsinline preload="none" data-src="videos/mri.mp4" poster="videos/mri.jpg" aria-label="MRI scanner in motion"></video>
+        <video muted playsinline preload="none" data-src="videos/ct.mp4" poster="videos/ct.jpg" aria-label="CT scanner in motion"></video>
+        <video muted playsinline preload="none" data-src="videos/ultrasound.mp4" poster="videos/ultrasound.jpg" aria-label="Voluson ultrasound system"></video>
+        <video muted playsinline preload="none" data-src="videos/mammography.mp4" poster="videos/mammography.jpg" aria-label="Mammography unit in motion"></video>
+        <video muted playsinline preload="none" data-src="videos/dexa.mp4" poster="videos/dexa.jpg" aria-label="DEXA scanner in motion"></video>
+        <span class="reel__tag" aria-live="polite"></span>
       </div>
     </div>
   </section>
 
-  <!-- Trust strip -->
-  <section class="trust">
-    <div class="container trust__inner">
-      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg> NABH-accredited facility</div>
-      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM1 7a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg> Expert radiologists</div>
-      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg> Same-day reporting</div>
-      <div class="trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 2l9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Home sample collection</div>
+  <!-- Expanding film -->
+  <section class="expand" aria-label="Precision">
+    <div class="expand__sticky">
+      <div class="expand__frame">
+        <video class="lazy-video" muted loop playsinline preload="none" data-src="videos/liquid.mp4" poster="videos/liquid.jpg" aria-hidden="true"></video>
+        <div class="expand__caption">
+          <h2>Clarity, <span class="chrome">in motion.</span></h2>
+          <p>Premium hardware is only half of it. Every image is reviewed by radiologists with decades of experience.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -262,10 +300,10 @@
         </ul>
       </div>
       <div class="grid grid--2 reveal" style="gap:18px;">
-        <div class="stat-tile"><div class="num">25+</div><div class="lbl">Years serving Jalandhar</div></div>
-        <div class="stat-tile"><div class="num">3</div><div class="lbl">Expert radiologists</div></div>
-        <div class="stat-tile"><div class="num">8</div><div class="lbl">Imaging modalities</div></div>
-        <div class="stat-tile"><div class="num">100%</div><div class="lbl">NABH quality standards</div></div>
+        <div class="stat-tile"><div class="num" data-count="25" data-suffix="+">25+</div><div class="lbl">Years serving Jalandhar</div></div>
+        <div class="stat-tile"><div class="num" data-count="3" data-suffix="">3</div><div class="lbl">Expert radiologists</div></div>
+        <div class="stat-tile"><div class="num" data-count="8" data-suffix="">8</div><div class="lbl">Imaging modalities</div></div>
+        <div class="stat-tile"><div class="num" data-count="100" data-suffix="%">100%</div><div class="lbl">NABH quality standards</div></div>
       </div>
     </div>
   </section>
