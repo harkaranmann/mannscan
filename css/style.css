@@ -253,6 +253,9 @@ p { margin: 0 0 1.1em; color: var(--text-2); }
 }
 .icon-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
 .icon-btn svg { width: 19px; height: 19px; }
+.sound-btn .sound-wave, .sound-btn.is-on .sound-mute { display: none; }
+.sound-btn.is-on .sound-wave { display: inline; }
+.sound-btn.is-on { color: var(--accent); border-color: var(--accent); }
 .nav-cta { padding: 11px 22px; font-size: 14px; }
 .nav-toggle {
   display: none;
@@ -935,4 +938,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: 650; letter-spacing: -.032em; line-height:
   .brand { gap: 9px; min-width: 0; }
   .brand img { height: 32px; }
   .brand-name { font-size: 15.5px; }
+  .nav-actions { gap: 6px; }
+  .icon-btn, .nav-toggle { width: 38px; height: 38px; }
 }

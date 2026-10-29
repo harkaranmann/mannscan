@@ -29,6 +29,71 @@
   try { saved = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
   applyTheme(saved);
 
+  /* ---- Soundtrack (opt-in; browsers block audible autoplay, so it starts on the visitor's first gesture) ---- */
+  var SOUND_KEY = 'mann-sound', SOUND_POS = 'mann-sound-pos', VOL = 0.5;
+  var music, soundBtn, fadeTimer;
+  function fadeTo(target, done) {
+    clearInterval(fadeTimer);
+    fadeTimer = setInterval(function () {
+      var v = music.volume + (target > music.volume ? 0.02 : -0.02);
+      if (Math.abs(target - v) < 0.02) { music.volume = target; clearInterval(fadeTimer); if (done) done(); }
+      else music.volume = v;
+    }, 40);
+  }
+  function setSound(on) {
+    try { localStorage.setItem(SOUND_KEY, on ? 'on' : 'off'); } catch (e) {}
+    soundBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    soundBtn.classList.toggle('is-on', on);
+    if (on) {
+      music.volume = 0;
+      var p = music.play();
+      if (p && p.catch) p.catch(function () {});
+      fadeTo(VOL);
+    } else {
+      fadeTo(0, function () { music.pause(); });
+    }
+  }
+  function buildSound() {
+    var themeBtn = document.querySelector('.icon-btn[onclick="toggleTheme()"]');
+    if (!themeBtn) return;
+    music = new Audio('audio/soundtrack.mp3');
+    music.loop = true;
+    music.preload = 'none';
+    soundBtn = document.createElement('button');
+    soundBtn.type = 'button';
+    soundBtn.className = 'icon-btn sound-btn';
+    soundBtn.setAttribute('aria-label', 'Soundtrack');
+    soundBtn.setAttribute('aria-pressed', 'false');
+    soundBtn.title = 'Soundtrack';
+    soundBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path class="sound-wave" d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/><path class="sound-mute" d="m22 9-6 6M16 9l6 6"/></svg>';
+    soundBtn.addEventListener('click', function () { setSound(soundBtn.getAttribute('aria-pressed') !== 'true'); });
+    themeBtn.parentNode.insertBefore(soundBtn, themeBtn);
+
+    // Carry playback position across page navigations.
+    music.addEventListener('loadedmetadata', function () {
+      try { var pos = parseFloat(sessionStorage.getItem(SOUND_POS)); if (pos < music.duration) music.currentTime = pos; } catch (e) {}
+    }, { once: true });
+    window.addEventListener('pagehide', function () {
+      try { sessionStorage.setItem(SOUND_POS, String(music.currentTime || 0)); } catch (e) {}
+    });
+
+    var pref = null;
+    try { pref = localStorage.getItem(SOUND_KEY); } catch (e) {}
+    if (pref === 'on') {
+      // Visitor opted in earlier: resume on their first interaction with this page.
+      soundBtn.setAttribute('aria-pressed', 'true');
+      soundBtn.classList.add('is-on');
+      var resume = function (e) {
+        ['pointerdown', 'keydown'].forEach(function (t) { document.removeEventListener(t, resume, true); });
+        if (soundBtn.contains(e.target)) return; // the button's own click handles it
+        setSound(true);
+      };
+      ['pointerdown', 'keydown'].forEach(function (t) { document.addEventListener(t, resume, true); });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildSound);
+  else buildSound();
+
   /* ---- Mobile nav ---- */
   window.toggleNav = function () {
     var header = document.querySelector('.site-header');
