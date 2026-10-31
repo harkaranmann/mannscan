@@ -29,7 +29,7 @@
   try { saved = localStorage.getItem(STORAGE_KEY) || 'dark'; } catch (e) {}
   applyTheme(saved);
 
-  /* ---- Soundtrack (opt-in; browsers block audible autoplay, so it starts on the visitor's first gesture) ---- */
+  /* ---- Soundtrack (on by default, visitor can mute; browsers block audible autoplay, so it starts on the visitor's first gesture) ---- */
   var SOUND_KEY = 'mann-sound', SOUND_POS = 'mann-sound-pos', VOL = 0.5;
   var music, soundBtn, fadeTimer;
   function fadeTo(target, done) {
@@ -79,8 +79,8 @@
 
     var pref = null;
     try { pref = localStorage.getItem(SOUND_KEY); } catch (e) {}
-    if (pref === 'on') {
-      // Visitor opted in earlier: resume on their first interaction with this page.
+    if (pref !== 'off') {
+      // On by default; browsers block audible autoplay, so start on the first interaction with this page.
       soundBtn.setAttribute('aria-pressed', 'true');
       soundBtn.classList.add('is-on');
       var resume = function (e) {
