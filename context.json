@@ -42,7 +42,7 @@
     "contact.html": "Styled contact page with complete contact information, hours, location, and walk-in policy.",
     "fellowship.html": "Dedicated fellowship page with program overview and online application form.",
     "lmp-calculator.html": "Standalone gestational age calculator with error handling and validation.",
-    "dicom_viewer": "Navigation bar includes a 'View DICOMs' link directing patients to OHIF Viewer for secure DICOM file viewing."
+    "dicom_viewer": "Navigation bar includes a 'Staff viewer' link to the AnubiS image viewer (viewer.mannscan.in, staff login via Cloudflare Access)."
   },
   "removed_files": [
     "gallery.html (removed - not required)",
@@ -80,8 +80,8 @@
     },
     {
       "name": "DICOM Web Viewer",
-      "description": "Patients can view their DICOM files directly through the website using the integrated OHIF Viewer.",
-      "viewer_url": "https://viewer.ohif.org/",
+      "description": "Staff and referring doctors open studies in the clinic's AnubiS image viewer (login required).",
+      "viewer_url": "https://viewer.mannscan.in/viewer/",
       "implemented": true,
       "security": "External viewer with proper rel='noopener' attributes"
     },
